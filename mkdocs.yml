@@ -3,6 +3,16 @@ site_description: 我的技术笔记
 theme:
   name: material
   palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
     primary: blue
     accent: blue
   features:
@@ -21,3 +31,12 @@ nav:
   - 关于我: about.md
   - 学习笔记: notes.md
   - 我的思考: diary.md
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ciqubeijiang
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/XXXXXX
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:XXXX@163.com
+copyright: Copyright &copy; 2022 - 2024 xiaoxiaoWayne
