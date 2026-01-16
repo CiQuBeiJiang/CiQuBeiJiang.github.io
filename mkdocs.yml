@@ -3,7 +3,7 @@ site_description: 我的技术笔记
 theme:
   name: material
   icon:
-    logo: material/snowflake-outline 
+    icon: material/snowflake
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
