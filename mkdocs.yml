@@ -2,6 +2,8 @@ site_name: 此去北疆
 site_description: 我的技术笔记
 theme:
   name: material
+  icon:
+    logo: material/snowflake-outline 
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -40,5 +42,5 @@ extra:
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/XXXXXX
     - icon: fontawesome/solid/paper-plane
-      link: mailto:XXXX@163.com
-copyright: Copyright &copy; 2022 - 2024 xiaoxiaoWayne
+      link: 1724961030@qq.com
+copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
