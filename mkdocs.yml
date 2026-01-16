@@ -1,0 +1,23 @@
+site_name: 此去北疆
+site_description: 我的技术笔记
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+nav:
+  - 首页: index.md
+  - 关于我: about.md
+  - 学习笔记: notes.md
+  - 我的思考: diary.md
