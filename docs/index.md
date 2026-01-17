@@ -6,36 +6,36 @@ hide:
 
 # (´･ᴗ･` )
 
-=== "<font size = 6>:fontawesome-solid-paw: </font><font size = 6 face = '文泉驿正黑' >关于我</font>"
+
+=== "<font size = 6>:fontawesome-solid-camera-retro: </font><font size = 6>关于我</font>"
 
     !!! note inline ""
-        🍟 个人简介：一个用感性解剖理性的观察者
+        🍟 简介：一个用感性解剖理性的观察者
 
-        ☺️  姓名：可以叫我'江屿'
+        ☺️ 姓名：可以叫我'江屿'
 
-        🏔️  碎语：退回到只属于我的世界
+        🏔️ 碎语：退回到只属于我的世界
 
     !!! note inline "" 
-        📖  兴趣爱好：阅读、旅行、摄影
+        📖 兴趣：阅读、旅行、摄影
+        
+        💻 技术栈 :material-language-python: | :material-language-java:。
 
-        💻  技术栈：Python | R | 数据库
-
-        🧩  专注方向：数据分析，机器学习
-
-    
-    !!! success inline ""
-        🧸  MBTI人格：<font face = "American Typewriter" >INFP</font>
-
-        🎀  生活状态：时间的摄影师
-
-        🔆  星座：摩羯座 ♑️
+        🧩 专注方向：数据分析，机器学习
 
     !!! success inline ""
-        🌏  所在地：人间一隅，步履不停
+        🧸 MBTI人格：<font face = "American Typewriter" >INFP</font>
 
-        🐳  性格特质：偏爱安静独处，喜赴山海
+        🎀 生活状态：时间的摄影师
+          
+        > 我以为按下快门就是囚禁了时间
 
-        ☘️  近期目标：深耕数据领域，慢慢沉淀
+    !!! success inline ""
+        🌏 所在地：人间一隅，步履不停
+
+        🐳 性格特质：偏爱安静独处，喜赴山海
+
+        > 当时年少掷春光，花马踏蹄酒溅香
 
 === "<font size = 6>:fontawesome-solid-book: </font><font size = 6 face = '文泉驿正黑' >关于此站</font>"
 

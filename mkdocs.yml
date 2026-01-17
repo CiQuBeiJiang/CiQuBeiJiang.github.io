@@ -55,8 +55,13 @@ extra:
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/XXXXXX
     - icon: fontawesome/solid/paper-plane
-      link: mailto:1724961030@qq.com # 修复：邮箱链接加mailto: 点击直接唤起邮箱
+      link: mailto:1724961030@qq.com 
 copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+statistics:
+  enabled: true
+plugins:
+  - search
+  - statistics 
