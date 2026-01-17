@@ -42,8 +42,8 @@ markdown_extensions:
   - md_in_html              # 让markdown里嵌套HTML标签无冲突
 nav:
   - 首页: index.md
-  - 文学: belles_lettres
   - 哲学: philosophy
+  - 文学: literary
   - 随笔: diary
   - 机器学习: machine_learning
   - 运筹优化: optimization
