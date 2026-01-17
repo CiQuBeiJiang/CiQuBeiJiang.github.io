@@ -1,0 +1,39 @@
+:root {
+    --md-text-font:  "LXGW WenKai Screen", sans-serif; 
+    /* --md-code-font:  */
+  }
+
+
+@font-face {    
+    font-family: 'LXGW';    
+    src: url('./LXGWWenKaiGBScreen.woff') format('woff');/*IE*/     
+}
+.admonition.note.inline,
+.admonition.success.inline {
+    /* 每个块固定宽度，刚好一行放下2个，必成2行2列 */
+    width: 33% !important;
+    /* 所有块强制固定高度，视觉绝对对齐 */
+    height: 135px !important;
+    /* 块之间的间距 */
+    margin: 6px !important;
+    /* 强制顶部对齐*/
+    vertical-align: top !important;
+    /* 内部文字上下间距优化，不拥挤 */
+    padding: 12px 15px !important;
+    box-sizing: border-box !important;
+}
+/* 提示块内的文字样式优化 */
+.admonition-content p {
+    line-height: 1.8 !important;
+    margin: 5px 0 !important;
+    font-size: 15px !important;
+}
+/* 1. 引入【免费无版权+风格匹配】的花体字（和SnellRoundHand同源风格，法式优雅圆润） */
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+/* 2. 定义一个「花体样式类」，名字叫 .fancy-font ，你可以随便改 */
+.fancy-font {
+    font-family: 'Parisienne', cursive; /* 核心：嵌入网页的花体字，GitHub必用 */
+    font-size: 2.2em; /* 字号和你之前的 size=6 完全一致，不用改 */
+    line-height: 1.5; /* 行间距，让文字更美观 */
+}
