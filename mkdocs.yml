@@ -41,10 +41,10 @@ markdown_extensions:
   - attr_list               # 让HTML的font标签/行内样式生效
   - md_in_html              # 让markdown里嵌套HTML标签无冲突
 nav:
-  - 首页: about.md
+  - 首页: index.md
   - 文学: literature
   - 哲学: philosophy
-  - 我的随笔: diary
+  - 随笔: diary
   - 机器学习: machine_learning
   - 运筹优化: optimization
   - 数据分析: data_analysis
