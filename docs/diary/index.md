@@ -1,6 +1,6 @@
-## 随笔 · 我灵魂的气象观测站
+# 随笔 · 我灵魂的气象观测站
 
-<span class="fancy-font">On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux</span>
+<font size="6" face="SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT" style="font-family: SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT !important; font-size:2.2em !important; font-weight:normal !important;">On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux</font>
 
 这里不是精心修剪的花园，而是我内心世界的原始地貌。
 
@@ -9,8 +9,10 @@
 这里没有答案，只有诚实的气象数据：
 
 - 情感微气候：那些无法被“开心”或“难过”归类，如暮色般蓝灰色的惆怅
+
 - 关系湿度计：对亲密既渴望又恐惧，像猜测哪滴雨先到达车窗底部的凝视
-- 自我地质勘探：将自身置于显微镜与审判席，记录每一次精神层面的断层与震动
+
+- 自我地质勘探：将自身置于显微镜与审判席，记录每一次精神层面的断层与震动ß
 
 “我的肉体喜欢把我的灵魂当成耶稣，钉在某个十字架上。”
 

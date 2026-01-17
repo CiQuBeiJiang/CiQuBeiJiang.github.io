@@ -1,6 +1,6 @@
-## 文学 · 勘探地图
+# 文学 · 勘探地图
 
-<span class="fancy-font">Il n’y a pas de vrai sans poésie.</span>
+<font size="6" face="SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT" style="font-family: SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT !important; font-size:2.2em !important; font-weight:normal !important;">Il n’y a pas de vrai sans poésie.</font>
 
 我始终在两种坐标系中确定自己的位置：一种是数据集的维度与特征，另一种是字里行间的隐喻与留白。
 
