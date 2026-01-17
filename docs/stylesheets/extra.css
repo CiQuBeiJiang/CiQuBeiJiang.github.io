@@ -8,3 +8,23 @@
     font-family: 'LXGW';    
     src: url('./LXGWWenKaiGBScreen.woff') format('woff');/*IE*/     
 }
+.admonition.note.inline,
+.admonition.success.inline {
+    /* 每个块固定宽度，刚好一行放下2个，必成2行2列 */
+    width: 33% !important;
+    /* 所有块强制固定高度，视觉绝对对齐 */
+    height: 135px !important;
+    /* 块之间的间距 */
+    margin: 6px !important;
+    /* 强制顶部对齐*/
+    vertical-align: top !important;
+    /* 内部文字上下间距优化，不拥挤 */
+    padding: 12px 15px !important;
+    box-sizing: border-box !important;
+}
+/* 提示块内的文字样式优化 */
+.admonition-content p {
+    line-height: 1.8 !important;
+    margin: 5px 0 !important;
+    font-size: 15px !important;
+}

@@ -8,38 +8,34 @@ hide:
 
 === "<font size = 6>:fontawesome-solid-paw: </font><font size = 6 face = '文泉驿正黑' >关于我</font>"
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-        !!! note inline ""
-            🍟 **个人简介**：一个用感性解剖理性的观察者
-            
-            ☺️ **姓名**：可以叫我'江屿'
-            
-            🏔️ **碎语**：我把自己从货架上取下，退回到只属于我的世界
+    !!! note inline ""
+        🍟 个人简介：一个用感性解剖理性的观察者
 
-        !!! note inline "" 
-            📖  **兴趣爱好**：阅读、旅行、摄影
+        ☺️  姓名：可以叫我'江屿'
 
-            💻 **技术栈**：偶尔用代码打发时间，擅长/接触 :material-language-python: | :material-language-r: | :material-database:
+        🏔️  碎语：退回到只属于我的世界
 
-            🧩 **专注方向**：数据分析，机器学习
-    </div>
+    !!! note inline "" 
+        📖  兴趣爱好：阅读、旅行、摄影
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        !!! success inline ""
-            🧸 **MBTI人格**：<font face = "American Typewriter" >INFP</font> 
-            
-            🎀 **生活状态**：时间的摄影师
-              
-            🔆 **星座**：摩羯座 ♑️
+        💻  技术栈：Python | R | 数据库
 
-        !!! success inline ""
-            🌏 **所在地**：人间一隅，步履不停
+        🧩  专注方向：数据分析，机器学习
 
-            🐳 **性格特质**：偏爱安静独处，亦喜随心奔赴山海
+    
+    !!! success inline ""
+        🧸  MBTI人格：<font face = "American Typewriter" >INFP</font>
 
-            ☘️ **近期目标**：深耕数据领域，在热爱里慢慢沉淀
-    </div>
+        🎀  生活状态：时间的摄影师
 
+        🔆  星座：摩羯座 ♑️
+
+    !!! success inline ""
+        🌏  所在地：人间一隅，步履不停
+
+        🐳  性格特质：偏爱安静独处，喜赴山海
+
+        ☘️  近期目标：深耕数据领域，慢慢沉淀
 
 === "<font size = 6>:fontawesome-solid-book: </font><font size = 6 face = '文泉驿正黑' >关于此站</font>"
 
@@ -59,7 +55,7 @@ hide:
 
 === "<font size = 6>:fontawesome-solid-envelope: </font><font size = 6 face = '文泉驿正黑' >联系我</font>"
 
-    - :fontawesome-solid-envelope:  <a href="mailto:1724961030@qq.com">个人邮箱</a>｜这是我的个人邮箱，欢迎和我交朋友
+    - :fontawesome-solid-envelope:  <a href="mailto:1724961030@qq.com">个人邮箱</a>
     - :fontawesome-brands-github: <a href="https://github.com/CiQuBeiJiang" target="_blank">GitHub</a> ｜ 存放我的项目代码与学习笔记
 
 <br>
