@@ -3,7 +3,7 @@ site_description: 我的技术笔记
 theme:
   name: material
   icon:
-    icon: material/snowflake
+    logo: material/snowflake  
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -25,11 +25,21 @@ theme:
     - toc.integrate
     - search.suggest
     - search.highlight
+    - content.tabs.link 
 markdown_extensions:
   - admonition
   - codehilite
   - toc:
       permalink: true
+  - pymdownx.details        # 折叠面板??? 生效
+  - pymdownx.superfences    # 代码块美化
+  - pymdownx.tabbed:        # ===选项卡语法 必加！！！
+      alternate_style: true
+  - pymdownx.emoji:         # fontawesome/material图标 必加！！！
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list               # 让HTML的font标签/行内样式生效
+  - md_in_html              # 让markdown里嵌套HTML标签无冲突
 nav:
   - 首页: about.md
   - 文学: literature
@@ -45,12 +55,8 @@ extra:
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/XXXXXX
     - icon: fontawesome/solid/paper-plane
-      link: 1724961030@qq.com
+      link: mailto:1724961030@qq.com # 修复：邮箱链接加mailto: 点击直接唤起邮箱
 copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
