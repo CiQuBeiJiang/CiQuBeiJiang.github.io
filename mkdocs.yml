@@ -33,8 +33,12 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 关于我: about.md
-  - 学习笔记: notes.md
-  - 我的思考: diary.md
+  - 文学: literature
+  - 哲学: philosophy
+  - 我的随笔: diary
+  - 机器学习: machine_learning
+  - 运筹优化: optimization
+  - 数据分析: data_analysis
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -44,3 +48,10 @@ extra:
     - icon: fontawesome/solid/paper-plane
       link: 1724961030@qq.com
 copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
