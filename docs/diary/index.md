@@ -1,5 +1,7 @@
 ## 随笔 · 我灵魂的气象观测站
 
+<span class="fancy-font">On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux</span>
+
 这里不是精心修剪的花园，而是我内心世界的原始地貌。
 
 朋友认识的是“杨笑笑”，一个对麻雀和野草都会傻笑的人。而在这里，我允许自己展示另一个维度的天气——那些低气压的沉思、连绵的雨季，以及阳光偶尔撕破云层时，万物过于清晰的轮廓。

@@ -1,6 +1,6 @@
 ## 哲学 · 在意义的悬崖边散步
 
-<span class="fancy-font">Au revoir, les enfants.</span>
+<span class="fancy-font">Je pense, donc je suis.</span>
 
 这里不是一个哲学殿堂，而是一个思考者的练习场。
 
