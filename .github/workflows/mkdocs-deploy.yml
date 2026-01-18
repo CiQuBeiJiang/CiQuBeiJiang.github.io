@@ -6,6 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     steps:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
@@ -17,8 +19,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: 硬编码强制安装所有插件
+      - name: 强制安装所有依赖+插件
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install mkdocs==1.6.1 mkdocs-material==9.7.1 mkdocs-material-extensions==1.3.1 mkdocs-awesome-pages-plugin==2.10.1 mkdocs-glightbox==0.5.2 mkdocs-static-i18n==1.3.0 mkdocs-statistics-plugin mkdocs-img2fig-plugin mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin ghp-import==2.1.0 pymdown-extensions==10.20
-          mkdocs gh-deploy --force
+
+      - name: 部署到GitHub Pages（带令牌授权）
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: mkdocs gh-deploy --force --remote-branch gh-pages
