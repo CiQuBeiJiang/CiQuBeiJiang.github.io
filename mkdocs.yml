@@ -21,11 +21,13 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.top
     - navigation.sections
     - toc.integrate
     - search.suggest
     - search.highlight
-    - content.tabs.link 
+    - content.tabs.link
+    - content.code.copy
 markdown_extensions:
   - admonition
   - codehilite
@@ -40,14 +42,6 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - attr_list               # 让HTML的font标签/行内样式生效
   - md_in_html              # 让markdown里嵌套HTML标签无冲突
-nav:
-  - 首页: index.md
-  - 哲学: philosophy
-  - 文学: literary
-  - 随笔: diary
-  - 机器学习: machine_learning
-  - 运筹优化: optimization
-  - 数据分析: data_analysis
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -60,8 +54,16 @@ copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
-statistics:
-  enabled: true
 plugins:
   - search
-  - statistics 
+  - statistics
+  - awesome-pages
+  - glightbox
+  - minify: 
+      minify_html: true
+      minify_css: true
+      minify_js: true
+  - git-revision-date-localized:  
+      type: date                  
+      locale: zh_CN     
+  - img2fig

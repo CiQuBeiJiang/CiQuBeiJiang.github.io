@@ -4,7 +4,9 @@ hide:
   - feedback
 ---
 
-# (´･ᴗ･` )
+# 首页
+
+##(´･ᴗ･` )
 
 
 === "<font size = 6>:fontawesome-solid-camera-retro: </font><font size = 6>关于我</font>"
@@ -51,6 +53,7 @@ hide:
 
     ??? abstract indexinline "站点里程碑"
         其实我有一个个人网站，但是最近在学习的时候刷到了相关github部署的网站，我觉得比之前的简单多了，于是就部署了一个
+
         - **2026.1.17** 🎉 站点首次部署
 
 === "<font size = 6>:fontawesome-solid-envelope: </font><font size = 6 face = '文泉驿正黑' >联系我</font>"
