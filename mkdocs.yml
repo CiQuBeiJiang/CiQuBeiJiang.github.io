@@ -1,5 +1,8 @@
 site_name: 此去北疆
 site_description: 我的技术笔记
+site_url: https://CiQuBeiJiang.github.io
+site_dir: site
+repo_url: https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io
 theme:
   name: material
   icon:
