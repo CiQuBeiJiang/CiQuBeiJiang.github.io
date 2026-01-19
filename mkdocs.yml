@@ -55,9 +55,8 @@ extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
 plugins:
-  - search
-  - statistics
   - awesome-pages
+  - statistics
   - glightbox
   - minify: 
       minify_html: true
