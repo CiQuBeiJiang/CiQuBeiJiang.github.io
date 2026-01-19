@@ -30,6 +30,7 @@ theme:
     - search.highlight
     - content.tabs.link
     - content.code.copy
+    # navigation.sections不能加，会冲突
 
 
 extra_css:
@@ -90,6 +91,7 @@ copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
 
 plugins:
   - glightbox
+  - statistics
   - minify: 
       minify_html: true
       minify_css: true
