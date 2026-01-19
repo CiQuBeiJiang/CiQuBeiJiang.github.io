@@ -3,9 +3,9 @@
 
 ## 下载流程
 - 前往[官网](https://www.shanshu.ai/copt)申请求解器
-![img1](../images/copt.png)
+![img1](/images/copt.png)
 - 审核通过后，会有安装包和licence发送到邮箱
-![img2](../images/copt1.png)
+![img2](/images/copt1.png)
 - 安装好后将邮件附带的`license.dat`和`license.key`拷贝到COPT的安装目录下，也就是拷贝到`C:\Program Files\COPT`下
 - 大功告成
 
@@ -17,14 +17,11 @@
 
 **以这个问题为例：**
 $$
-min \ Z = 3x +5y
+min \ Z = 3x + 5y
 $$
+
 $$
-s.t.
-\begin{cases}
-2x+y \ge 8 \\
-x+2y \ge 6
-\end{cases}
+s.t. \begin{cases} 2x+y \ge 8 \\ x+2y \ge 6 \end{cases}
 $$
 
 ### 类导入以及实例创建
@@ -133,7 +130,7 @@ model.addConstr(1*x + 2*y >= 6)
 
 
 
-### 求解参数设置(求解时间，Gap等)：
+### 求解参数设置：
 - `Model.setParam(paramname, newval)`
 - `model.setParam(COPT.Param.TimeLimit, 3600)`：设置求解时间限制
 - `model.setParam(COPT.Param.RelGap, 0.1)`：设置求解MIP的求解Gap
@@ -295,9 +292,3 @@ else:
     求解成功：找到全局最优解！
     最优解：x = 3.3333, y = 1.3333
     最优目标函数值 = 16.6667
-
-
-
-```python
-
-```

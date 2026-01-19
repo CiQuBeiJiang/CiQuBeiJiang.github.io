@@ -1,8 +1,0 @@
-arrange:
-  - index.md          # 置顶网站首页
-  - diary             # 随笔
-  - literary          # 文学
-  - philosophy        # 哲学
-  - machine_learning  # 机器学习
-  - data_analysis     # 数据分析
-  - optimization      # 优化算法

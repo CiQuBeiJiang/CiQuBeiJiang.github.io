@@ -28,20 +28,53 @@ theme:
     - search.highlight
     - content.tabs.link
     - content.code.copy
+
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - javascripts/katex.js
+
+nav:
+  - 序章: index.md
+  - 文学: literary/index.md
+  - 哲学: philosophy/index.md
+  - 随笔: 
+    - 首页: diary/index.md
+    - 花: diary/flower.md
+  - 机器学习: 
+    - 首页: machine_learning/index.md
+    - numpy教程: machine_learning/numpy_tutorial.md
+  - 运筹优化: 
+    - 首页: optimization/index.md
+    - COPT用法: optimization/copt_usage.md
+  - 数据分析: 
+    - 首页: data_analysis/index.md
+    - 数据分析的一般流程: data_analysis/general_process.md
+
 markdown_extensions:
   - admonition
-  - codehilite
+  - pymdownx.highlight 
   - toc:
       permalink: true
-  - pymdownx.details        # 折叠面板??? 生效
-  - pymdownx.superfences    # 代码块美化
-  - pymdownx.tabbed:        # ===选项卡语法 必加！！！
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.emoji:         # fontawesome/material图标 必加！！！
+  - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - attr_list               # 让HTML的font标签/行内样式生效
-  - md_in_html              # 让markdown里嵌套HTML标签无冲突
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:  
+      generic: true
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -50,13 +83,10 @@ extra:
       link: https://www.instagram.com/XXXXXX
     - icon: fontawesome/solid/paper-plane
       link: mailto:1724961030@qq.com 
+
 copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
-extra_css:
-  - stylesheets/extra.css
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+
 plugins:
-  - awesome-pages
-  - statistics
   - glightbox
   - minify: 
       minify_html: true
@@ -65,4 +95,4 @@ plugins:
   - git-revision-date-localized:  
       type: date                  
       locale: zh_CN     
-  - img2fig
+  - img2fig  
