@@ -25,7 +25,6 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
-    - navigation.sections
     - toc.integrate
     - search.suggest
     - search.highlight
