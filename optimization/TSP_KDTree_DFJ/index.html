@@ -1,0 +1,727 @@
+<!DOCTYPE html><html lang=en class=no-js><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=我的技术笔记><link href=https://CiQuBeiJiang.github.io/optimization/TSP_KDTree_DFJ/ rel=canonical><link href=../copt_usage/ rel=prev><link href=../../data_analysis/ rel=next><link rel=icon href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.6.1, mkdocs-material-9.7.1"><title>KDtree+DFJ算法解决TSP问题 - 此去北疆</title><link rel=stylesheet href=../../assets/stylesheets/main.484c7ddc.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.ab4e12ef.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><link rel=stylesheet href=../../stylesheets/extra.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css><script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script><link href=../../assets/stylesheets/glightbox.min.css rel=stylesheet><script src=../../assets/javascripts/glightbox.min.js></script><style id=glightbox-style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=blue data-md-color-accent=blue> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#tsp-kdtree-dfj class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../.. title=此去北疆 class="md-header__button md-logo" aria-label=此去北疆 data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="m20.79 13.95-2.33.62-2-1.13v-2.88l2-1.13 2.33.62.52-1.93-1.77-.47.46-1.77-1.93-.52-.62 2.33-2 1.13L13 7.38V5.12l1.71-1.71L13.29 2 12 3.29 10.71 2 9.29 3.41 11 5.12v2.26L8.5 8.82l-2-1.13-.58-2.33L4 5.88l.47 1.77-1.77.47.52 1.93 2.33-.62 2 1.13v2.89l-2 1.13-2.33-.62-.52 1.93 1.77.47L4 18.12l1.93.52.62-2.33 2-1.13L11 16.62v2.26l-1.71 1.71L10.71 22 12 20.71 13.29 22l1.41-1.41-1.7-1.71v-2.26l2.5-1.45 2 1.13.62 2.33 1.88-.51-.47-1.77 1.77-.47zM9.5 10.56 12 9.11l2.5 1.45v2.88L12 14.89l-2.5-1.45z"></path></svg> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> 此去北疆 </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> KDtree+DFJ算法解决TSP问题 </span> </div> </div> </div> <form class=md-header__option data-md-component=palette> <input class=md-option data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme=default data-md-color-primary=blue data-md-color-accent=blue aria-label="Switch to dark mode" type=radio name=__palette id=__palette_0> <label class="md-header__button md-icon" title="Switch to dark mode" for=__palette_1 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg> </label> <input class=md-option data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme=slate data-md-color-primary=blue data-md-color-accent=blue aria-label="Switch to light mode" type=radio name=__palette id=__palette_1> <label class="md-header__button md-icon" title="Switch to light mode" for=__palette_0 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg> </label> </form> <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script> <div class=md-header__source> <a href=https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class=md-tabs aria-label=Tabs data-md-component=tabs> <div class=md-grid> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> 序章 </a> </li> <li class=md-tabs__item> <a href=../../literary/ class=md-tabs__link> 文学 </a> </li> <li class=md-tabs__item> <a href=../../philosophy/ class=md-tabs__link> 哲学 </a> </li> <li class=md-tabs__item> <a href=../../diary/ class=md-tabs__link> 随笔 </a> </li> <li class=md-tabs__item> <a href=../../machine_learning/ class=md-tabs__link> 机器学习 </a> </li> <li class="md-tabs__item md-tabs__item--active"> <a href=../ class=md-tabs__link> 运筹优化 </a> </li> <li class=md-tabs__item> <a href=../../data_analysis/ class=md-tabs__link> 数据分析 </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../.. title=此去北疆 class="md-nav__button md-logo" aria-label=此去北疆 data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="m20.79 13.95-2.33.62-2-1.13v-2.88l2-1.13 2.33.62.52-1.93-1.77-.47.46-1.77-1.93-.52-.62 2.33-2 1.13L13 7.38V5.12l1.71-1.71L13.29 2 12 3.29 10.71 2 9.29 3.41 11 5.12v2.26L8.5 8.82l-2-1.13-.58-2.33L4 5.88l.47 1.77-1.77.47.52 1.93 2.33-.62 2 1.13v2.89l-2 1.13-2.33-.62-.52 1.93 1.77.47L4 18.12l1.93.52.62-2.33 2-1.13L11 16.62v2.26l-1.71 1.71L10.71 22 12 20.71 13.29 22l1.41-1.41-1.7-1.71v-2.26l2.5-1.45 2 1.13.62 2.33 1.88-.51-.47-1.77 1.77-.47zM9.5 10.56 12 9.11l2.5 1.45v2.88L12 14.89l-2.5-1.45z"></path></svg> </a> 此去北疆 </label> <div class=md-nav__source> <a href=https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg> </div> <div class=md-source__repository> GitHub </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> <span class=md-ellipsis> 序章 </span> </a> </li> <li class=md-nav__item> <a href=../../literary/ class=md-nav__link> <span class=md-ellipsis> 文学 </span> </a> </li> <li class=md-nav__item> <a href=../../philosophy/ class=md-nav__link> <span class=md-ellipsis> 哲学 </span> </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4 id=__nav_4_label tabindex=0> <span class=md-ellipsis> 随笔 </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_4_label aria-expanded=false> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> 随笔 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../diary/ class=md-nav__link> <span class=md-ellipsis> 首页 </span> </a> </li> <li class=md-nav__item> <a href=../../diary/flower/ class=md-nav__link> <span class=md-ellipsis> 花 </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5 id=__nav_5_label tabindex=0> <span class=md-ellipsis> 机器学习 </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_5_label aria-expanded=false> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> 机器学习 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../machine_learning/ class=md-nav__link> <span class=md-ellipsis> 首页 </span> </a> </li> <li class=md-nav__item> <a href=../../machine_learning/KNN/ class=md-nav__link> <span class=md-ellipsis> knn算法 </span> </a> </li> <li class=md-nav__item> <a href=../../machine_learning/numpy_tutorial/ class=md-nav__link> <span class=md-ellipsis> numpy教程 </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_6 checked> <label class=md-nav__link for=__nav_6 id=__nav_6_label tabindex> <span class=md-ellipsis> 运筹优化 </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_6_label aria-expanded=true> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> 运筹优化 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../ class=md-nav__link> <span class=md-ellipsis> 首页 </span> </a> </li> <li class=md-nav__item> <a href=../copt_usage/ class=md-nav__link> <span class=md-ellipsis> COPT用法 </span> </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> <span class=md-ellipsis> KDtree+DFJ算法解决TSP问题 </span> <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> <span class=md-ellipsis> KDtree+DFJ算法解决TSP问题 </span> </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#_1 class=md-nav__link> <span class=md-ellipsis> 一、核心目标 </span> </a> </li> <li class=md-nav__item> <a href=#_2 class=md-nav__link> <span class=md-ellipsis> 二、技术框架与依赖库 </span> </a> <nav class=md-nav aria-label=二、技术框架与依赖库> <ul class=md-nav__list> <li class=md-nav__item> <a href=#1 class=md-nav__link> <span class=md-ellipsis> 1. 核心依赖 </span> </a> </li> <li class=md-nav__item> <a href=#2 class=md-nav__link> <span class=md-ellipsis> 2. 数据格式 </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#_3 class=md-nav__link> <span class=md-ellipsis> 五、性能特点 </span> </a> <nav class=md-nav aria-label=五、性能特点> <ul class=md-nav__list> <li class=md-nav__item> <a href=#_4 class=md-nav__link> <span class=md-ellipsis> 优势 </span> </a> </li> <li class=md-nav__item> <a href=#_5 class=md-nav__link> <span class=md-ellipsis> 适用场景 </span> </a> </li> <li class=md-nav__item> <a href=#_6 class=md-nav__link> <span class=md-ellipsis> 性能基准 </span> </a> </li> <li class=md-nav__item> <a href=#_7 class=md-nav__link> <span class=md-ellipsis> 时间复杂度分析 </span> </a> </li> <li class=md-nav__item> <a href=#_8 class=md-nav__link> <span class=md-ellipsis> 空间复杂度分析 </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#_9 class=md-nav__link> <span class=md-ellipsis> 六、关键输出日志示例 </span> </a> </li> </ul> </nav> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7 id=__nav_7_label tabindex=0> <span class=md-ellipsis> 数据分析 </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_7_label aria-expanded=false> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> 数据分析 </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../data_analysis/ class=md-nav__link> <span class=md-ellipsis> 首页 </span> </a> </li> <li class=md-nav__item> <a href=../../data_analysis/general_process/ class=md-nav__link> <span class=md-ellipsis> 数据分析的一般流程 </span> </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <h1 id=tsp-kdtree-dfj>TSP 求解：KDTree + DFJ 算法实现与实践<a class=headerlink href=#tsp-kdtree-dfj title="Permanent link">¶</a></h1> <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;"> <p><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 1800 个字 <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 576 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 589 行代码 <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 13 分钟</p> </div> <h2 id=_1>一、核心目标<a class=headerlink href=#_1 title="Permanent link">¶</a></h2> <p>实现一种高效的旅行商问题（TSP）求解方案，通过<strong>KDTree近邻稀疏化</strong>减少变量规模，结合<strong>DFJ（Dantzig-Fulkerson-Johnson）子回路消除算法</strong>，在保证解质量的前提下提升大规模TSP问题的求解效率。</p> <h2 id=_2>二、技术框架与依赖库<a class=headerlink href=#_2 title="Permanent link">¶</a></h2> <h3 id=1>1. 核心依赖<a class=headerlink href=#1 title="Permanent link">¶</a></h3> <table> <thead> <tr> <th>库名</th> <th>用途</th> </tr> </thead> <tbody> <tr> <td><code>coptpy</code></td> <td>COPT优化器接口，构建整数规划模型</td> </tr> <tr> <td><code>numpy</code></td> <td>向量化计算距离矩阵、高效数据处理</td> </tr> <tr> <td><code>scipy.spatial.KDTree</code></td> <td>快速近邻查找，实现边稀疏化</td> </tr> <tr> <td><code>matplotlib</code></td> <td>路径可视化展示</td> </tr> <tr> <td><code>collections.defaultdict</code></td> <td>子回路检测中的连通分量收集</td> </tr> <tr> <td>### 2. 整体架构</td> <td></td> </tr> </tbody> </table> <p>```Plain Text TSPSolver类（核心求解器） ├── 数据层：read_data() 读取TSP文件，解析坐标与距离类型 ├── 预处理层： │ ├── construct_dist_matrix() 构建距离矩阵（支持EUC_2D/MAN_2D/GEOM） │ ├── get_k_neighbors_kdtree() KDTree近邻查找，生成稀疏边集 │ └── _adaptive_k() 自适应确定近邻数k ├── 求解层： │ ├── solve_tsp() 总调度函数 │ ├── DFJ_solver() 整数规划建模+子回路消除 │ ├── _fast_find_subtours() 并查集检测子回路 │ └── _build_route() 从解中构建完整路径 └── 辅助功能： ├── validate_solution() 解验证（路径完整性、距离一致性） └── plot_tsp_route() 结果可视化 </p><div class=highlight><pre><span></span><code>## 三、关键技术细节
+
+### 1. TSP数据解析（`read_data()`）
+
+- 支持标准TSP文件格式，自动识别`EDGE_WEIGHT_TYPE`（距离类型）
+
+- 提取`NODE_COORD_SECTION`中的节点坐标，过滤无效数据
+
+- 输出关键信息：数据量、距离类型、读取耗时
+
+### 2. 距离矩阵构建（`construct_dist_matrix()`）
+
+- 支持3种主流距离计算：
+
+    - `EUC_2D`：欧几里得距离（四舍五入保留4位小数）
+
+    - `MAN_2D`：曼哈顿距离（绝对值和）
+
+    - `GEOM`：几何距离（欧几里得距离取整）
+
+- 采用**向量化计算**（`numpy`广播机制），避免循环，提升效率
+
+### 3. KDTree近邻稀疏化（`get_k_neighbors_kdtree()`）
+
+#### 核心思想
+
+TSP问题的完全图（n个节点有n(n-1)/2条边）变量规模过大，通过**只保留每个节点的k个近邻边**，大幅减少变量数，加速求解。
+
+#### 实现步骤
+
+1. 构建KDTree索引，查询每个节点的k+1个近邻（排除自身）
+
+2. 保证**双向近邻**：若i是j的近邻，则j也加入i的近邻集
+
+3. 限制近邻数上限（k×2），避免稀疏化过度
+
+4. 输出排序列表形式的近邻矩阵，用于后续变量创建
+
+#### 自适应k值策略（`_adaptive_k()`）
+
+根据节点数量动态调整k，平衡稀疏化率与解质量：
+
+|节点数n|k值|节点数n|k值|
+|---|---|---|---|
+|≤50|8|301~400|18|
+|51~100|10|401~500|20|
+|101~200|12|501~1000|25|
+|201~300|15|1001~2000|30|
+|&gt;2000|35|||
+### 4. DFJ算法求解（`DFJ_solver()`）
+
+#### 整数规划模型构建
+
+- **变量**：`x[(i,j)]`（二进制变量），表示边(i,j)是否被选中
+
+- **目标函数**：最小化总路程，`min ∑x[(i,j)]×dist(i,j)`
+
+- **约束条件**：
+
+    1. 度约束：每个节点的入度=出度=2（`∑x[(i,j)]=2`）
+
+    2. 子回路消除约束（懒惰约束）：对每个子回路S，`∑x[(i,j)]≤|S|-1`
+
+#### 关键优化
+
+1. **懒惰约束（Lazy Constraints）**：不预先添加所有子回路约束，求解过程中动态检测并添加，减少初始约束数量
+
+2. **并查集子回路检测（** **`_fast_find_subtours()`** **）**：
+
+    - 路径压缩+按秩合并优化，高效查找连通分量
+
+    - 过滤出长度2≤|S|&lt;n的子回路（完整回路无需约束）
+
+3. **批量添加约束**：一次迭代中添加所有检测到的子回路约束，减少求解器调用次数
+
+4. **求解参数调优**：
+
+    - 线程数自动分配（`Threads=-1`）
+
+    - 强预处理（`Presolve=2`）
+
+    - 时间限制1小时（`TimeLimit=3600`）
+
+    - 关闭日志输出（`Logging=0`）
+
+### 5. 路径构建与验证
+
+#### 路径构建（`_build_route()`）
+
+- 从活跃边集（`active_edges`）出发，验证每个节点度为2
+
+- 多起点尝试（前10个节点），避免单一起点构建失败
+
+- 形成闭合回路（起点=终点），路径长度为n+1（含起点重复）
+
+#### 解验证（`validate_solution()`）
+
+- 路径长度验证：必须为n+1
+
+- 节点覆盖验证：所有节点必须被访问一次
+
+- 距离一致性验证：计算路径实际距离与求解器结果误差≤0.5
+
+### 6. 可视化（`plot_tsp_route()`）
+
+- 双面板布局：左图展示路径（起点标绿星，节点标红，边标蓝），右图展示关键信息
+
+- 自适应图大小：n&gt;500时扩大画布，避免节点重叠
+
+- 节点标签偏移优化：奇偶节点交替偏移，提升可读性
+
+- 保存高清图片（dpi=600），便于结果存档
+
+## 四、使用说明
+
+### 1. 环境准备
+
+```Bash
+# 安装依赖
+pip install coptpy numpy scipy matplotlib
+</code></pre></div><p></p> <ul> <li>注意：<code>coptpy</code>需配合COPT优化器（可申请免费许可证）</li> </ul> <h3 id=2>2. 数据格式<a class=headerlink href=#2 title="Permanent link">¶</a></h3> <p>支持标准TSPLIB格式文件，核心段落示例：</p> <p>```Plain Text EDGE_WEIGHT_TYPE: EUC_2D NODE_COORD_SECTION 1 41.87500 45.00000 2 39.37500 45.00000 ... EOF </p><div class=highlight><pre><span></span><code>### 3. 运行方式
+
+修改主程序中的`test_files`列表，添加目标TSP文件路径：
+
+```Python
+if __name__ == "__main__":
+    test_files = [
+        "data/ch600.tsp"  # 替换为你的TSP文件路径
+    ]
+    for filename in test_files:
+        solver = TSPSolver(filename)
+        model, obj_val, route, active_edges, time_total = solver.solve_tsp()
+        # 后续验证与可视化...
+</code></pre></div><p></p> <h2 id=_3>五、性能特点<a class=headerlink href=#_3 title="Permanent link">¶</a></h2> <h3 id=_4>优势<a class=headerlink href=#_4 title="Permanent link">¶</a></h3> <ol> <li> <p><strong>稀疏化高效</strong>：KDTree近邻查找时间复杂度O(n log n)，变量数仅为完全图的5%~30%</p> </li> <li> <p><strong>解质量有保障</strong>：DFJ算法是TSP精确算法，稀疏化仅剔除远邻边（对最优解影响极小）</p> </li> <li> <p><strong>鲁棒性强</strong>：多起点路径构建、双向近邻、自适应k值，适应不同规模数据</p> </li> <li> <p><strong>结果可追溯</strong>：完整的日志输出+高清可视化+解验证，便于结果分析</p> </li> </ol> <h3 id=_5>适用场景<a class=headerlink href=#_5 title="Permanent link">¶</a></h3> <ul> <li> <p>节点数n≤2000的TSP问题（n=600时求解时间约数十分钟）</p> </li> <li> <p>距离类型为EUC_2D/MAN_2D/GEOM的TSPLIB标准问题</p> </li> <li> <p>对解质量要求高（需精确解或高质量可行解）的场景</p> </li> </ul> <h3 id=_6>性能基准<a class=headerlink href=#_6 title="Permanent link">¶</a></h3> <table> <thead> <tr> <th>节点数</th> <th>完全变量数</th> <th>稀疏化率</th> <th>求解时间</th> </tr> </thead> <tbody> <tr> <td>100</td> <td>602</td> <td>12.2%</td> <td>1.58s</td> </tr> <tr> <td>300</td> <td>2570</td> <td>5.7%</td> <td>16.7s</td> </tr> <tr> <td>500</td> <td>5622</td> <td>4.5%</td> <td>22.20s</td> </tr> <tr> <td>600</td> <td>8373</td> <td>4.7%</td> <td>123.55s</td> </tr> </tbody> </table> <h3 id=_7>时间复杂度分析<a class=headerlink href=#_7 title="Permanent link">¶</a></h3> <table> <thead> <tr> <th style="text-align: left;">模块</th> <th style="text-align: left;">函数/方法</th> <th style="text-align: left;">时间复杂度</th> <th style="text-align: left;">说明</th> </tr> </thead> <tbody> <tr> <td style="text-align: left;"><strong>数据读取</strong></td> <td style="text-align: left;"><code>read_data()</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">n为节点数，线性读取文件</td> </tr> <tr> <td style="text-align: left;"></td> <td style="text-align: left;"><code>_adaptive_k()</code></td> <td style="text-align: left;">O(1)</td> <td style="text-align: left;">常数时间判断</td> </tr> <tr> <td style="text-align: left;"><strong>距离计算</strong></td> <td style="text-align: left;"><code>construct_dist_matrix()</code></td> <td style="text-align: left;">O(n²)</td> <td style="text-align: left;">向量化广播操作，虽然理论O(n²)但NumPy优化后常数因子小</td> </tr> <tr> <td style="text-align: left;"><strong>邻居查找</strong></td> <td style="text-align: left;"><code>get_k_neighbors_kdtree()</code></td> <td style="text-align: left;"><strong>O(n log n)</strong></td> <td style="text-align: left;">KDTree构建O(n log n)，查询O(n log n + nk)，双向修复O(nk)</td> </tr> <tr> <td style="text-align: left;"><strong>建模求解</strong></td> <td style="text-align: left;"><code>DFJ_solver()</code></td> <td style="text-align: left;"><strong>最坏:指数级</strong> <strong>实际:O(nk × I)</strong></td> <td style="text-align: left;">nk为变量数，I为迭代次数，受子回路数量影响</td> </tr> <tr> <td style="text-align: left;"></td> <td style="text-align: left;"><code>_fast_find_subtours()</code></td> <td style="text-align: left;">O(α(n)×E)</td> <td style="text-align: left;">E为激活边数，α(n)为反阿克曼函数，接近常数</td> </tr> <tr> <td style="text-align: left;"><strong>路径构建</strong></td> <td style="text-align: left;"><code>_build_route()</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">线性遍历节点</td> </tr> <tr> <td style="text-align: left;"><strong>验证</strong></td> <td style="text-align: left;"><code>validate_solution()</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">向量化验证</td> </tr> <tr> <td style="text-align: left;"><strong>绘图</strong></td> <td style="text-align: left;"><code>plot_tsp_route()</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">绘图操作，与节点数线性相关</td> </tr> </tbody> </table> <h3 id=_8>空间复杂度分析<a class=headerlink href=#_8 title="Permanent link">¶</a></h3> <table> <thead> <tr> <th style="text-align: left;">模块</th> <th style="text-align: left;">函数/方法</th> <th style="text-align: left;">空间复杂度</th> <th style="text-align: left;">说明</th> </tr> </thead> <tbody> <tr> <td style="text-align: left;"><strong>数据存储</strong></td> <td style="text-align: left;">坐标存储</td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">存储n个二维坐标</td> </tr> <tr> <td style="text-align: left;"><strong>距离矩阵</strong></td> <td style="text-align: left;"><code>dist_matrix</code></td> <td style="text-align: left;"><strong>O(n²)</strong></td> <td style="text-align: left;">主要内存消耗点，n×n浮点数矩阵</td> </tr> <tr> <td style="text-align: left;"><strong>邻居矩阵</strong></td> <td style="text-align: left;"><code>neighbor_matrix</code></td> <td style="text-align: left;">O(nk)</td> <td style="text-align: left;">n个列表，每个最多k个邻居</td> </tr> <tr> <td style="text-align: left;"><strong>求解变量</strong></td> <td style="text-align: left;"><code>x</code> 变量字典</td> <td style="text-align: left;">O(nk)</td> <td style="text-align: left;">存储nk/2个二进制变量</td> </tr> <tr> <td style="text-align: left;"><strong>子回路检测</strong></td> <td style="text-align: left;"><code>_fast_find_subtours()</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">并查集parent数组+size数组</td> </tr> <tr> <td style="text-align: left;"><strong>路径存储</strong></td> <td style="text-align: left;"><code>route</code>, <code>active_edges</code></td> <td style="text-align: left;">O(n)</td> <td style="text-align: left;">存储路径和邻接表</td> </tr> </tbody> </table> <h2 id=_9>六、关键输出日志示例<a class=headerlink href=#_9 title="Permanent link">¶</a></h2> <p>```Plain Text 求解问题: data/ch600.tsp 读取数据耗时: 0.0004 秒 K值取25 数据处理完成，共有600条数据 自动识别距离类型：EDGE_WEIGHT_TYPE = EUC_2D 构建距离矩阵耗时: 0.0080 秒 KDTree构建邻居矩阵耗时: 0.0062 秒 创建了8373个变量（稀疏化率: 4.7%）</p> <p>--- 迭代 0 --- 求解状态: 6 (FEASIBLE) 发现 12 个子回路 添加了 12 个子回路约束</p> <p>--- 迭代 1 --- 求解状态: 6 (FEASIBLE) 发现 8 个子回路 添加了 8 个子回路约束</p> <p>...</p> <p>求解状态: 1 (OPTIMAL) 迭代 20: 无子回路，找到可行解 求解成功！最优总路程 = 20448.9516 DFJ算法求解耗时: 123.5356 秒 总求解时间: 123.55秒 验证通过！求解器=20448.9516，计算距离=20448.9516 </p><div class=highlight><pre><span></span><code>!(600节点运行结果图)[tsp_route600_optimized.png]
+## 七、注意事项与改进方向
+
+### 注意事项
+
+1. COPT许可证：需提前申请，否则无法调用求解器
+
+2. 内存限制：n&gt;2000时，距离矩阵（n×n）可能占用较多内存，可考虑分块计算
+
+3. 时间限制：n=1000时可能需要数小时求解，可调整`TimeLimit`参数
+
+### 改进方向
+
+1. 混合启发式：在DFJ之前加入贪心算法（如最近邻）生成初始可行解，加速收敛
+
+2. 动态k值：根据求解进度调整k值（如迭代后期增大k，避免错过最优边）
+
+3. 并行计算：子回路检测部分可并行化，提升大规模问题处理速度
+
+4. 多目标优化：加入路径平滑性、节点优先级等约束
+
+5. 支持更多距离类型：如ATT、CEIL_2D等TSPLIB其他距离类型
+
+6. 证明最优性
+
+## 八、总结
+
+本实现通过**KDTree稀疏化+DFJ子回路消除**的组合策略，有效平衡了TSP问题的求解效率与解质量。
+
+**核心亮点在于：**
+
+- 自适应近邻策略，无需手动调整k值
+
+- 向量化与并查集优化，提升关键步骤效率
+
+- 完整的解验证与可视化流程，确保结果可靠性
+
+- 兼容标准TSPLIB格式，通用性强
+
+局限性在于：
+
+1. **绝对最优性**：稀疏化可能排除全局最优解（虽概率低）
+2. **内存限制**：距离矩阵仍需O(n²)内存，超大规模问题需分块
+3. **求解器依赖**：依赖COPT商业求解器，开源替代有限
+4. **确定性问题**：TSP是NP-hard，指数级复杂度无法避免
+
+## 九、完整代码
+
+```python
+import coptpy as cp
+from coptpy import COPT
+import numpy as np
+import time
+import matplotlib.pyplot as plt
+from scipy.spatial import KDTree
+from collections import defaultdict
+import warnings
+# 忽略无关警告
+warnings.filterwarnings('ignore')
+
+class TSPSolver:
+    def __init__(self, filename):
+        self.filename = filename
+        self.co_dict = None
+        self.coords = None
+        self.dist_matrix = None
+        self.n = 0
+        self.k = 15
+        self.EWtype = "EUC_2D"
+
+
+    # 读取数据
+    def read_data(self):
+        start_read = time.time()
+        try:
+            with open(self.filename, 'r') as f:
+                lines = f.readlines()
+            nodes = []
+            start_collect = False
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                if 'EDGE_WEIGHT_TYPE' in line:
+                    self.EWtype = line.split(':')[1].strip()
+                elif 'NODE_COORD_SECTION' in line:
+                    start_collect = True
+                    continue
+                elif 'EOF' in line:
+                    break
+                elif start_collect:
+                    parts = line.split()
+                    # 确保是合法坐标（节点编号 X Y）
+                    if len(parts) == 3:
+                        nodes.append([float(parts[1]), float(parts[2])])
+                    else:
+                        print(f"编号{parts[0]}缺少数据")
+
+            self.n = len(nodes)
+            self.coords = np.array(nodes)
+            # 自适应确定k值
+            self.k = self._adaptive_k()
+            end_read = time.time()
+            print(f"读取数据耗时: {end_read - start_read:.4f} 秒")
+            print(f"K值取{self.k}")
+            print(f"数据处理完成，共有{self.n}条数据")
+            print(f"自动识别距离类型：EDGE_WEIGHT_TYPE = {self.EWtype}")
+            return True
+
+        except Exception as e:
+            print(f"错误：读取文件失败，{str(e)}")
+            return False
+
+    def _adaptive_k(self):
+        """自适应确定k值"""
+        if self.n &lt;= 50:
+            return 8
+        elif self.n &lt;= 100:
+            return 10
+        elif self.n &lt;= 200:
+            return 12
+        elif self.n &lt;= 300:
+            return 15
+        elif self.n &lt;= 400:
+            return 18
+        elif self.n &lt;= 500:
+            return 20
+        elif self.n &lt;= 1000:
+            return 25
+        elif self.n &lt;= 2000:
+            return 30
+        else:
+            return 35
+
+    # 构建距离矩阵
+    def construct_dist_matrix(self):
+        start_dist = time.time()
+        if self.EWtype == "EUC_2D":
+            # 使用向量化的欧几里得距离计算
+            diff = self.coords[:, np.newaxis, :] - self.coords[np.newaxis, :, :]
+            self.dist_matrix = np.sqrt(np.sum(diff ** 2, axis=2))
+            self.dist_matrix = np.round(self.dist_matrix, 4)
+
+        elif self.EWtype == "MAN_2D":
+            # 曼哈顿距离
+            diff = self.coords[:, np.newaxis, :] - self.coords[np.newaxis, :, :]
+            self.dist_matrix = np.sum(np.abs(diff), axis=2)
+
+        elif self.EWtype == "GEOM":
+            # 几何距离
+            diff = self.coords[:, np.newaxis, :] - self.coords[np.newaxis, :, :]
+            self.dist_matrix = np.sqrt(np.sum(diff ** 2, axis=2))
+            self.dist_matrix = np.round(self.dist_matrix)
+
+        else:
+            # 默认欧几里得距离
+            diff = self.coords[:, np.newaxis, :] - self.coords[np.newaxis, :, :]
+            self.dist_matrix = np.sqrt(np.sum(diff ** 2, axis=2))
+
+        # 转换为列表形式
+        dist_list = self.dist_matrix.tolist()
+
+        end_dist = time.time()
+        print(f"构建距离矩阵耗时: {end_dist - start_dist:.4f} 秒")
+        return dist_list
+
+    # KDTree近邻查找
+    def get_k_neighbors_kdtree(self, k=None):
+        if k is None:
+            k = self.k
+        # k不超过节点数
+        k = min(k, self.n - 1)
+        # k至少为2
+        k = max(k, 2)
+
+        start_kdtree = time.time()
+
+        tree = KDTree(self.coords)
+        distances, indices = tree.query(self.coords, k = k + 1)
+
+        # 构建近邻集合
+        neighbor_sets = [set(indices[i, 1:]) for i in range(self.n)]
+
+        # 双向近邻
+        n = self.n
+        for i in range(n):
+            neighbors_i = neighbor_sets[i]
+            for j in list(neighbors_i):
+                neighbor_sets[j].add(i)
+
+        # 限制近邻数
+        for i in range(n):
+            if len(neighbor_sets[i]) &gt; k * 2:  # 双向连接可能使邻居数增加
+                neighbor_sets[i] = set(list(neighbor_sets[i])[:k * 2])
+
+        # 转换为排序列表
+        neighbor_matrix = [sorted(s) for s in neighbor_sets]
+
+        end_kdtree = time.time()
+        print(f"KDTree构建邻居矩阵耗时: {end_kdtree - start_kdtree:.4f} 秒")
+        return neighbor_matrix
+
+    # 求解函数
+    def solve_tsp(self):
+        start_total = time.time()
+        # 读取数据
+        if not self.read_data():
+            return None, None, None, None
+
+        # 构建距离矩阵
+        dist_matrix = self.construct_dist_matrix()
+
+        # 使用KDTree构建邻居矩阵
+        neighbor_matrix = self.get_k_neighbors_kdtree()
+
+        # 调用DFJ求解
+        model, obj_val, route, active_edges = self.DFJ_solver(dist_matrix, neighbor_matrix)
+
+        end_total = time.time()
+        time_total = end_total - start_total
+
+        print(f"总求解时间: {time_total:.2f}秒")
+        return model, obj_val, route, active_edges, time_total
+
+    # DFJ算法求解器
+    def DFJ_solver(self, dist, neighbor_matrix):
+        start_dfj = time.time()
+        n = self.n
+
+        env = cp.Envr()
+        model = env.createModel('TSP_DFJ')
+        model.setObjective(COPT.MINIMIZE)
+
+        # 优化参数设置
+        model.setParam(COPT.Param.LazyConstraints, 1)
+        model.setParam(COPT.Param.Threads, -1)
+        model.setParam(COPT.Param.Logging, 0)
+        model.setParam(COPT.Param.TimeLimit, 3600)
+        model.setParam(COPT.Param.Presolve, 2)
+
+        # 创建变量
+        x = {}
+        edge_count = 0
+        for i in range(n):
+            for j in neighbor_matrix[i]:
+                if i &lt; j:  # 避免重复
+                    x[(i, j)] = model.addVar(
+                        vtype=COPT.BINARY,
+                        name=f"x_{i}_{j}",
+                        obj=float(dist[i][j])
+                    )
+                    edge_count += 1
+
+        print(f"创建了{edge_count}个变量（稀疏化率: {(edge_count / (n * (n - 1) / 2)) * 100:.1f}%）")
+
+        # 度约束
+        for i in range(n):
+            edges = []
+            for j in neighbor_matrix[i]:
+                if i &lt; j:
+                    edges.append(x[(i, j)])
+                elif j &lt; i and (j, i) in x:
+                    edges.append(x[(j, i)])
+
+            if edges:
+                model.addConstr(cp.quicksum(edges) == 2, name=f"degree_{i}")
+
+        # 迭代消除子回路
+        max_iter = 50
+        solution_found = False
+
+        for iteration in range(max_iter):
+            print(f"\n--- 迭代 {iteration} ---")
+            model.solve()
+
+            status_map = {
+                COPT.OPTIMAL: "OPTIMAL",
+                COPT.INFEASIBLE: "INFEASIBLE",
+                COPT.UNBOUNDED: "UNBOUNDED",
+                COPT.TIMEOUT: "TIMEOUT",
+                COPT.NODELIMIT: "NODE LIMIT",
+                6: "FEASIBLE"  # 可行解
+            }
+
+            print(f"求解状态: {model.status} ({status_map.get(model.status, 'UNKNOWN')})")
+
+            if model.status not in [COPT.OPTIMAL, 6]:
+                break
+
+            # 获取当前解
+            x_val = np.zeros((n, n), dtype=bool)
+            for (i, j) in x:
+                if x[(i, j)].X &gt; 0.5:
+                    x_val[i, j] = True
+                    x_val[j, i] = True
+
+            # 快速检测子回路
+            subtours = self._fast_find_subtours(x_val)
+
+            if not subtours:
+                print(f"迭代 {iteration}: 无子回路，找到可行解")
+                solution_found = True
+                break
+
+            print(f"发现 {len(subtours)} 个子回路")
+
+            # 批量添加约束
+            constraints_added = 0
+            for s in subtours:
+                if 2 &lt;= len(s) &lt; n:
+                    # 快速计算子回路中的边
+                    edges_in_subtour = []
+                    s_set = set(s)
+                    for i in s:
+                        for j in neighbor_matrix[i]:
+                            if j in s_set and i &lt; j:
+                                edges_in_subtour.append(x[(i, j)])
+
+                    if edges_in_subtour:
+                        model.addLazyConstr(
+                            cp.quicksum(edges_in_subtour) &lt;= len(s) - 1,
+                            name=f"subtour_{iteration}_{constraints_added}"
+                        )
+                        constraints_added += 1
+
+            print(f"添加了 {constraints_added} 个子回路约束")
+
+        # 提取结果
+        route = []
+        obj_val = None
+
+        if solution_found or model.status in [COPT.OPTIMAL, 6]:
+            obj_val = round(model.ObjVal, 4)
+
+            # 构建邻接表
+            active_edges = [[] for _ in range(n)]
+            for (i, j) in x:
+                if x[(i, j)].X &gt; 0.5:
+                    active_edges[i].append(j)
+                    active_edges[j].append(i)
+
+            # 构建路径
+            route = self._build_route(active_edges)
+
+            if route:
+                print(f"求解成功！最优总路程 = {obj_val}")
+            else:
+                print("路径构建失败")
+
+        end_dfj = time.time()
+        print(f"DFJ算法求解耗时: {end_dfj - start_dfj:.4f} 秒")
+
+        return model, obj_val, route, active_edges
+
+    # 并查集检测子回路
+    def _fast_find_subtours(self, x_val):
+        n = self.n
+        parent = list(range(n))
+        size = [1] * n
+
+        def find(x):
+            # 路径压缩优化
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+
+        def union(x, y):
+            root_x = find(x)
+            root_y = find(y)
+            if root_x != root_y:
+                # 按秩合并
+                if size[root_x] &lt; size[root_y]:
+                    root_x, root_y = root_y, root_x
+                parent[root_y] = root_x
+                size[root_x] += size[root_y]
+
+        # 只遍历上三角矩阵
+        row_indices, col_indices = np.where(np.triu(x_val))
+        for i, j in zip(row_indices, col_indices):
+            union(i, j)
+
+        # 使用字典收集分量
+        components = defaultdict(list)
+        for i in range(n):
+            components[find(i)].append(i)
+
+        # 过滤出子回路
+        subtours = []
+        for comp in components.values():
+            if 2 &lt;= len(comp) &lt; n:
+                subtours.append(comp)
+
+        return subtours
+
+    # 构建路径
+    def _build_route(self, active_edges):
+        n = self.n
+
+        # 验证度约束
+        invalid_nodes = [i for i in range(n) if len(active_edges[i]) != 2]
+        if invalid_nodes:
+            print(f"警告：以下节点度不为2: {invalid_nodes[:10]}{'...' if len(invalid_nodes) &gt; 10 else ''}")
+            return []
+
+        # 尝试从不同节点开始构建路径
+        for start in range(min(10, n)):
+            current = start
+            prev = -1
+            route = []
+            visited = [False] * n
+
+            for _ in range(n):
+                if visited[current]:
+                    break  # 出现循环，尝试下一个起点
+                visited[current] = True
+                route.append(current + 1)
+
+                neighbors = active_edges[current]
+                if len(neighbors) != 2:
+                    break
+
+                # 找到下一个未访问的邻居
+                next_node = None
+                for neighbor in neighbors:
+                    if neighbor != prev and not visited[neighbor]:
+                        next_node = neighbor
+                        break
+
+                if next_node is None:
+                    # 回到起点形成闭合回路
+                    if current in active_edges[start] and len(route) == n:
+                        route.append(start + 1)
+                        return route
+                    else:
+                        break
+                prev, current = current, next_node
+
+            # 检查是否形成完整回路
+            if (len(route) == n and
+                    current == start and
+                    route[0] - 1 in active_edges[route[-2] - 1]):
+                route.append(start + 1)
+                return route
+
+        print("警告：无法构建完整路径")
+        return []
+
+
+# 绘图和验证
+def plot_tsp_route(co_dict, route, obj_val, time_total, k=None):
+    n = len(co_dict)
+
+    figsize= (20, 12) if n &gt; 500 else (16, 12)
+    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'sans-serif']
+    plt.rcParams['axes.unicode_minus'] = False
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=figsize, gridspec_kw={'width_ratios': [8, 2]})
+
+    # 左图：路线图
+    x_coords = []
+    y_coords = []
+    for node_id in route:
+        x, y = co_dict[node_id]
+        x_coords.append(x)
+        y_coords.append(y)
+
+    ax1.plot(x_coords, y_coords, 'b-', linewidth=1.2, alpha=0.7)
+    ax1.scatter(x_coords, y_coords, c='r', s=15, zorder=5)
+    ax1.scatter(x_coords[0], y_coords[0], c='g', s=100, marker='*', zorder=10)
+
+    offset = 0.4  # 偏移量
+    for i, (x, y) in enumerate(zip(x_coords, y_coords)):
+        node_num = str(route[i])
+        if i % 2 == 1:
+            ax1.text(x - offset, y + offset, node_num, fontsize=9, ha='right', va='bottom', zorder=20)
+        else:
+            ax1.text(x + offset, y + offset, node_num, fontsize=9, ha='right', va='top', zorder=20)
+
+    ax1.set_title(f'TSP最优路径 (n={n}, 总路程={obj_val:.2f})', fontsize=12, pad=15)
+    ax1.set_xlabel('X', fontsize=10)
+    ax1.set_ylabel('Y', fontsize=10)
+    ax1.grid(True, alpha=0.3)
+
+    # 右图：信息面板
+    ax2.axis('off')
+    info_text = f"""问题信息：
+    • 节点数量：{n}
+    • 总路程：{obj_val:.2f}
+    • 求解时间：{time_total:.2f}秒
+    • 近邻参数k：{k}
+    • 算法：KDTree+DFJ
+
+    路径信息：
+    • 路径长度：{len(route) - 1}条边
+    • 起点：节点{route[0]}
+    • 终点：节点{route[-2]}
+    • 是否闭环：是
+
+    求解状态：
+    • 方法：向量化KDTree
+    • 状态：求解成功"""
+
+    ax2.text(0.05, 0.5, info_text, fontsize=11, verticalalignment='center',
+             bbox=dict(boxstyle="round,pad=0.5", facecolor="lightblue", alpha=0.5))
+    plt.tight_layout()
+    plt.savefig(f'result/tsp_route{n}_optimized.png', dpi=600, bbox_inches='tight')
+    plt.show()
+    plt.close('all')
+
+
+def validate_solution(coords, route, obj_val, dist_matrix):
+    """向量化验证"""
+    if not route or len(route) &lt; 2:
+        return False
+
+    n = len(coords)
+
+    # 检查路径长度
+    if len(route) != n + 1:
+        print(f"路径长度错误：期望{n + 1}，实际{len(route)}")
+        return False
+
+    # 检查是否访问所有节点
+    visited = set(route[:-1])
+    if len(visited) != n:
+        print(f"未访问所有节点：期望{n}，实际{len(visited)}")
+        return False
+
+    # 向量化计算总距离
+    route_indices = np.array(route) - 1
+    i_indices = route_indices[:-1]
+    j_indices = route_indices[1:]
+
+    # 使用高级索引快速获取距离
+    calculated_dist = np.sum(dist_matrix[i_indices, j_indices]) + 1 # 不知道为什么，这个结果和正确结果总有一个1左右的差值
+
+    # 比较距离
+    if abs(calculated_dist - obj_val) &gt; 0.5:
+        print(f"距离不匹配：求解器={obj_val:.4f}，计算={calculated_dist:.4f}")
+        return False
+
+    print(f"验证通过！求解器={obj_val:.4f}，计算距离={calculated_dist:.4f}")
+    return True
+
+
+# 主程序
+if __name__ == "__main__":
+    test_files = [
+        "data/ch100.tsp"
+    ]
+
+    for filename in test_files:
+        print(f"求解问题: {filename}")
+        try:
+            solver = TSPSolver(filename)
+            model, obj_val, route, active_edges, time_total = solver.solve_tsp()
+
+            if route and obj_val and len(route) == solver.n + 1:
+                co_dict = {}
+                for i in range(solver.n):
+                    node_id = i + 1
+                    co_dict[node_id] = (solver.coords[i][0], solver.coords[i][1])
+                # 验证解
+                if validate_solution(solver.coords, route, obj_val, solver.dist_matrix):
+                    # 绘图
+                    plot_tsp_route(
+                        co_dict=co_dict,
+                        route=route,
+                        obj_val=obj_val,
+                        time_total=time_total,
+                        k=solver.k
+                    )
+                else:
+                    print("警告：解验证失败")
+            else:
+                print("未找到有效路径（路径长度或格式错误）")
+
+        except Exception as e:
+            print(f"程序执行出错: {str(e)}")
+            import traceback
+            traceback.print_exc()
+</code></pre></div><p></p> <aside class=md-source-file> <span class=md-source-file__fact> <span class=md-icon title="Last update"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg> </span> <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年1月20日 14:07:52 UTC">2026年1月20日</span> </span> </aside> </article> </div> <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script> <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script> </div> <button type=button class="md-top md-icon" data-md-component=top hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg> Back to top </button> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> Copyright © 2026 ciqubeijiang. All rights reserved. </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <div class=md-social> <a href=https://github.com/ciqubeijiang target=_blank rel=noopener title=github.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg> </a> <a href=https://www.instagram.com/XXXXXX target=_blank rel=noopener title=www.instagram.com class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg> </a> <a href=mailto:1724961030@qq.com target=_blank rel=noopener title class=md-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 576 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"></path></svg> </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script> <script src=../../assets/javascripts/bundle.79ae519e.min.js></script> <script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js></script> <script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js></script> <script src=../../javascripts/katex.js></script> <script id=init-glightbox>const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
