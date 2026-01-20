@@ -3,9 +3,9 @@
 
 ## 下载流程
 - 前往[官网](https://www.shanshu.ai/copt)申请求解器
-![img1](/images/copt.png)
+![求解器截图](/images/copt.png)
 - 审核通过后，会有安装包和licence发送到邮箱
-![img2](/images/copt1.png)
+![邮件截图](/images/copt1.png)
 - 安装好后将邮件附带的`license.dat`和`license.key`拷贝到COPT的安装目录下，也就是拷贝到`C:\Program Files\COPT`下
 - 大功告成
 
