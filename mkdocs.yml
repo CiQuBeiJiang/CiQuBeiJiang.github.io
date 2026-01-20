@@ -53,6 +53,7 @@ nav:
     - 花: diary/flower.md
   - 机器学习: 
     - 首页: machine_learning/index.md
+    - knn算法: machine_learning/KNN.md
     - numpy教程: machine_learning/numpy_tutorial.md
   - 运筹优化: 
     - 首页: optimization/index.md
