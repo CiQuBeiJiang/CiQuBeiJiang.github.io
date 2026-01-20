@@ -15,9 +15,12 @@
 |`scipy.spatial.KDTree`|快速近邻查找，实现边稀疏化|
 |`matplotlib`|路径可视化展示|
 |`collections.defaultdict`|子回路检测中的连通分量收集|
+
+
 ### 2. 整体架构
 
-```Plain Text
+
+```
 TSPSolver类（核心求解器）
 ├── 数据层：read_data() 读取TSP文件，解析坐标与距离类型
 ├── 预处理层：
@@ -33,6 +36,7 @@ TSPSolver类（核心求解器）
     ├── validate_solution() 解验证（路径完整性、距离一致性）
     └── plot_tsp_route() 结果可视化
 ```
+
 
 ## 三、关键技术细节
 
@@ -83,6 +87,8 @@ TSP问题的完全图（n个节点有n(n-1)/2条边）变量规模过大，通�
 |101~200|12|501~1000|25|
 |201~300|15|1001~2000|30|
 |>2000|35|||
+
+
 ### 4. DFJ算法求解（`DFJ_solver()`）
 
 #### 整数规划模型构建
@@ -151,10 +157,12 @@ TSP问题的完全图（n个节点有n(n-1)/2条边）变量规模过大，通�
 
 ### 1. 环境准备
 
+
 ```Bash
 # 安装依赖
 pip install coptpy numpy scipy matplotlib
 ```
+
 
 - 注意：`coptpy`需配合COPT优化器（可申请免费许可证）
 
@@ -162,7 +170,7 @@ pip install coptpy numpy scipy matplotlib
 
 支持标准TSPLIB格式文件，核心段落示例：
 
-```Plain Text
+```
 EDGE_WEIGHT_TYPE: EUC_2D
 NODE_COORD_SECTION
 1 41.87500 45.00000
@@ -241,7 +249,7 @@ if __name__ == "__main__":
 
 ## 六、关键输出日志示例
 
-```Plain Text
+```
 求解问题: data/ch600.tsp
 读取数据耗时: 0.0004 秒
 K值取25
