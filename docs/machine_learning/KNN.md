@@ -172,7 +172,7 @@ plt.grid(True, alpha=0.2, linestyle='--')
 plt.tight_layout()  
 plt.show()
 ```
-![鸢尾花散点图](images/result_knn.png)
+![鸢尾花散点图](/images/result_knn.png)
 ```
 KNN决策边界可视化（鸢尾花数据集） 从图中可直观看到KNN算法的分类逻辑： 
 1. 山鸢尾（蓝色圆形）被完全分隔在左侧区域，与另外两类无任何重叠，体现其特征辨识度极高； 
