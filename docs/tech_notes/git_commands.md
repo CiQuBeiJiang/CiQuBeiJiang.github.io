@@ -261,15 +261,7 @@ venv/                # 虚拟环境目录
 
 ## 总结：Git 极简流程图
 
-```mermaid
-graph LR
-    A[工作区 Workspace] -- git add --> B[暂存区 Index]
-    B -- git commit --> C[本地仓库 Repository]
-    C -- git push --> D[远程仓库 Remote]
-    D -- git pull --> A
-    B -- git restore -staged --> A
-    A -- git checkout / git restore --> C
-```
+![Git Simple Flow Chart](/images/Git_Simple_FlowChart.png)
 
 ---
 
