@@ -67,6 +67,7 @@ nav:
     - 首页: tech_notes/index.md
     - Git常用命令: tech_notes/git_commands.md
     - Markdown语法总结: tech_notes/markdown_syntax.md
+    - LaTex语法总结: tech_notes/latex_syntax.md
 
 markdown_extensions:
   - admonition
