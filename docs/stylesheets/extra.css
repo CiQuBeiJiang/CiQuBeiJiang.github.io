@@ -46,3 +46,26 @@
         font-size: 1.8em !important;
     }
 }
+/* 强制让页面目录在 960px 以上就显示在右侧，不挤在左侧 */
+@media screen and (min-width: 960px) {
+  .md-content__inner {
+    display: grid;
+    grid-template-columns: 1fr var(--md-sidebar-secondary-width);
+    gap: var(--md-sidebar-gap);
+  }
+  /* 显示右侧页面目录 */
+  .md-sidebar--secondary {
+    display: block !important;
+    position: sticky;
+    top: var(--md-header-height);
+    height: calc(100vh - var(--md-header-height));
+    overflow-y: auto;
+  }
+  /* 左侧全局导航保持固定 */
+  .md-sidebar--primary {
+    position: sticky;
+    top: var(--md-header-height);
+    height: calc(100vh - var(--md-header-height));
+    overflow-y: auto;
+  }
+}

@@ -239,7 +239,7 @@ git stash drop stash@{0}
 
 #### 常见 `.gitignore` 配置示例（根据项目类型调整）
 
-```Plain Text
+``` 
 # Java 项目示例
 /node_modules        # 依赖包目录（前端项目也常用）
 /target              # 编译生成的class文件目录
@@ -253,7 +253,9 @@ git stash drop stash@{0}
 __pycache__/         # 编译生成的缓存目录
 *.pyc                # 编译生成的.pyc文件
 venv/                # 虚拟环境目录
+
 ```
+
 
 **Tip**：.gitignore 文件本身需要提交到仓库，以便团队其他成员使用相同的忽略规则。
 
