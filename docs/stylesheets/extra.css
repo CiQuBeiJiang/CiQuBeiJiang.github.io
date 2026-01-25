@@ -46,3 +46,38 @@
         font-size: 1.8em !important;
     }
 }
+/* 核心：宋体 + 居中显示 + 诗歌排版优化 */
+.poem-font {
+    /* 多系统兼容的宋体配置 */
+    font-family: "SimSun", "STSong", "Songti SC", "Noto Serif CJK SC", serif !important;
+    /* 关键：让诗歌内容水平居中 */
+    text-align: center;
+    /* 可选：让区块本身也居中（限制宽度更美观） */
+    max-width: 80%;
+    margin: 15px auto; /* auto 实现左右居中，上下留间距 */
+    /* 诗歌排版优化 */
+    line-height: 2;     /* 行高疏朗，适合读诗 */
+    font-size: 17px;    /* 字号稍大，更醒目 */
+    padding: 15px 20px; /* 内边距，避免文字贴边 */
+    border-left: 3px solid #999; /* 左侧装饰线，保留层次感 */
+    white-space: pre-line;
+}
+
+/* 诗歌标题也居中+宋体（可选） */
+.poem-title {
+    font-family: "SimSun", "STSong", "Songti SC", serif !important;
+    text-align: center; /* 标题居中 */
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* 诗人名右对齐（搭配居中的诗句，更协调） */
+.poem-author {
+    font-family: "SimSun", "STSong", "Songti SC", serif !important;
+    text-align: right;  /* 诗人名右对齐 */
+    max-width: 80%;
+    margin: 0 auto 20px; /* 和诗句区块对齐，下方留间距 */
+    font-size: 16px;
+    color: #666; /* 浅一点，区分诗句 */
+}

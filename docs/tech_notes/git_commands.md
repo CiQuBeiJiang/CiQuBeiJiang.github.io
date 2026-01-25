@@ -158,7 +158,7 @@ git push -u origin <本地分支名>
 # 旧命令
 git checkout -- 
 # 新命令（Git 2.23+ 支持，更直观）
-git restore >
+git restore <文件名>
 # 示例：git restore src/main/java/Login.java （撤销 Login.java 的工作区修改）
 ```
 
@@ -180,7 +180,7 @@ git restore --staged <文件名>
 
 ```Bash
 # 先将漏加的文件添加到暂存区（若有漏加文件）
-git add >
+git add <文件名>
 # 再修改最后一次提交的说明
 git commit --amend -m "新的提交说明"
 # 示例：git commit --amend -m "Fix: 修复登录页验证码过期问题（补充漏加的验证逻辑文件）"

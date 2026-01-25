@@ -6,7 +6,8 @@ repo_url: https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io
 theme:
   name: material
   icon:
-    logo: material/snowflake  
+    logo: material/snowflake 
+  favicon: docs/assets/camera.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -46,7 +47,9 @@ extra_javascript:
 
 nav:
   - 序章: index.md
-  - 文学: literary/index.md
+  - 文学:
+    - 首页: literary/index.md
+    - 诗歌: literary/poetry.md
   - 哲学: philosophy/index.md
   - 随笔: 
     - 首页: diary/index.md
