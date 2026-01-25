@@ -101,6 +101,7 @@ extra:
 copyright: Copyright &copy; 2026 ciqubeijiang. All rights reserved.
 
 plugins:
+  - search
   - glightbox
   - statistics
   - minify: 
@@ -111,5 +112,3 @@ plugins:
       type: date                  
       locale: zh_CN     
   - img2fig  
-  - sitemap:
-      site_url: https://ciqubeijiang.github.io/ 
