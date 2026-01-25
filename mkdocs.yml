@@ -1,5 +1,5 @@
 site_name: 此去北疆
-site_description: 我的技术笔记
+site_description: 江屿的技术笔记
 site_url: https://CiQuBeiJiang.github.io
 site_dir: site
 repo_url: https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io
@@ -111,3 +111,5 @@ plugins:
       type: date                  
       locale: zh_CN     
   - img2fig  
+  - sitemap:
+      site_url: https://ciqubeijiang.github.io/ 
