@@ -5,6 +5,7 @@ site_dir: site
 repo_url: https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io
 theme:
   name: material
+  custom_dir: overrides
   icon:
     logo: material/snowflake 
   favicon: docs/assets/camera.png
