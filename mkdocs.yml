@@ -64,6 +64,7 @@ nav:
     - COPT用法: optimization/copt_usage.md
     - KDtree+DFJ算法解决TSP问题: optimization/TSP_KDTree_DFJ.md
     - MIP优化服务器部署问题: optimization/mip_server_deployment.md
+    - XGBoost 与 MIP 联合优化框架: optimization/telecom_network_maintenance.md
   - 数据分析: 
     - 首页: data_analysis/index.md
     - 数据分析的一般流程: data_analysis/general_process.md
