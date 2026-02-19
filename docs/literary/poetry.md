@@ -132,3 +132,39 @@
 <div class="poem-author">—— 宋代 · 欧阳修</div>
 
 
+
+## 虞美人·听雨
+<div class="poem-title">虞美人·听雨</div>
+<div class="poem-font">
+少年听雨歌楼上，红烛昏罗帐。<br>
+壮年听雨客舟中，江阔云低、断雁叫西风。<br>
+而今听雨僧庐下，鬓已星星也。<br>
+悲欢离合总无情，一任阶前、点滴到天明。
+</div>
+<div class="poem-author">—— 宋代 · 蒋捷</div>
+
+
+
+## 一剪梅·舟过吴江
+<div class="poem-title">一剪梅·舟过吴江</div>
+<div class="poem-font">
+一片春愁待酒浇。江上舟摇，楼上帘招。<br>
+秋娘渡与泰娘桥，风又飘飘，雨又萧萧。<br>
+何日归家洗客袍？银字笙调，心字香烧。<br>
+流光容易把人抛，红了樱桃，绿了芭蕉。
+</div>
+<div class="poem-author">—— 宋代 · 蒋捷</div>
+
+
+## 清平乐·留人不住
+<div class="poem-title">虞美人·听雨</div>
+<div class="poem-font">
+留人不住，醉解兰舟去。<br>
+一棹碧涛春水路，过尽晓莺啼处。<br>
+渡头杨柳青青，枝枝叶叶离情。<br>
+此后锦书休寄，画楼云雨无凭。
+</div>
+<div class="poem-author">—— 宋代 · 晏几道</div>
+
+
+
