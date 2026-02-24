@@ -8,7 +8,7 @@ theme:
   custom_dir: overrides
   icon:
     logo: material/snowflake 
-  favicon: docs/assets/camera.png
+  favicon: assets/camera.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
