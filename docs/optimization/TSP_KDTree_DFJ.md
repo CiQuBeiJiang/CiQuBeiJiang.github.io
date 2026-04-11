@@ -158,7 +158,7 @@ TSP问题的完全图（n个节点有n(n-1)/2条边）变量规模过大，通�
 ### 1. 环境准备
 
 
-```Bash
+```bash
 # 安装依赖
 pip install coptpy numpy scipy matplotlib
 ```
@@ -183,7 +183,7 @@ EOF
 
 修改主程序中的`test_files`列表，添加目标TSP文件路径：
 
-```Python
+```python
 if __name__ == "__main__":
     test_files = [
         "data/ch600.tsp"  # 替换为你的TSP文件路径
