@@ -20,7 +20,7 @@
 ### 2. 整体架构
 
 
-```
+```text
 TSPSolver类（核心求解器）
 ├── 数据层：read_data() 读取TSP文件，解析坐标与距离类型
 ├── 预处理层：
@@ -170,7 +170,7 @@ pip install coptpy numpy scipy matplotlib
 
 支持标准TSPLIB格式文件，核心段落示例：
 
-```
+```text
 EDGE_WEIGHT_TYPE: EUC_2D
 NODE_COORD_SECTION
 1 41.87500 45.00000
@@ -249,7 +249,7 @@ if __name__ == "__main__":
 
 ## 六、关键输出日志示例
 
-```
+```log
 求解问题: data/ch600.tsp
 读取数据耗时: 0.0004 秒
 K值取25

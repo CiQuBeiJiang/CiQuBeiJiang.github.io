@@ -1,0 +1,129 @@
+:root {
+    --md-text-font:  "LXGW WenKai Screen", sans-serif; 
+}
+
+@font-face {    
+    font-family: 'LXGW';    
+    src: url('./LXGWWenKaiGBScreen.woff') format('woff');
+}
+
+.admonition.note.inline,
+.admonition.success.inline {
+    width: 33% !important;
+    height: 135px !important;
+    margin: 6px !important;
+    vertical-align: top !important;
+    padding: 12px 15px !important;
+    box-sizing: border-box !important;
+    display: inline-block !important; 
+}
+.admonition-content p {
+    line-height: 1.8 !important;
+    margin: 5px 0 !important;
+    font-size: 15px !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+.fancy-font {
+    font-family: 'Parisienne', cursive;
+    font-size: 2.2em;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+    .admonition.note.inline,
+    .admonition.success.inline {
+        width: calc(100% - 12px) !important;  
+        height: auto !important; 
+        display: block !important; 
+        min-height: 120px;
+    }
+    .admonition-content p {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+    }
+    [size="6"] {
+        font-size: 1.8em !important;
+    }
+}
+/* 核心：宋体 + 居中显示 + 诗歌排版优化 */
+.poem-font {
+    /* 多系统兼容的宋体配置 */
+    font-family: "SimSun", "STSong", "Songti SC", "Noto Serif CJK SC", serif !important;
+    /* 关键：让诗歌内容水平居中 */
+    text-align: center;
+    /* 可选：让区块本身也居中（限制宽度更美观） */
+    max-width: 80%;
+    margin: 15px auto; /* auto 实现左右居中，上下留间距 */
+    /* 诗歌排版优化 */
+    line-height: 2;     /* 行高疏朗，适合读诗 */
+    font-size: 17px;    /* 字号稍大，更醒目 */
+    padding: 15px 20px; /* 内边距，避免文字贴边 */
+    border-left: 3px solid #999; /* 左侧装饰线，保留层次感 */
+    white-space: pre-line;
+}
+
+/* 诗歌标题也居中+宋体（可选） */
+.poem-title {
+    font-family: "SimSun", "STSong", "Songti SC", serif !important;
+    text-align: center; /* 标题居中 */
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* 诗人名右对齐（搭配居中的诗句，更协调） */
+.poem-author {
+    font-family: "SimSun", "STSong", "Songti SC", serif !important;
+    text-align: right;  /* 诗人名右对齐 */
+    max-width: 80%;
+    margin: 0 auto 20px; /* 和诗句区块对齐，下方留间距 */
+    font-size: 16px;
+    color: #666; /* 浅一点，区分诗句 */
+}
+
+/* -------------------------------------------------------------------------
+   莫兰迪配色方案 - 北疆初雪 (Morandi Blue & Warm Grey)
+   核心逻辑：降低饱和度，增加灰度，去除刺眼的纯黑和纯白
+   ------------------------------------------------------------------------- */
+
+:root > * {
+    /* 【主色调】 - 莫兰迪蓝灰
+       用于：标题栏、侧边栏高亮、按钮
+       原色：Blue (#2196f3) -> 替换为：#627d96 (灰蓝色)
+    */
+    --md-primary-fg-color:        #627d96;
+    --md-primary-fg-color--light: #7a92a8; /* 浅一点的变体 */
+    --md-primary-fg-color--dark:  #4f667d; /* 深一点的变体 */
+
+    /* 【辅助色/强调色】 - 莫兰迪锈红
+       用于：链接悬停、滑动条、Tab下划线
+       原色：Blue -> 替换为：#bfaea6 (暖灰/枯粉色) 或者 #a88f85
+    */
+    --md-accent-fg-color:         #a88f85; 
+
+    /* 【背景色】 - 暖调米白
+       用于：页面大背景
+       原色：White (#ffffff) -> 替换为：#fdfcf8 (极淡的米色，护眼)
+    */
+    --md-default-bg-color:        #fdfcf8;
+}
+
+/* 【深色模式微调】 
+   莫兰迪色在深色模式下不能直接反转，需要配合深灰背景
+*/
+[data-md-color-scheme="slate"] {
+    /* 深色模式下的主色稍微提亮一点，防止看不清 */
+    --md-primary-fg-color:        #7a92a8;
+    
+    /* 背景色改为深岩石灰，而不是纯黑 */
+    --md-default-bg-color:        #242629; 
+}
+
+/* 【正文优化】
+   让文字颜色不要太黑，配合整体柔和感
+*/
+body {
+    /* 深灰色文字，比纯黑(#000)更柔和 */
+    --md-typeset-color: #454545; 
+}
