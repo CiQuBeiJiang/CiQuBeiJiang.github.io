@@ -37,12 +37,13 @@ from coptpy import COPT
 # 创建实例
 env = cp.Envr()
 model = env.createModel(name = 'model_name')
-```plaintext
+```
 
-    Cardinal Optimizer v8.0.2. Build date Dec  1 2025
-    Copyright Cardinal Operations 2025. All Rights Reserved
-    
 
+```
+Cardinal Optimizer v8.0.2. Build date Dec  1 2025
+Copyright Cardinal Operations 2025. All Rights Reserved
+```  
 
 ### `model`类基本信息
 - `model.status`：模型解的状态
@@ -76,19 +77,22 @@ x = model.addVar(lb=0.0, ub=COPT.INFINITY, vtype=COPT.CONTINUOUS, name='x')
 # 等价写法
 y = model.addVar(lb=0.0, ub=cp.COPT.INFINITY, vtype=cp.COPT.CONTINUOUS, name='y')
 print(x,y)
-```plaintext
+```
 
-    <coptpy.Var: x> <coptpy.Var: y>
-
+```
+<coptpy.Var: x> <coptpy.Var: y>
+```
 
 
 ```python
 # 添加一组决策变量(2 * 3,下标从(0,0) 到(1,2))
 x = model.addVars(2, 3, vtype=COPT.INTEGER, nameprefix='x')
 print(x.select())
-```plaintext
+```
 
+```
     [<coptpy.Var: x(0,0)>, <coptpy.Var: x(0,1)>, <coptpy.Var: x(0,2)>, <coptpy.Var: x(1,0)>, <coptpy.Var: x(1,1)>, <coptpy.Var: x(1,2)>]
+```
 
 
 ### 设置目标函数
@@ -102,7 +106,7 @@ print(x.select())
 ```python
 # 例如求3x+5y的最小值
 model.setObjective(3*x + 5*y, sense=cp.COPT.MINIMIZE)
-```plaintext
+```
 
 ### 添加约束
 - Model.addConstr(lhs, sense=None, rhs=None, name="")
@@ -121,13 +125,11 @@ model.setObjective(3*x + 5*y, sense=cp.COPT.MINIMIZE)
 model.addConstr(2*x + 1*y,cp.COPT.GREATER_EQUAL, 8)
 # 添加约束2，这种写法更简单
 model.addConstr(1*x + 2*y >= 6)
-```plaintext
+```
 
-
-
-
-    <coptpy.Constraint: >
-
+```
+<coptpy.Constraint: >
+```
 
 
 ### 求解参数设置：
@@ -147,7 +149,7 @@ model.addConstr(1*x + 2*y >= 6)
 ```python
 ## 求解模型
 model.solve()
-```plaintext
+```
 
     Model fingerprint: 392e914b
     
@@ -255,7 +257,9 @@ elif model.status == 3:
     print("求解失败：模型无界（目标函数可无限优化）")
 else:
     print(f"求解状态：{model.status}，非最优解")
-```plaintext
+```
+
+```
 
     Cardinal Optimizer v8.0.2. Build date Dec  1 2025
     Copyright Cardinal Operations 2025. All Rights Reserved
@@ -292,3 +296,4 @@ else:
     求解成功：找到全局最优解！
     最优解：x = 3.3333, y = 1.3333
     最优目标函数值 = 16.6667
+```
