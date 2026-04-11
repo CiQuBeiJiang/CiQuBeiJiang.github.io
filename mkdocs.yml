@@ -79,7 +79,7 @@ nav:
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
-      use_pygments: true
+      use_pygments: false
       anchor_linenums: true
   - toc:
       permalink: true
