@@ -69,6 +69,7 @@ nav:
   - 数据分析: 
     - 首页: data_analysis/index.md
     - 数据分析的一般流程: data_analysis/general_process.md
+    - Matplotlib基础: data_analysis/matplotlib-fundamental.md
   - 技术札记:
     - 首页: tech_notes/index.md
     - Git常用命令: tech_notes/git_commands.md

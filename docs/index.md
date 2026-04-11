@@ -21,7 +21,7 @@ hide:
     !!! note inline "" 
         📖 兴趣：阅读、旅行、摄影
         
-        💻 技术栈 :material-language-python: | :material-language-java:。
+        💻 技术栈 :material-language-python: | :material-language-java: 。
 
         🧩 专注方向：数据分析，机器学习
 
