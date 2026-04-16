@@ -1,11 +1,8 @@
 # 随笔
 
-> *On ne voit bien qu'avec le cœur.*
->
+<font size="6" face="SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT" style="font-family: SnellRoundHand, Apple Chancery, Segoe Script, Brush Script MT !important; font-size:2.2em !important; font-weight:normal !important;">On ne voit bien qu'avec le cœur.</font>
+
+
 > 只有用心才能看清。本质的东西，眼睛是看不见的。
 
-内心世界的原始地貌。
-
-这里不是精心修剪的花园，而是诚实的气象记录——低气压的沉思、连绵的雨季，以及阳光偶尔撕破云层时的清晰。
-
-文字是我的十字架，也是我走下来的梯子。
+  有时候我总想写点什么，但不知道写点什么。
