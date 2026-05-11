@@ -678,6 +678,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     display: block;
     max-width: 760px;
     margin-bottom: 5rem;
+    animation: archive-rise 900ms ease both;
 }
 
 .archive-identity {
@@ -718,19 +719,20 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     max-width: 780px;
     margin: 0 auto;
     border-top: 1px solid var(--archive-line);
+    animation: archive-rise 1100ms ease 160ms both;
 }
 
 .archive-row {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 0.45rem;
+    justify-items: start;
+    gap: 0.5rem;
     align-items: center;
-    padding: 1.25rem 0;
+    padding: 1.6rem 0;
     border-bottom: 1px solid var(--archive-line);
     text-decoration: none;
     color: inherit;
-    text-align: center;
+    text-align: left;
     transition: opacity 180ms ease, letter-spacing 220ms ease, transform 220ms ease;
 }
 
@@ -753,6 +755,14 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .archive-row-text {
     font-family: var(--archive-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(38, 34, 29, 0.62);
+}
+
+.archive-row-note {
+    font-family: var(--archive-sans);
     font-size: 0.98rem;
     line-height: 1.85;
     color: rgba(38, 34, 29, 0.78);
@@ -770,6 +780,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     font-size: 0.74rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    animation: archive-rise 1100ms ease 240ms both;
 }
 
 .archive-footer-nav a {
@@ -798,6 +809,17 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     48% { opacity: 0.68; }
     50% { opacity: 0.78; }
     52% { opacity: 0.64; }
+}
+
+@keyframes archive-rise {
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -845,5 +867,254 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
     .archive-identity {
         margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-cover-archive::after {
+        background:
+            radial-gradient(circle at center, transparent 62%, rgba(29, 24, 20, 0.08) 100%),
+            linear-gradient(180deg, rgba(255,255,255,0.04), transparent 28%, transparent 72%, rgba(255,255,255,0.03));
+        animation-duration: 9s;
+    }
+
+    .film-border {
+        display: none;
+    }
+
+    .page-cover-archive {
+        min-height: 100vh;
+        padding: 0 1.35rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cover-stage {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+        align-items: stretch;
+        padding: 4.5rem 0 1.6rem;
+    }
+
+    .cover-right {
+        order: -1;
+        align-self: flex-start;
+        padding-bottom: 0;
+        font-size: 0.66rem;
+        line-height: 1.9;
+    }
+
+    .cover-left {
+        display: block;
+    }
+
+    .cover-flip {
+        width: 100%;
+        min-height: auto;
+        perspective: none;
+        cursor: default;
+    }
+
+    .cover-flip-face {
+        position: relative;
+        min-height: auto;
+        backface-visibility: visible;
+        transition: opacity 500ms ease;
+    }
+
+    .cover-flip-front,
+    .cover-flip-back,
+    .cover-flip.is-flipped .cover-flip-front,
+    .cover-flip.is-flipped .cover-flip-back {
+        position: relative;
+        inset: auto;
+        transform: none;
+        opacity: 1;
+    }
+
+    .cover-flip-front {
+        padding: 0;
+        align-items: center;
+        gap: 0.9rem;
+        text-align: center;
+        animation: archive-rise 900ms ease both;
+    }
+
+    .cover-mark-top,
+    .cover-mark-bottom {
+        display: none;
+    }
+
+    .cover-title {
+        margin-top: 0;
+        font-size: clamp(2.3rem, 12vw, 3.2rem);
+        white-space: normal;
+        line-height: 0.98;
+    }
+
+    .cover-title-cn {
+        margin-top: 0;
+        font-size: 1rem;
+        letter-spacing: 0.14em;
+        opacity: 0.78;
+    }
+
+    .cover-line {
+        margin-top: 0.5rem;
+        max-width: 20rem;
+        font-size: 0.98rem;
+        line-height: 1.95;
+        color: rgba(38, 34, 29, 0.78);
+    }
+
+    .cover-flip-back {
+        margin-top: 1.2rem;
+        animation: archive-rise 1100ms ease 120ms both;
+    }
+
+    .cover-photo-frame {
+        --photo-width: min(100%, 22rem);
+        --photo-ratio: 4 / 5.2;
+        --photo-rotate: 0deg;
+        width: min(100%, 22rem);
+        margin: 0 auto;
+        padding: 0.85rem 0.85rem 1.2rem;
+    }
+
+    .cover-photo-frame[data-photo-orientation="landscape"] {
+        --photo-width: min(100%, 27rem);
+        --photo-ratio: 1.45 / 1;
+        --photo-rotate: 0deg;
+        width: min(100%, 27rem);
+        margin: 0 auto;
+        padding: 0.85rem 0.85rem 1.2rem;
+    }
+
+    .cover-photo-note {
+        margin-top: 0.75rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+    }
+
+    .cover-enter {
+        position: static;
+        align-self: center;
+        margin-top: 0.6rem;
+        padding: 0.8rem 0.2rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.28em;
+        animation: archive-rise 1200ms ease 220ms both;
+    }
+
+    .cover-enter:hover,
+    .cover-enter:focus-visible {
+        transform: none;
+        opacity: 0.6;
+        letter-spacing: 0.32em;
+    }
+
+    .page-home-archive {
+        padding: 4.25rem 1.35rem 3rem;
+    }
+
+    .archive-intro {
+        max-width: none;
+        margin-bottom: 2.4rem;
+    }
+
+    .archive-identity {
+        max-width: 32rem;
+    }
+
+    .archive-kicker,
+    .archive-meta {
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+    }
+
+    .archive-name {
+        margin-top: 0.7rem;
+        font-size: clamp(1.9rem, 10vw, 2.4rem);
+        line-height: 1.08;
+    }
+
+    .archive-note {
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 2;
+        max-width: 24rem;
+    }
+
+    .archive-meta {
+        margin-top: 1rem;
+    }
+
+    .archive-index {
+        max-width: none;
+    }
+
+    .archive-row {
+        gap: 0.55rem;
+        padding: 1.5rem 0 1.6rem;
+    }
+
+    .archive-row:hover,
+    .archive-row:focus-visible {
+        transform: none;
+        opacity: 0.72;
+    }
+
+    .archive-row-code {
+        font-size: 0.68rem;
+    }
+
+    .archive-row-title {
+        font-size: 1.32rem;
+    }
+
+    .archive-row-text {
+        font-size: 0.72rem;
+        line-height: 1.6;
+    }
+
+    .archive-row-note {
+        font-size: 0.95rem;
+        line-height: 1.95;
+        max-width: 22rem;
+    }
+
+    .archive-footer-nav {
+        justify-content: flex-start;
+        gap: 1rem 1.4rem;
+        margin-top: 2.5rem;
+        padding-top: 0.6rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-cover-archive::before,
+    .page-cover-archive::after,
+    .page-home-archive::before,
+    .archive-intro,
+    .archive-portrait,
+    .archive-index,
+    .archive-footer-nav,
+    .cover-flip-front,
+    .cover-flip-back,
+    .cover-enter {
+        animation: none !important;
+    }
+
+    .cover-flip-face,
+    .archive-row,
+    .archive-footer-nav a,
+    .cover-enter,
+    .md-nav__item .md-nav__link {
+        transition: none !important;
     }
 }
