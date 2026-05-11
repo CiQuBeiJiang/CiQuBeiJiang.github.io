@@ -28,6 +28,12 @@ hide:
       <span class="archive-row-text">一张暂时夹在档案盒里的说明纸，留给阅读、写作、摄影与技术之间的自述。</span>
     </a>
 
+    <a class="archive-row" href="../site_info/">
+      <span class="archive-row-code">ARCHIVE_00A</span>
+      <span class="archive-row-title">网站信息</span>
+      <span class="archive-row-text">关于这个站点的建立时间、技术栈，以及它目前如何被搭起来。</span>
+    </a>
+
     <a class="archive-row" href="../reading/">
       <span class="archive-row-code">ARCHIVE_01</span>
       <span class="archive-row-title">阅读</span>
@@ -50,6 +56,7 @@ hide:
   <nav class="archive-footer-nav" aria-label="Secondary navigation">
     <a href="../">返回封面</a>
     <a href="../about/">个人简介</a>
+    <a href="../site_info/">网站信息</a>
     <a href="../reading/">阅读档案</a>
     <a href="../research/">研究档案</a>
   </nav>

@@ -45,10 +45,11 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - javascripts/katex.js
+  - javascripts/site-links.js
 
 nav:
-  - 首页: archive/index.md
   - 个人简介: about/index.md
+  - 网站信息: site_info/index.md
   - 阅读:
     - reading/index.md
     - 文学:
