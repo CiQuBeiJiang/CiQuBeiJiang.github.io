@@ -19,5 +19,4 @@ statistics: false
 ## 索引
 
 - [个人随笔](../diary/index.md)
-- [观察](../diary/flower.md)
 - [片段](fragments.md)

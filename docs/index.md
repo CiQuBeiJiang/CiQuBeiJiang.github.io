@@ -28,7 +28,7 @@ hide:
             <span class="cover-photo-image">
               <img class="cover-photo-asset" src="./assets/1-004_13.jpeg" alt="封面档案照片">
             </span>
-            <span class="cover-photo-note">潜影 / 走廊灯光 / 02:17</span>
+            <span class="cover-photo-note">人群 / 音乐台 / 02:17</span>
           </span>
         </span>
       </button>

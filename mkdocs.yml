@@ -66,8 +66,6 @@ nav:
     - essays/index.md
     - 个人随笔:
       - diary/index.md
-    - 观察:
-      - observations/index.md
       - 花: diary/flower.md
     - 片段:
       - essays/fragments.md
