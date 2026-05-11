@@ -121,7 +121,7 @@ prob_matrix = model.predict_proba(X_test)
 
     解读：若  $y_t=0$ （未派遣团队），则  $\sum(1-x)$  必须为0（无设备维修）；仅派遣团队后，才可开展维修，这是“批处理”效应的数学根源。
 
-### 3.2 代码实现 ([diff_model.py](diff_model.py))
+### 3.2 代码实现
 
 ```Python
 
