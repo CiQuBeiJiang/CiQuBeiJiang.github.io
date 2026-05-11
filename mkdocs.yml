@@ -25,8 +25,8 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.tabs
     - navigation.top
+    - navigation.indexes
     - toc.integrate
     - search.suggest
     - search.highlight
@@ -47,34 +47,50 @@ extra_javascript:
   - javascripts/katex.js
 
 nav:
-  - 序章: index.md
-  - 文学:
-    - 首页: literary/index.md
-    - 《娱乐至死》读书总结: literary/amusing_ourselves_to_death.md
-    - 诗歌: literary/poetry.md
-  - 哲学: philosophy/index.md
-  - 随笔: 
-    - 首页: diary/index.md
-    - 花: diary/flower.md
-  - 机器学习: 
-    - 首页: machine_learning/index.md
-    - knn算法: machine_learning/KNN.md
-    - numpy教程: machine_learning/numpy_tutorial.md
-  - 运筹优化: 
-    - 首页: optimization/index.md
-    - COPT用法: optimization/copt_usage.md
-    - KDtree+DFJ算法解决TSP问题: optimization/TSP_KDTree_DFJ.md
-    - MIP优化服务器部署问题: optimization/mip_server_deployment.md
-    - XGBoost 与 MIP 联合优化框架: optimization/telecom_network_maintenance.md
-  - 数据分析: 
-    - 首页: data_analysis/index.md
-    - 数据分析的一般流程: data_analysis/general_process.md
-    - Matplotlib基础: data_analysis/matplotlib-fundamental.md
-  - 技术札记:
-    - 首页: tech_notes/index.md
-    - Git常用命令: tech_notes/git_commands.md
-    - Markdown语法总结: tech_notes/markdown_syntax.md
-    - LaTex语法总结: tech_notes/latex_syntax.md
+  - 首页: archive/index.md
+  - 个人简介: about/index.md
+  - 阅读:
+    - reading/index.md
+    - 文学:
+      - literary/index.md
+    - 哲学:
+      - philosophy/index.md
+    - 阅读笔记:
+      - reading_notes/index.md
+      - 《娱乐至死》读书总结: literary/amusing_ourselves_to_death.md
+    - 页边批注:
+      - marginalia/index.md
+      - 诗歌: literary/poetry.md
+  - 随笔:
+    - essays/index.md
+    - 个人随笔:
+      - diary/index.md
+    - 观察:
+      - observations/index.md
+      - 花: diary/flower.md
+    - 片段:
+      - essays/fragments.md
+  - 研究:
+    - research/index.md
+    - 机器学习:
+      - 首页: machine_learning/index.md
+      - KNN 算法: machine_learning/KNN.md
+      - NumPy 笔记: machine_learning/numpy_tutorial.md
+    - 数据分析:
+      - 首页: data_analysis/index.md
+      - 一般流程: data_analysis/general_process.md
+      - Matplotlib 基础: data_analysis/matplotlib-fundamental.md
+    - 运筹优化:
+      - 首页: optimization/index.md
+      - COPT 笔记: optimization/copt_usage.md
+      - KDTree + DFJ 求解 TSP: optimization/TSP_KDTree_DFJ.md
+      - MIP 服务器部署: optimization/mip_server_deployment.md
+      - XGBoost 与 MIP 联合优化: optimization/telecom_network_maintenance.md
+    - 技术札记:
+      - 首页: tech_notes/index.md
+      - Git 笔记: tech_notes/git_commands.md
+      - Markdown 笔记: tech_notes/markdown_syntax.md
+      - LaTeX 笔记: tech_notes/latex_syntax.md
 
 markdown_extensions:
   - admonition
