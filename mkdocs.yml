@@ -59,16 +59,12 @@ nav:
     - 阅读笔记:
       - reading_notes/index.md
       - 《娱乐至死》读书总结: literary/amusing_ourselves_to_death.md
-    - 页边批注:
-      - marginalia/index.md
-      - 诗歌: literary/poetry.md
+    - 收藏的诗歌: literary/poetry.md
   - 随笔:
-    - essays/index.md
-    - 个人随笔:
-      - diary/index.md
-      - 花: diary/flower.md
-    - 片段:
-      - essays/fragments.md
+    - diary/index.md
+    - 花: diary/flower.md
+    - 伞: diary/伞.md
+    - 第一百次告别: diary/第一百次告别.md
   - 研究:
     - research/index.md
     - 机器学习:
