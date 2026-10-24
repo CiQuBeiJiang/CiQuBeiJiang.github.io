@@ -48,3 +48,29 @@
     }, { rootMargin: "0px 0px -15% 0px" });
     io.observe(list);
 })();
+
+// 左侧文字：标题逐字显影
+(function () {
+    var root = document.documentElement;
+    if (!root.classList.contains("film-motion")) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var start = 0;
+    [".layout-archive .home-title", ".layout-archive .home-title-cn"].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (!el) return;
+        var chars = Array.from(el.textContent.trim());
+        el.setAttribute("aria-label", el.textContent.trim());
+        el.textContent = "";
+        chars.forEach(function (ch) {
+            var s = document.createElement("span");
+            s.className = "film-char";
+            s.setAttribute("aria-hidden", "true");
+            s.textContent = ch;
+            s.style.setProperty("--i", start++);
+            el.appendChild(s);
+        });
+        start += 3;
+        el.classList.add("is-split");
+    });
+})();
