@@ -1,10 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+/* -------------------------------------------------------------------------
+   站点主题：在 mkdocs.yml 的 extra.site_theme 里切换
+   film（胶片，默认） / snow（北疆初雪） / moss（苔原） / darkroom（暗房） / timemachine（时间机器）
+   ------------------------------------------------------------------------- */
+
 :root {
-    --md-text-font:  "LXGW WenKai Screen", sans-serif; 
+    --site-paper: #f3f0ea;
+    --site-ink: #26221d;
+    --site-fade: #6f675e;
+    --site-glow: rgba(255, 255, 255, 0.45);
+    --site-strip-top: #393431;
+    --site-strip-bottom: #2a2623;
+    --site-strip-hole: #f3f0ea;
+    --site-frame-top: #fbf9f5;
+    --site-frame-bottom: #ebe5dc;
+    --site-page: #fdfcf8;
+    --site-primary: #627d96;
+    --site-accent: #a88f85;
 }
 
-@font-face {    
-    font-family: 'LXGW';    
-    src: url('./LXGWWenKaiGBScreen.woff') format('woff');
+:root[data-site-theme="snow"] {
+    --site-paper: #eef1f3;
+    --site-ink: #1f2a33;
+    --site-fade: #5f6d78;
+    --site-glow: rgba(255, 255, 255, 0.6);
+    --site-strip-top: #34404a;
+    --site-strip-bottom: #232c34;
+    --site-strip-hole: #eef1f3;
+    --site-frame-top: #fbfcfd;
+    --site-frame-bottom: #e1e7ec;
+    --site-page: #f8fafb;
+    --site-primary: #4f6f8c;
+    --site-accent: #7d97ad;
+}
+
+:root[data-site-theme="moss"] {
+    --site-paper: #eceee3;
+    --site-ink: #232a20;
+    --site-fade: #626b5a;
+    --site-glow: rgba(255, 255, 245, 0.5);
+    --site-strip-top: #363d30;
+    --site-strip-bottom: #262b21;
+    --site-strip-hole: #eceee3;
+    --site-frame-top: #fafbf4;
+    --site-frame-bottom: #e0e4d3;
+    --site-page: #fafbf6;
+    --site-primary: #5f7a5a;
+    --site-accent: #9a8a5f;
+}
+
+:root[data-site-theme="darkroom"] {
+    --site-paper: #1d1a18;
+    --site-ink: #ebe4d8;
+    --site-fade: #a39a8c;
+    --site-glow: rgba(255, 190, 150, 0.05);
+    --site-strip-top: #0f0d0c;
+    --site-strip-bottom: #070606;
+    --site-strip-hole: #3a332e;
+    --site-frame-top: #2c2724;
+    --site-frame-bottom: #221e1b;
+    --site-page: #fdfcf8;
+    --site-primary: #9c5a4a;
+    --site-accent: #c07a5e;
+}
+
+:root {
+    --md-text-font:  "LXGW WenKai Screen", sans-serif; 
 }
 
 .admonition.note.inline,
@@ -23,7 +85,6 @@
     font-size: 15px !important;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 .fancy-font {
     font-family: 'Parisienne', cursive;
     font-size: 2.2em;
@@ -92,7 +153,7 @@
        用于：标题栏、侧边栏高亮、按钮
        原色：Blue (#2196f3) -> 替换为：#627d96 (灰蓝色)
     */
-    --md-primary-fg-color:        #627d96;
+    --md-primary-fg-color:        var(--site-primary);
     --md-primary-fg-color--light: #7a92a8; /* 浅一点的变体 */
     --md-primary-fg-color--dark:  #4f667d; /* 深一点的变体 */
 
@@ -100,13 +161,13 @@
        用于：链接悬停、滑动条、Tab下划线
        原色：Blue -> 替换为：#bfaea6 (暖灰/枯粉色) 或者 #a88f85
     */
-    --md-accent-fg-color:         #a88f85; 
+    --md-accent-fg-color:         var(--site-accent);
 
     /* 【背景色】 - 暖调米白
        用于：页面大背景
        原色：White (#ffffff) -> 替换为：#fdfcf8 (极淡的米色，护眼)
     */
-    --md-default-bg-color:        #fdfcf8;
+    --md-default-bg-color:        var(--site-page);
 }
 
 /* 【深色模式微调】 
@@ -129,7 +190,7 @@ body {
 }
 
 .md-header {
-    background: rgba(253, 252, 248, 0.94);
+    background: color-mix(in srgb, var(--md-default-bg-color) 94%, transparent);
     color: #3d3832;
     box-shadow: none;
     border-bottom: 1px solid rgba(61, 56, 50, 0.08);
@@ -260,9 +321,9 @@ body {
 body:has(.page-cover-archive),
 body:has(.page-home-archive) {
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45), transparent 35%),
+        radial-gradient(circle at 20% 20%, var(--site-glow), transparent 35%),
         linear-gradient(180deg, rgba(90, 74, 58, 0.04), rgba(90, 74, 58, 0.01)),
-        #f3f0ea;
+        var(--site-paper);
 }
 
 body:has(.page-cover-archive) .md-header,
@@ -322,10 +383,10 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .page-cover-archive,
 .page-home-archive {
-    --archive-paper: #f3f0ea;
-    --archive-ink: #26221d;
-    --archive-fade: #6f675e;
-    --archive-line: rgba(38, 34, 29, 0.16);
+    --archive-paper: var(--site-paper);
+    --archive-ink: var(--site-ink);
+    --archive-fade: var(--site-fade);
+    --archive-line: color-mix(in srgb, var(--site-ink) 16%, transparent);
     --archive-film: #2e2a27;
     --archive-sans: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", sans-serif;
     --archive-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif CJK SC", serif;
@@ -1156,4 +1217,1207 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     .md-nav__item .md-nav__link {
         transition: none !important;
     }
+}
+
+/* 档案页链接沿用墨色，避免被 Material 的 .md-typeset a 染成链接蓝 */
+.md-typeset a.archive-row,
+.md-typeset a.archive-row:hover,
+.md-typeset a.archive-row:focus-visible,
+.md-typeset a.cover-enter,
+.md-typeset a.cover-enter:hover,
+.md-typeset a.cover-enter:focus-visible {
+    color: var(--archive-ink);
+}
+
+/* -------------------------------------------------------------------------
+   Homepage v2: 封面与档案页合并
+   ------------------------------------------------------------------------- */
+
+.home-v2 {
+    padding: 0 7vw 3rem;
+}
+
+.home-v2::before {
+    opacity: 0.28;
+    animation: none;
+}
+
+.home-strip {
+    height: 26px;
+    margin: 0 -7vw;
+    background:
+        radial-gradient(circle at center, var(--site-strip-hole) 58%, transparent 62%) left center / 24px 11px repeat-x,
+        linear-gradient(180deg, var(--site-strip-top), var(--site-strip-bottom));
+    background-origin: content-box, border-box;
+    padding: 0 2.5%;
+    opacity: 0.92;
+}
+
+.home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 4rem;
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: calc(100vh - 26px);
+    min-height: calc(100svh - 26px);
+    box-sizing: border-box;
+    position: relative;
+    padding: 4rem 0 5rem;
+    animation: archive-rise 900ms ease both;
+}
+
+/* 首屏占满一屏，底部一个很轻的下滑提示 */
+.home-hero::after {
+    content: "SCROLL ↓";
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    transform: translateX(-50%);
+    font-family: var(--archive-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: var(--archive-fade);
+    opacity: 0.7;
+}
+
+.home-kicker,
+.home-meta,
+.home-section-head > span,
+.home-latest-code,
+.home-latest-cat,
+.home-index-code,
+.home-photo figcaption,
+.home-footer {
+    font-family: var(--archive-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-kicker {
+    margin: 0;
+    font-size: 0.7rem;
+    color: var(--archive-fade);
+}
+
+.home-title {
+    margin: 1.4rem 0 0;
+    font-family: var(--archive-serif);
+    font-size: clamp(2.8rem, 5.4vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--archive-ink);
+}
+
+.home-title-cn {
+    margin: 0.7rem 0 0;
+    font-family: var(--archive-serif);
+    font-size: clamp(1.2rem, 1.7vw, 1.6rem);
+    letter-spacing: 0.2em;
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
+}
+
+.home-line {
+    margin: 2rem 0 0;
+    max-width: 26rem;
+    font-family: var(--archive-serif);
+    font-size: 1.08rem;
+    line-height: 1.95;
+    color: color-mix(in srgb, var(--archive-ink) 84%, transparent);
+}
+
+.home-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    margin: 2.2rem 0 0;
+    font-size: 0.68rem;
+    color: color-mix(in srgb, var(--archive-ink) 58%, transparent);
+}
+
+.home-photo {
+    justify-self: end;
+    width: min(100%, 500px);
+    margin: 0;
+    padding: 0.9rem 0.9rem 1.5rem;
+    background: linear-gradient(180deg, var(--site-frame-top), var(--site-frame-bottom));
+    box-shadow:
+        0 0 0 1px rgba(43, 38, 32, 0.1),
+        0 22px 40px rgba(60, 50, 42, 0.12);
+    transform: rotate(1.6deg);
+    transition: transform 400ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.home-photo:hover {
+    transform: rotate(0.4deg) translateY(-3px);
+}
+
+.home-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    filter: saturate(0.82) contrast(1.04);
+}
+
+.md-typeset .home-photo figcaption {
+    max-width: none;
+    margin: 0.85rem 0 0;
+    font-style: normal;
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: color-mix(in srgb, var(--archive-ink) 68%, transparent);
+}
+
+.home-section {
+    max-width: 1120px;
+    margin: 0 auto 5rem;
+    animation: archive-rise 1100ms ease 160ms both;
+}
+
+.home-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--archive-ink);
+}
+
+.md-typeset .home-section-head h2 {
+    margin: 0;
+    font-family: var(--archive-serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--archive-ink);
+}
+
+.home-section-head > span {
+    font-size: 0.66rem;
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
+}
+
+.md-typeset ol.home-latest {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.md-typeset ol.home-latest li {
+    margin: 0;
+    border-bottom: 1px solid var(--archive-line);
+}
+
+.md-typeset .home-latest a {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 1.35rem 0;
+    color: var(--archive-ink);
+    transition: transform 220ms ease, opacity 180ms ease;
+}
+
+.home-latest-code {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.66rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
+}
+
+.home-latest-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.home-latest-title {
+    font-family: var(--archive-serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 200ms ease;
+}
+
+.home-latest-excerpt {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
+}
+
+.home-latest-cat {
+    font-size: 0.66rem;
+    color: color-mix(in srgb, var(--archive-ink) 56%, transparent);
+}
+
+.md-typeset .home-latest a:hover,
+.md-typeset .home-latest a:focus-visible {
+    color: var(--archive-ink);
+    transform: translateX(4px);
+}
+
+.home-latest a:hover .home-latest-title,
+.home-latest a:focus-visible .home-latest-title {
+    text-decoration-color: currentColor;
+}
+
+.home-index {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.md-typeset .home-index a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.8rem 1.8rem 2rem 0;
+    color: var(--archive-ink);
+    transition: opacity 180ms ease;
+}
+
+.md-typeset .home-index a + a {
+    padding-left: 1.8rem;
+    border-left: 1px solid var(--archive-line);
+}
+
+.md-typeset .home-index a:hover,
+.md-typeset .home-index a:focus-visible {
+    color: var(--archive-ink);
+    opacity: 0.68;
+}
+
+.home-index-code {
+    font-size: 0.66rem;
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
+}
+
+.home-index-title {
+    font-family: var(--archive-serif);
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+}
+
+.home-index-note {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
+}
+
+.home-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--archive-line);
+    font-size: 0.68rem;
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
+}
+
+.home-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.8rem;
+}
+
+.md-typeset .home-footer a {
+    color: color-mix(in srgb, var(--archive-ink) 66%, transparent);
+}
+
+.md-typeset .home-footer a:hover,
+.md-typeset .home-footer a:focus-visible {
+    color: var(--archive-ink);
+}
+
+.home-footer p {
+    margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .home-hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 4rem 0 4rem;
+        min-height: 0;
+    }
+
+    .home-hero::after {
+        display: none;
+    }
+
+    .home-photo {
+        justify-self: center;
+    }
+
+    .home-index {
+        grid-template-columns: 1fr;
+    }
+
+    .md-typeset .home-index a,
+    .md-typeset .home-index a + a {
+        padding: 1.4rem 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--archive-line);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-v2 {
+        padding: 0 1.35rem 2.5rem;
+    }
+
+    .home-strip {
+        margin: 0 -1.35rem;
+        height: 20px;
+    }
+
+    .home-hero {
+        padding: 3rem 0 3.2rem;
+        gap: 2.4rem;
+    }
+
+    .home-title {
+        font-size: clamp(2.3rem, 12vw, 3rem);
+    }
+
+    .home-line {
+        font-size: 1rem;
+    }
+
+    .home-photo {
+        transform: none;
+        padding: 0.75rem 0.75rem 1.6rem;
+    }
+
+    .home-section {
+        margin-bottom: 3.5rem;
+    }
+
+    .md-typeset .home-latest a {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.5rem 1rem;
+        padding: 1.2rem 0;
+    }
+
+    .home-latest-code {
+        grid-column: 1 / -1;
+    }
+
+    .home-latest-code {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .md-typeset .home-latest a:hover,
+    .md-typeset .home-latest a:focus-visible {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-hero,
+    .home-section {
+        animation: none !important;
+    }
+
+    .home-photo,
+    .md-typeset .home-latest a {
+        transition: none !important;
+    }
+}
+
+:root[data-site-theme="darkroom"] .home-v2::before {
+    mix-blend-mode: screen;
+    opacity: 0.12;
+}
+
+:root[data-site-theme="darkroom"] .home-photo {
+    box-shadow:
+        0 0 0 1px rgba(255, 240, 220, 0.08),
+        0 22px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* -------------------------------------------------------------------------
+   Time Machine 主题：倒走的表 + 左右时间线
+   克制的深色单色底，钟面参考精密腕表，只用一个朱红做强调
+   ------------------------------------------------------------------------- */
+
+:root[data-site-theme="timemachine"] {
+    --site-paper: #0b0d13;
+    --site-ink: #ebe6dc;
+    --site-fade: #878a93;
+    --site-page: #fdfcf8;
+    --site-primary: #3a3a3d;
+    --site-accent: #d8c79a;
+    --tm-accent: #d8c79a;
+    --tm-second: #c9614f;
+    --tm-hair: rgba(236, 232, 225, 0.14);
+    --tm-serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Iowan Old Style", serif;
+}
+
+.layout-tm {
+    display: none;
+}
+
+:root[data-site-theme="timemachine"] .layout-archive {
+    display: none;
+}
+
+:root[data-site-theme="timemachine"] .layout-tm {
+    display: block;
+}
+
+:root[data-site-theme="timemachine"]:has(.home-v2) {
+    background: #0b0d13;
+}
+
+:root[data-site-theme="timemachine"] body:has(.home-v2) {
+    background:
+        radial-gradient(circle at 50% 50%, rgba(216, 199, 154, 0.07), transparent 32%),
+        radial-gradient(ellipse 70% 60% at 50% 50%, #151824, transparent 72%),
+        #0b0d13;
+}
+
+:root[data-site-theme="timemachine"] .home-v2::before {
+    background-image:
+        radial-gradient(circle at 9% 14%, rgba(235, 230, 220, 0.7) 0 0.8px, transparent 1.3px),
+        radial-gradient(circle at 78% 9%, rgba(235, 230, 220, 0.55) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 93% 41%, rgba(235, 230, 220, 0.45) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 21% 77%, rgba(235, 230, 220, 0.4) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 66% 88%, rgba(235, 230, 220, 0.35) 0 0.6px, transparent 1.1px);
+    background-size: 100% 100%;
+    mix-blend-mode: normal;
+    opacity: 1;
+    animation: none;
+}
+
+.layout-tm {
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2.2rem 0 2.4rem;
+    color: var(--site-ink);
+}
+
+:root[data-site-theme="timemachine"] .layout-tm {
+    display: flex;
+}
+
+.tm-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    animation: archive-rise 900ms ease both;
+}
+
+.md-typeset a.tm-mark {
+    font-family: var(--tm-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
+    color: var(--site-ink);
+}
+
+.tm-nav {
+    display: flex;
+    gap: 2.2rem;
+    font-family: var(--tm-serif);
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+}
+
+.md-typeset .tm-nav a {
+    color: var(--site-fade);
+    transition: color 180ms ease;
+}
+
+.md-typeset .tm-nav a:hover,
+.md-typeset .tm-nav a:focus-visible,
+.md-typeset a.tm-mark:hover {
+    color: var(--site-ink);
+}
+
+.tm-stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 4rem;
+    align-items: center;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tm-clock-wrap {
+    animation: archive-rise 1100ms ease 120ms both;
+}
+
+.tm-clock {
+    display: block;
+    width: min(42vw, 66vh, 560px);
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 0 48px rgba(216, 199, 154, 0.1)) drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
+}
+
+.tm-bezel {
+    fill: #1b1f2b;
+    stroke: rgba(236, 232, 225, 0.42);
+    stroke-width: 1.4;
+}
+
+.tm-face {
+    fill: #141824;
+    stroke: rgba(236, 232, 225, 0.12);
+    stroke-width: 1;
+}
+
+.tm-memory {
+    opacity: 0.26;
+    transition: opacity 900ms ease;
+}
+
+.tm-memory-veil {
+    fill: rgba(20, 24, 36, 0.3);
+}
+
+.tm-clock-wrap:hover .tm-memory {
+    opacity: 0.42;
+}
+
+.tm-ring {
+    fill: none;
+    stroke: var(--tm-hair);
+    stroke-width: 0.6;
+}
+
+.tm-tick {
+    stroke: rgba(236, 232, 225, 0.5);
+    stroke-width: 0.9;
+}
+
+.tm-tick-hour {
+    stroke: var(--site-ink);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+}
+
+.tm-num {
+    fill: var(--site-ink);
+    font-family: var(--archive-mono);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.tm-dial-cn {
+    fill: var(--site-ink);
+    font-family: var(--tm-serif);
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    text-anchor: middle;
+    opacity: 0.85;
+}
+
+.tm-hand {
+    fill: #f4efe6;
+    stroke: #0b0d13;
+    stroke-width: 1;
+    stroke-linejoin: round;
+}
+
+#tm-hour.tm-hand {
+    fill: var(--tm-accent);
+}
+
+.tm-hand-sec line {
+    stroke: var(--tm-second);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.tm-hand-sec circle {
+    fill: none;
+    stroke: var(--tm-second);
+    stroke-width: 1.6;
+}
+
+.tm-pin-ring {
+    fill: #0b0d13;
+    stroke: #f4efe6;
+    stroke-width: 1.6;
+}
+
+.tm-pin {
+    fill: var(--tm-second);
+}
+
+.tm-readout {
+    margin: 1.8rem auto 0;
+    max-width: 30rem;
+    text-align: center;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    color: color-mix(in srgb, var(--tm-accent) 80%, transparent);
+}
+
+.md-typeset .tm-readout a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: inherit;
+}
+
+.tm-enter {
+    font-family: var(--archive-mono);
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--site-fade);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 400ms ease, transform 400ms ease, color 200ms ease;
+}
+
+.md-typeset .tm-readout a:hover .tm-enter,
+.md-typeset .tm-readout a:focus-visible .tm-enter {
+    opacity: 1;
+    transform: none;
+    color: var(--tm-accent);
+}
+
+@media (hover: none) {
+    .tm-enter {
+        opacity: 0.7;
+        transform: none;
+    }
+}
+
+.tm-line {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    animation: archive-rise 1100ms ease 240ms both;
+}
+
+.tm-line-left {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.tm-line-head {
+    margin: 0;
+    font-family: var(--tm-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.4em;
+    color: var(--site-fade);
+}
+
+.md-typeset .tm-line a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    color: var(--site-ink);
+    transition: color 200ms ease, opacity 200ms ease;
+}
+
+.tm-date {
+    font-family: var(--archive-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--site-fade);
+}
+
+.tm-name {
+    font-family: var(--tm-serif);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.md-typeset .tm-line a:hover .tm-name,
+.md-typeset .tm-line a:focus-visible .tm-name {
+    color: var(--tm-accent);
+}
+
+.md-typeset .tm-line a.tm-more {
+    font-family: var(--tm-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    color: var(--site-fade);
+}
+
+.md-typeset .tm-line a.tm-more:hover,
+.md-typeset .tm-line a.tm-more:focus-visible {
+    color: var(--site-ink);
+}
+
+@media screen and (max-width: 1000px) {
+    .tm-stage {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.6rem 2rem;
+        max-width: 34rem;
+        padding-top: 2.6rem;
+    }
+
+    .tm-clock-wrap {
+        grid-column: 1 / -1;
+        order: -1;
+        justify-self: center;
+    }
+
+    .tm-clock {
+        width: min(84vw, 420px);
+    }
+
+    .tm-line-left {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .layout-tm {
+        padding-top: 1.6rem;
+    }
+
+    .tm-nav {
+        gap: 1.1rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+    }
+
+    .tm-stage {
+        grid-template-columns: 1fr;
+    }
+
+    .tm-line {
+        gap: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tm-bar,
+    .tm-clock-wrap,
+    .tm-line {
+        animation: none !important;
+    }
+}
+
+/* Lenis 惯性滚动所需的基础样式 */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* 首页各区块滚到眼前时再浮上来 */
+.home-reveal .home-section {
+    animation: none;
+    opacity: 0;
+    translate: 0 48px;
+    transition:
+        opacity 1s ease,
+        translate 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-reveal .home-section.is-in {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* -------------------------------------------------------------------------
+   内页：沿用封面的胶片档案风格，颜色跟着 site_theme 和明暗模式走
+   ------------------------------------------------------------------------- */
+
+body {
+    --in-paper: var(--site-paper);
+    --in-ink: var(--site-ink);
+    --in-fade: var(--site-fade);
+    --in-accent: var(--site-accent);
+    --in-line: color-mix(in srgb, var(--site-ink) 13%, transparent);
+    --in-well: color-mix(in srgb, var(--site-ink) 4.5%, var(--site-paper));
+    --in-strip: var(--site-strip-bottom);
+    --in-hole: var(--site-paper);
+    --in-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Songti SC", "Noto Serif CJK SC", serif;
+    --in-mono: "SFMono-Regular", "Cascadia Mono", "Fira Code", monospace;
+}
+
+/* 深色模式统一用暗房色，时间机器用自己的夜蓝 */
+body[data-md-color-scheme="slate"] {
+    --in-paper: #1d1a18;
+    --in-ink: #ebe4d8;
+    --in-fade: #a39a8c;
+    --in-accent: #c9a27e;
+    --in-line: rgba(235, 228, 216, 0.12);
+    --in-well: #26221f;
+    --in-strip: #0c0b0a;
+    --in-hole: #2a2522;
+}
+
+:root[data-site-theme="timemachine"] body[data-md-color-scheme="slate"] {
+    --in-paper: #0b0d13;
+    --in-ink: #ebe6dc;
+    --in-fade: #878a93;
+    --in-accent: #d8c79a;
+    --in-line: rgba(236, 232, 225, 0.11);
+    --in-well: #12151d;
+    --in-strip: #05060a;
+    --in-hole: #1a1e28;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) {
+    --md-default-bg-color: var(--in-paper);
+    --md-default-fg-color: var(--in-ink);
+    --md-default-fg-color--light: var(--in-fade);
+    --md-default-fg-color--lighter: color-mix(in srgb, var(--in-fade) 60%, transparent);
+    --md-default-fg-color--lightest: var(--in-line);
+    --md-typeset-color: color-mix(in srgb, var(--in-ink) 86%, var(--in-paper));
+    --md-typeset-a-color: var(--in-ink);
+    --md-accent-fg-color: var(--in-accent);
+    --md-code-bg-color: var(--in-well);
+    --md-footer-bg-color: var(--in-strip);
+    --md-footer-bg-color--dark: var(--in-strip);
+    background: var(--in-paper);
+}
+
+/* 顶栏：纸色 + 一条胶片齿孔 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-header {
+    padding-top: 12px;
+    background: color-mix(in srgb, var(--in-paper) 92%, transparent);
+    color: var(--in-ink);
+    border-bottom: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 12px;
+    background:
+        radial-gradient(circle at center, var(--in-hole) 52%, transparent 58%) left center / 18px 7px repeat-x,
+        var(--in-strip);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__button,
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input,
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input::placeholder,
+body:not(:has(.home-v2, .page-cover-archive)) .md-source {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__title {
+    font-family: var(--in-serif);
+    letter-spacing: 0.12em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__form {
+    background: var(--in-well);
+    border: 1px solid var(--in-line);
+    border-radius: 2px;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input {
+    font-family: var(--in-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-sidebar--primary {
+    border-right: 1px solid var(--in-line);
+}
+
+/* 侧栏 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item--active > .md-nav__link,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link:focus-visible {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title {
+    font-family: var(--in-serif);
+    letter-spacing: 0.12em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link {
+    color: color-mix(in srgb, var(--in-ink) 62%, transparent);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__list .md-nav__list {
+    border-left-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__link--active,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item--active > .md-nav__link {
+    position: relative;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--secondary .md-nav__link--active::before {
+    content: "";
+    position: absolute;
+    left: -0.6rem;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--in-accent);
+    translate: 0 -50%;
+}
+
+/* 正文 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h2,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h3,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h4 {
+    font-family: var(--in-serif);
+    color: var(--in-ink);
+    font-weight: 400;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1 {
+    margin-bottom: 2.2rem;
+    padding-bottom: 1.1rem;
+    font-size: 2.1em;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    border-bottom: 1px solid var(--in-line);
+    position: relative;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 3rem;
+    height: 1px;
+    background: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h2 {
+    margin-top: 2.6em;
+    padding-bottom: 0.45em;
+    font-size: 1.45em;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h3 {
+    font-size: 1.15em;
+    letter-spacing: 0.03em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h4 {
+    font-size: 1em;
+    letter-spacing: 0.04em;
+    color: var(--in-fade);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset p,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset li {
+    line-height: 1.95;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a {
+    color: var(--in-ink);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--in-accent) 70%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.28em;
+    transition: text-decoration-color 180ms ease, color 180ms ease;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a:focus-visible {
+    color: var(--in-accent);
+    text-decoration-color: currentColor;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .headerlink,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a.md-content__button {
+    text-decoration: none;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .headerlink {
+    color: var(--in-fade);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset hr {
+    border-bottom-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset strong {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset blockquote {
+    margin-left: 0;
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    border-left: 2px solid var(--in-accent);
+    color: var(--in-fade);
+    font-family: var(--in-serif);
+}
+
+/* 代码 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset code {
+    border-radius: 2px;
+    background: var(--in-well);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset pre > code {
+    border: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .highlight .filename {
+    font-family: var(--in-mono);
+    letter-spacing: 0.08em;
+    background: var(--in-well);
+    border: 1px solid var(--in-line);
+    border-bottom: 0;
+}
+
+/* 表格 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) {
+    border: 1px solid var(--in-line);
+    border-radius: 2px;
+    box-shadow: none;
+    background: transparent;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) th {
+    font-family: var(--in-mono);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--in-fade);
+    background: var(--in-well);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) td {
+    border-top-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) tbody tr:hover {
+    background: var(--in-well);
+    box-shadow: none;
+}
+
+/* 提示框 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .admonition,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset details {
+    border: 1px solid var(--in-line);
+    border-left: 2px solid var(--in-accent);
+    border-radius: 2px;
+    background: var(--in-well);
+    box-shadow: none;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .admonition-title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset summary {
+    background: transparent !important;
+    font-family: var(--in-serif);
+    letter-spacing: 0.04em;
+}
+
+/* 文中的照片：像一张冲洗出来的相纸 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset p > img:only-child,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset figure img {
+    padding: 0.55rem 0.55rem 1.6rem;
+    background: linear-gradient(180deg, var(--site-frame-top), var(--site-frame-bottom));
+    box-shadow: 0 18px 40px rgba(40, 30, 20, 0.12);
+}
+
+/* 页脚：胶片底边 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer {
+    position: relative;
+    padding-top: 12px;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 12px;
+    background: radial-gradient(circle at center, var(--in-hole) 52%, transparent 58%) left center / 18px 7px repeat-x;
+    opacity: 0.6;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta {
+    background: var(--in-strip);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-copyright {
+    font-family: var(--in-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-top {
+    background: var(--in-paper);
+    color: var(--in-ink);
+    border: 1px solid var(--in-line);
+    box-shadow: none;
+    font-family: var(--in-mono);
+    letter-spacing: 0.08em;
+}
+
+/* 深色主题（暗房、时间机器）强制深色，并隐藏明暗切换 */
+:root[data-site-theme="darkroom"] .md-header__option,
+:root[data-site-theme="timemachine"] .md-header__option {
+    display: none;
+}
+
+@media screen and (max-width: 76.2344em) {
+    body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title {
+        background: var(--in-paper);
+        color: var(--in-ink);
+    }
+
+    body:not(:has(.home-v2, .page-cover-archive)) .md-sidebar--primary {
+        background: var(--in-paper);
+    }
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta a,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link {
+    color: rgba(240, 234, 224, 0.72);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta a:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link:hover {
+    color: rgba(240, 234, 224, 0.98);
 }
