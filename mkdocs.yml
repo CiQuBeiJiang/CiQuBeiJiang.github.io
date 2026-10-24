@@ -66,6 +66,9 @@ nav:
     - 收藏的诗歌: literary/poetry.md
   - 随笔:
     - diary/index.md
+    - 风: diary/风.md
+    - 时差: diary/时差.md
+    - 爱: diary/爱.md
     - 花: diary/flower.md
     - 碎: diary/碎.md
     - 伞: diary/伞.md

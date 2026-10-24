@@ -35,29 +35,29 @@ hide:
     </div>
 
     <ol class="home-latest">
-      <li><a href="diary/碎/">
-        <span class="home-latest-code"><span>FRAME 05</span><span>2026.05.29</span></span>
-        <span class="home-latest-body"><span class="home-latest-title">碎</span><span class="home-latest-excerpt">眼睛突然被晃了一下。地上散落着一堆碎片，零碎地反射着窗外的阳光。</span></span>
-        <span class="home-latest-cat">随笔</span>
-      </a></li>
-      <li><a href="diary/第一百次告别/">
-        <span class="home-latest-code"><span>FRAME 04</span><span>2026.05.20</span></span>
-        <span class="home-latest-body"><span class="home-latest-title">第一百次告别</span><span class="home-latest-excerpt">坐在公交车的最后一排，看着雨滴在车窗上赛跑。</span></span>
-        <span class="home-latest-cat">随笔</span>
-      </a></li>
-      <li><a href="optimization/telecom_network_maintenance/">
-        <span class="home-latest-code"><span>FRAME 03</span><span>2026.05.11</span></span>
-        <span class="home-latest-body"><span class="home-latest-title">XGBoost 与 MIP 联合优化</span><span class="home-latest-excerpt">通信网络维护调度里，预测模型和混合整数规划如何接在一起。</span></span>
+      <li><a href="optimization/cabngis/">
+        <span class="home-latest-code"><span>FRAME 05</span><span>2026.10.24</span></span>
+        <span class="home-latest-body"><span class="home-latest-title">CABNGIS 光储充调度搜索</span><span class="home-latest-excerpt">预算受限下光储充调度候选的精确评估顺序。</span></span>
         <span class="home-latest-cat">研究</span>
       </a></li>
-      <li><a href="diary/找/">
-        <span class="home-latest-code"><span>FRAME 02</span><span>2026.05.10</span></span>
-        <span class="home-latest-body"><span class="home-latest-title">找</span><span class="home-latest-excerpt">书桌一团糟，胶卷又找不见了。</span></span>
+      <li><a href="diary/风/">
+        <span class="home-latest-code"><span>FRAME 04</span><span>2026.10.14</span></span>
+        <span class="home-latest-body"><span class="home-latest-title">风</span><span class="home-latest-excerpt">十几秒钟，足够让一片灰白色的天空变得绚烂。</span></span>
         <span class="home-latest-cat">随笔</span>
       </a></li>
-      <li><a href="diary/伞/">
-        <span class="home-latest-code"><span>FRAME 01</span><span>2026.05.05</span></span>
-        <span class="home-latest-body"><span class="home-latest-title">伞</span><span class="home-latest-excerpt">很想有一把好用的伞。只是不用来挡雨。</span></span>
+      <li><a href="diary/时差/">
+        <span class="home-latest-code"><span>FRAME 03</span><span>2026.09.07</span></span>
+        <span class="home-latest-body"><span class="home-latest-title">时差</span><span class="home-latest-excerpt">我们彼此想起对方的时候，也不知道应该说些什么。</span></span>
+        <span class="home-latest-cat">随笔</span>
+      </a></li>
+      <li><a href="diary/爱/">
+        <span class="home-latest-code"><span>FRAME 02</span><span>2026.09.07</span></span>
+        <span class="home-latest-body"><span class="home-latest-title">爱</span><span class="home-latest-excerpt">“愛”里的心消失了，我的还在。</span></span>
+        <span class="home-latest-cat">随笔</span>
+      </a></li>
+      <li><a href="diary/碎/">
+        <span class="home-latest-code"><span>FRAME 01</span><span>2026.05.29</span></span>
+        <span class="home-latest-body"><span class="home-latest-title">碎</span><span class="home-latest-excerpt">眼睛突然被晃了一下。地上散落着一堆碎片，零碎地反射着窗外的阳光。</span></span>
         <span class="home-latest-cat">随笔</span>
       </a></li>
     </ol>
@@ -115,9 +115,9 @@ hide:
     <div class="tm-stage">
       <section class="tm-line tm-line-left" aria-label="最近的随笔">
         <p class="tm-line-head">随笔</p>
-        <a href="diary/碎/"><span class="tm-date">05.29</span><span class="tm-name">碎</span></a>
-        <a href="diary/第一百次告别/"><span class="tm-date">05.20</span><span class="tm-name">第一百次告别</span></a>
-        <a href="diary/找/"><span class="tm-date">05.10</span><span class="tm-name">找</span></a>
+        <a href="diary/风/"><span class="tm-date">10.14</span><span class="tm-name">风</span></a>
+        <a href="diary/时差/"><span class="tm-date">09.07</span><span class="tm-name">时差</span></a>
+        <a href="diary/爱/"><span class="tm-date">09.07</span><span class="tm-name">爱</span></a>
         <a class="tm-more" href="diary/">更早</a>
       </section>
 
@@ -146,9 +146,9 @@ hide:
 
       <section class="tm-line tm-line-right" aria-label="最近的笔记">
         <p class="tm-line-head">笔记</p>
+        <a href="optimization/cabngis/"><span class="tm-date">10.24</span><span class="tm-name">CABNGIS 光储充调度搜索</span></a>
         <a href="optimization/telecom_network_maintenance/"><span class="tm-date">05.11</span><span class="tm-name">XGBoost 与 MIP 联合优化</span></a>
         <a href="optimization/copt_usage/"><span class="tm-date">04.12</span><span class="tm-name">COPT 笔记</span></a>
-        <a href="literary/amusing_ourselves_to_death/"><span class="tm-date">03.08</span><span class="tm-name">《娱乐至死》读书总结</span></a>
         <a class="tm-more" href="research/">更早</a>
       </section>
     </div>
