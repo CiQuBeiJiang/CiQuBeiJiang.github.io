@@ -2020,3 +2020,36 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
         animation: none !important;
     }
 }
+
+/* Lenis 惯性滚动所需的基础样式 */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* 首页各区块滚到眼前时再浮上来 */
+.home-reveal .home-section {
+    animation: none;
+    opacity: 0;
+    translate: 0 48px;
+    transition:
+        opacity 1s ease,
+        translate 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-reveal .home-section.is-in {
+    opacity: 1;
+    translate: 0 0;
+}
