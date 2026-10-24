@@ -100,6 +100,57 @@ hide:
   </footer>
   </div>
 
+  <div class="layout-mag">
+    <header class="mag-top">
+      <span>VOL. 07</span>
+      <span>2026 · 秋季号</span>
+      <span>CIQUBEIJIANG.CN</span>
+    </header>
+
+    <p class="mag-masthead">此去北疆</p>
+    <p class="mag-sub"><span>CIQUBEIJIANG</span><span>阅读 · 摄影 · 写作 · 机器学习</span></p>
+
+    <div class="mag-cover">
+      <figure class="mag-photo">
+        <img src="./assets/1-004_13.jpeg" alt="音乐台前的人群与一只飞起的白鸽">
+        <figcaption><span>封面</span>人群 / 音乐台，南京</figcaption>
+      </figure>
+
+      <aside class="mag-toc" aria-label="本期目录">
+        <p class="mag-label">本期目录<span>CONTENTS</span></p>
+        <ol>
+          <li><a href="optimization/cabngis/"><span class="mag-page">04</span><span class="mag-entry"><span class="mag-dept">研究</span><span class="mag-title">CABNGIS 光储充调度搜索</span><span class="mag-dek">预算受限下光储充调度候选的精确评估顺序。</span></span></a></li>
+          <li><a href="diary/风/"><span class="mag-page">16</span><span class="mag-entry"><span class="mag-dept">随笔</span><span class="mag-title">风</span><span class="mag-dek">十几秒钟，足够让一片灰白色的天空变得绚烂。</span></span></a></li>
+          <li><a href="diary/时差/"><span class="mag-page">22</span><span class="mag-entry"><span class="mag-dept">随笔</span><span class="mag-title">时差</span><span class="mag-dek">我们彼此想起对方的时候，也不知道应该说些什么。</span></span></a></li>
+          <li><a href="diary/爱/"><span class="mag-page">26</span><span class="mag-entry"><span class="mag-dept">随笔</span><span class="mag-title">爱</span><span class="mag-dek">“愛”里的心消失了，我的还在。</span></span></a></li>
+          <li><a href="optimization/telecom_network_maintenance/"><span class="mag-page">32</span><span class="mag-entry"><span class="mag-dept">研究</span><span class="mag-title">XGBoost 与 MIP 联合优化</span><span class="mag-dek">通信网络维护调度里，预测模型和混合整数规划如何接在一起。</span></span></a></li>
+        </ol>
+      </aside>
+    </div>
+
+    <section class="mag-note">
+      <p class="mag-label">编者按</p>
+      <p class="mag-note-text">光从笔记、底片和未完成的模型之间慢慢渗出来。</p>
+    </section>
+
+    <nav class="mag-depts" aria-label="栏目">
+      <a href="reading/"><span class="mag-num">01</span><span class="mag-dname">阅读</span><span class="mag-ddesc">文学、哲学、阅读笔记与收藏的诗。</span></a>
+      <a href="diary/"><span class="mag-num">02</span><span class="mag-dname">随笔</span><span class="mag-ddesc">个人文章、观察、片段与尚未完成的想法。</span></a>
+      <a href="research/"><span class="mag-num">03</span><span class="mag-dname">研究</span><span class="mag-ddesc">机器学习、数据分析、运筹优化与技术札记。</span></a>
+      <a href="/Dream/"><span class="mag-num">04</span><span class="mag-dname">梦途</span><span class="mag-ddesc">月亮图书馆，一个关于梦的小网页。</span></a>
+    </nav>
+
+    <footer class="mag-foot">
+      <span>© 2026 CiQuBeiJiang · 南京</span>
+      <nav aria-label="其他">
+        <a href="about/">个人简介</a>
+        <a href="site_info/">网站信息</a>
+        <a href="https://github.com/ciqubeijiang">GitHub</a>
+        <a href="mailto:1724961030@qq.com">Email</a>
+      </nav>
+    </footer>
+  </div>
+
   <div class="layout-tm">
     <header class="tm-bar">
       <a class="tm-mark" href="./">此去北疆</a>
