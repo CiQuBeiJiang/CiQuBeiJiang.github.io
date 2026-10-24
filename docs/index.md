@@ -133,10 +133,11 @@ hide:
           <g id="tm-ticks"></g>
           <g id="tm-nums"></g>
           <text class="tm-dial-cn" x="0" y="-62">此去北疆</text>
-          <polygon id="tm-hour" class="tm-hand" points="-4.5,16 4.5,16 2,-96 -2,-96"></polygon>
-          <polygon id="tm-min" class="tm-hand" points="-3.2,18 3.2,18 1.2,-146 -1.2,-146"></polygon>
-          <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="34" x2="0" y2="-166"></line><circle cy="24" r="5"></circle></g>
-          <circle class="tm-pin" r="3.2"></circle>
+          <polygon id="tm-hour" class="tm-hand" points="-6,18 6,18 2.6,-98 -2.6,-98"></polygon>
+          <polygon id="tm-min" class="tm-hand" points="-4.4,20 4.4,20 1.6,-150 -1.6,-150"></polygon>
+          <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="36" x2="0" y2="-168"></line><circle cy="26" r="6"></circle></g>
+          <circle class="tm-pin-ring" r="7"></circle>
+          <circle class="tm-pin" r="3.6"></circle>
         </svg>
         <p class="tm-readout">In my dreams the clock runs backward, and you are still here.</p>
       </div>

@@ -1744,26 +1744,28 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     width: min(42vw, 66vh, 560px);
     height: auto;
     overflow: visible;
+    filter: drop-shadow(0 0 48px rgba(216, 199, 154, 0.1)) drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
 }
 
 .tm-bezel {
-    fill: none;
-    stroke: rgba(236, 232, 225, 0.18);
-    stroke-width: 0.8;
+    fill: #1b1f2b;
+    stroke: rgba(236, 232, 225, 0.42);
+    stroke-width: 1.4;
 }
 
 .tm-face {
-    fill: #10131b;
-    stroke: none;
+    fill: #141824;
+    stroke: rgba(236, 232, 225, 0.12);
+    stroke-width: 1;
 }
 
 .tm-memory {
-    opacity: 0.2;
+    opacity: 0.26;
     transition: opacity 900ms ease;
 }
 
 .tm-memory-veil {
-    fill: rgba(16, 19, 27, 0.35);
+    fill: rgba(20, 24, 36, 0.3);
 }
 
 .tm-clock-wrap:hover .tm-memory {
@@ -1777,19 +1779,20 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-tick {
-    stroke: rgba(236, 232, 225, 0.3);
-    stroke-width: 0.7;
+    stroke: rgba(236, 232, 225, 0.5);
+    stroke-width: 0.9;
 }
 
 .tm-tick-hour {
     stroke: var(--site-ink);
-    stroke-width: 1.6;
+    stroke-width: 2.6;
+    stroke-linecap: round;
 }
 
 .tm-num {
     fill: var(--site-ink);
     font-family: var(--archive-mono);
-    font-size: 12px;
+    font-size: 15px;
     letter-spacing: 0.08em;
     text-anchor: middle;
     dominant-baseline: central;
@@ -1805,18 +1808,28 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-hand {
-    fill: var(--site-ink);
+    fill: #f4efe6;
+    stroke: #0b0d13;
+    stroke-width: 1;
+    stroke-linejoin: round;
 }
 
 .tm-hand-sec line {
     stroke: var(--tm-accent);
-    stroke-width: 1;
+    stroke-width: 1.8;
+    stroke-linecap: round;
 }
 
 .tm-hand-sec circle {
     fill: none;
     stroke: var(--tm-accent);
-    stroke-width: 1;
+    stroke-width: 1.6;
+}
+
+.tm-pin-ring {
+    fill: #0b0d13;
+    stroke: #f4efe6;
+    stroke-width: 1.6;
 }
 
 .tm-pin {
