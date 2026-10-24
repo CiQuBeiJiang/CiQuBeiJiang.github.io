@@ -1824,11 +1824,14 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-readout {
-    margin: 1.8rem 0 0;
+    margin: 1.8rem auto 0;
+    max-width: 30rem;
     text-align: center;
-    font-family: var(--tm-serif);
-    font-size: 0.8rem;
-    letter-spacing: 0.4em;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
     color: color-mix(in srgb, var(--tm-accent) 80%, transparent);
 }
 

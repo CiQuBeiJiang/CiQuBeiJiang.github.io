@@ -138,7 +138,7 @@ hide:
           <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="34" x2="0" y2="-166"></line><circle cy="24" r="5"></circle></g>
           <circle class="tm-pin" r="3.2"></circle>
         </svg>
-        <p class="tm-readout">在梦里　时间往回走</p>
+        <p class="tm-readout">In my dreams the clock runs backward, and you are still here.</p>
       </div>
 
       <section class="tm-line tm-line-right" aria-label="最近的笔记">
