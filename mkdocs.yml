@@ -2,6 +2,8 @@ site_name: 此去北疆
 site_description: 江屿的技术笔记
 site_url: https://CiQuBeiJiang.github.io
 site_dir: site
+exclude_docs: |
+  preview/
 repo_url: https://github.com/CiQuBeiJiang/CiQuBeiJiang.github.io
 theme:
   name: material
@@ -112,8 +114,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ciqubeijiang
-    - icon: fontawesome/brands/instagram
-      link: https://www.instagram.com/XXXXXX
     - icon: fontawesome/solid/paper-plane
       link: mailto:1724961030@qq.com 
 

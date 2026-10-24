@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
 :root {
     --md-text-font:  "LXGW WenKai Screen", sans-serif; 
-}
-
-@font-face {    
-    font-family: 'LXGW';    
-    src: url('./LXGWWenKaiGBScreen.woff') format('woff');
 }
 
 .admonition.note.inline,
@@ -23,7 +20,6 @@
     font-size: 15px !important;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 .fancy-font {
     font-family: 'Parisienne', cursive;
     font-size: 2.2em;
@@ -1156,4 +1152,14 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     .md-nav__item .md-nav__link {
         transition: none !important;
     }
+}
+
+/* 档案页链接沿用墨色，避免被 Material 的 .md-typeset a 染成链接蓝 */
+.md-typeset a.archive-row,
+.md-typeset a.archive-row:hover,
+.md-typeset a.archive-row:focus-visible,
+.md-typeset a.cover-enter,
+.md-typeset a.cover-enter:hover,
+.md-typeset a.cover-enter:focus-visible {
+    color: var(--archive-ink);
 }

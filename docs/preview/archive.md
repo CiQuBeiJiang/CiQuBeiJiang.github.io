@@ -37,7 +37,7 @@ hide:
       <span class="archive-row-text" data-i18n data-zh="文学、哲学、阅读笔记与页边残留的批注。" data-en="Literature, philosophy, reading notes, and marginal traces left in books.">文学、哲学、阅读笔记与页边残留的批注。</span>
     </a>
 
-    <a class="archive-row" href="../../essays/">
+    <a class="archive-row" href="../../diary/">
       <span class="archive-row-code">ARCHIVE_02</span>
       <span class="archive-row-title" data-i18n data-zh="随笔" data-en="Essays">随笔</span>
       <span class="archive-row-text" data-i18n data-zh="个人文章、观察、碎片与尚未完成的想法。" data-en="Personal essays, observations, fragments, and unfinished thoughts.">个人文章、观察、碎片与尚未完成的想法。</span>
@@ -53,7 +53,7 @@ hide:
   <nav class="archive-footer-nav" aria-label="Secondary navigation">
     <a href="../" data-i18n data-zh="返回封面" data-en="Return to Cover">返回封面</a>
     <a href="../../reading/" data-i18n data-zh="阅读档案" data-en="Reading Archive">阅读档案</a>
-    <a href="../../essays/" data-i18n data-zh="随笔档案" data-en="Essays Archive">随笔档案</a>
+    <a href="../../diary/" data-i18n data-zh="随笔档案" data-en="Essays Archive">随笔档案</a>
     <a href="../../research/" data-i18n data-zh="研究档案" data-en="Research Archive">研究档案</a>
   </nav>
 </div>

@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(updateCoverTime, 30000);
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && enter) {
+    if (event.key === "Enter" && enter && !event.target.closest("button, a, input, textarea")) {
       window.location.href = enter.href;
     }
   });

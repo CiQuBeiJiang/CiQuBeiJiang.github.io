@@ -29,7 +29,7 @@ hide:
       <span class="archive-row-note">文学、哲学、阅读笔记与批注。</span>
     </a>
 
-    <a class="archive-row" href="../essays/">
+    <a class="archive-row" href="../diary/">
       <span class="archive-row-code">02 Essays</span>
       <span class="archive-row-title">随笔</span>
       <span class="archive-row-text">Fragments / Personal Writing</span>
