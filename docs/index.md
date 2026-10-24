@@ -133,18 +133,8 @@ hide:
           <g id="tm-ticks"></g>
           <g id="tm-nums"></g>
           <text class="tm-dial-cn" x="0" y="-62">此去北疆</text>
-          <g id="tm-hour" class="tm-breguet">
-            <polygon class="tm-hand" points="-4,22 4,22 2,-53 -2,-53"></polygon>
-            <circle class="tm-moon-shadow" cy="-64" r="10.5"></circle>
-            <circle class="tm-moon" cy="-64" r="10.5"></circle>
-            <polygon class="tm-hand" points="-3.4,-74 3.4,-74 0,-102"></polygon>
-          </g>
-          <g id="tm-min" class="tm-breguet">
-            <polygon class="tm-hand" points="-3,24 3,24 1.4,-115 -1.4,-115"></polygon>
-            <circle class="tm-moon-shadow" cy="-124" r="8"></circle>
-            <circle class="tm-moon" cy="-124" r="8"></circle>
-            <polygon class="tm-hand" points="-2.8,-131.5 2.8,-131.5 0,-156"></polygon>
-          </g>
+          <polygon id="tm-hour" class="tm-hand" points="-6,18 6,18 2.6,-98 -2.6,-98"></polygon>
+          <polygon id="tm-min" class="tm-hand" points="-4.4,20 4.4,20 1.6,-150 -1.6,-150"></polygon>
           <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="36" x2="0" y2="-168"></line><circle cy="26" r="6"></circle></g>
           <circle class="tm-pin-ring" r="7"></circle>
           <circle class="tm-pin" r="3.6"></circle>

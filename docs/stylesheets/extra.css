@@ -1635,6 +1635,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     --site-primary: #3a3a3d;
     --site-accent: #d8c79a;
     --tm-accent: #d8c79a;
+    --tm-second: #c9614f;
     --tm-hair: rgba(236, 232, 225, 0.14);
     --tm-serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Iowan Old Style", serif;
 }
@@ -1814,27 +1815,19 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     stroke-linejoin: round;
 }
 
-.tm-moon-shadow {
-    fill: none;
-    stroke: #0b0d13;
-    stroke-width: 5.6;
-}
-
-.tm-moon {
-    fill: none;
-    stroke: #f4efe6;
-    stroke-width: 3;
+#tm-hour.tm-hand {
+    fill: var(--tm-accent);
 }
 
 .tm-hand-sec line {
-    stroke: var(--tm-accent);
+    stroke: var(--tm-second);
     stroke-width: 1.8;
     stroke-linecap: round;
 }
 
 .tm-hand-sec circle {
     fill: none;
-    stroke: var(--tm-accent);
+    stroke: var(--tm-second);
     stroke-width: 1.6;
 }
 
@@ -1845,7 +1838,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-pin {
-    fill: var(--tm-accent);
+    fill: var(--tm-second);
 }
 
 .tm-readout {
