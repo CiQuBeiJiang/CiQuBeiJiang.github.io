@@ -2618,3 +2618,550 @@ body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link:h
 :root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-typeset img {
     filter: grayscale(1) contrast(1.1);
 }
+
+/* -------------------------------------------------------------------------
+   editorial：杂志封面版首页
+   ------------------------------------------------------------------------- */
+
+.layout-mag {
+    display: none;
+}
+
+:root[data-site-theme="editorial"] .layout-archive {
+    display: none;
+}
+
+:root[data-site-theme="editorial"] .layout-mag {
+    display: block;
+}
+
+.layout-mag {
+    --mag-ink: #14171c;
+    --mag-fade: #646a73;
+    --mag-blue: #1c3354;
+    --mag-rule: rgba(20, 23, 28, 0.16);
+    --mag-serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Iowan Old Style", serif;
+    --mag-latin: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    --mag-mono: "SFMono-Regular", "Cascadia Mono", "Fira Code", monospace;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 0 3rem;
+    color: var(--mag-ink);
+}
+
+.layout-mag p {
+    margin: 0;
+}
+
+.mag-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9rem 0 0.75rem;
+    border-bottom: 1px solid var(--mag-ink);
+    font-family: var(--mag-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    color: var(--mag-fade);
+}
+
+.mag-top span:first-child {
+    color: var(--mag-blue);
+}
+
+.layout-mag .mag-masthead {
+    margin: 1.2rem 0 0;
+    font-family: var(--mag-serif);
+    font-weight: 700;
+    font-size: clamp(4.2rem, 12.5vw, 10.5rem);
+    line-height: 1;
+    letter-spacing: 0.32em;
+    margin-right: -0.32em;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--mag-ink);
+}
+
+.layout-mag .mag-sub {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.1rem;
+    padding: 0.6rem 0;
+    border-top: 3px solid var(--mag-ink);
+    border-bottom: 1px solid var(--mag-ink);
+    font-family: var(--mag-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+}
+
+.mag-cover {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 3rem;
+    padding: 2.2rem 0 2.6rem;
+    border-bottom: 1px solid var(--mag-rule);
+}
+
+.layout-mag .mag-photo {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.layout-mag .mag-photo img {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 0;
+    min-height: 420px;
+    object-fit: cover;
+}
+
+:root[data-site-theme="editorial"] body:has(.page-home-archive) {
+    background: var(--site-paper);
+}
+
+.md-typeset .layout-mag .mag-photo figcaption {
+    max-width: none;
+    margin: 0.7rem 0 0;
+    font-family: var(--mag-serif);
+    font-style: normal;
+    font-size: 0.78rem;
+    text-align: left;
+    color: var(--mag-fade);
+}
+
+.layout-mag .mag-photo figcaption span {
+    margin-right: 0.8em;
+    font-family: var(--mag-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    color: var(--mag-blue);
+}
+
+.layout-mag .mag-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid var(--mag-blue);
+    font-family: var(--mag-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+}
+
+.layout-mag .mag-label span {
+    font-family: var(--mag-mono);
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    color: var(--mag-blue);
+}
+
+.layout-mag .mag-toc {
+    color: var(--mag-ink);
+}
+
+.md-typeset .layout-mag .mag-toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.md-typeset .layout-mag .mag-toc li {
+    margin: 0;
+    border-bottom: 1px solid var(--mag-rule);
+}
+
+.md-typeset .layout-mag a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.md-typeset .layout-mag .mag-toc a {
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr);
+    padding: 1.05rem 0;
+}
+
+.layout-mag .mag-page {
+    font-family: var(--mag-latin);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--mag-blue);
+    font-variant-numeric: lining-nums;
+}
+
+.layout-mag .mag-entry {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.layout-mag .mag-dept {
+    font-family: var(--mag-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--mag-fade);
+}
+
+.layout-mag .mag-title {
+    font-family: var(--mag-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    transition: color 180ms ease;
+}
+
+.layout-mag .mag-dek {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--mag-fade);
+}
+
+.md-typeset .layout-mag .mag-toc a:hover .mag-title,
+.md-typeset .layout-mag .mag-toc a:focus-visible .mag-title {
+    color: var(--mag-blue);
+}
+
+.mag-note {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+    gap: 3rem;
+    align-items: baseline;
+    padding: 2.4rem 0;
+    border-bottom: 1px solid var(--mag-rule);
+}
+
+.layout-mag .mag-note .mag-label {
+    border-bottom: 0;
+    padding: 0;
+}
+
+.layout-mag .mag-note-text {
+    font-family: var(--mag-serif);
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+}
+
+.mag-depts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-bottom: 3px solid var(--mag-ink);
+}
+
+.md-typeset .layout-mag .mag-depts a {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.6rem 1.4rem 1.8rem;
+    border-left: 1px solid var(--mag-rule);
+    transition: background-color 200ms ease;
+}
+
+.md-typeset .layout-mag .mag-depts a:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.md-typeset .layout-mag .mag-depts a:hover {
+    background: rgba(28, 51, 84, 0.04);
+}
+
+.layout-mag .mag-num {
+    font-family: var(--mag-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    color: var(--mag-blue);
+}
+
+.layout-mag .mag-dname {
+    font-family: var(--mag-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+.layout-mag .mag-ddesc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--mag-fade);
+}
+
+.mag-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    font-family: var(--mag-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    color: var(--mag-fade);
+}
+
+.mag-foot nav {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.md-typeset .layout-mag .mag-foot a:hover {
+    color: var(--mag-blue);
+}
+
+@media screen and (max-width: 900px) {
+    .mag-cover,
+    .mag-note {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .mag-depts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .layout-mag .mag-photo img {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+
+    .md-typeset .layout-mag .mag-depts a,
+    .md-typeset .layout-mag .mag-depts a:first-child {
+        padding: 1.3rem 1rem 1.4rem 0;
+        border-left: 0;
+        border-top: 1px solid var(--mag-rule);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .layout-mag .mag-masthead {
+        letter-spacing: 0.12em;
+        margin-right: -0.12em;
+        font-size: 18vw;
+        white-space: nowrap;
+    }
+
+    .mag-top span:last-child,
+    .layout-mag .mag-sub span:last-child {
+        display: none;
+    }
+
+    .mag-foot {
+        flex-direction: column;
+    }
+
+    .mag-foot nav {
+        flex-wrap: wrap;
+        gap: 0.8rem 1.2rem;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   胶片主题首页动效（film / snow / moss / darkroom / gobi）
+   ------------------------------------------------------------------------- */
+
+/* 照片像在显影液里慢慢浮出来 */
+@keyframes film-develop {
+    from {
+        filter: brightness(1.9) saturate(0) contrast(0.35) blur(1.5px);
+        opacity: 0.55;
+    }
+    to {
+        filter: brightness(1) saturate(0.82) contrast(1.04) blur(0);
+        opacity: 1;
+    }
+}
+
+.film-motion .home-photo img {
+    animation: film-develop 2.6s cubic-bezier(0.3, 0.6, 0.2, 1) 0.3s backwards;
+}
+
+/* 进场时右侧漏进来一点暖光，随后散掉 */
+@keyframes film-leak {
+    0% { opacity: 0; translate: 6% 0; }
+    35% { opacity: 1; }
+    100% { opacity: 0; translate: -4% 0; }
+}
+
+.film-motion .home-hero::before {
+    content: "";
+    position: absolute;
+    inset: -12% -8vw -12% 35%;
+    background:
+        radial-gradient(ellipse 45% 60% at 88% 35%, rgba(255, 150, 80, 0.28), transparent 70%),
+        radial-gradient(ellipse 30% 40% at 96% 60%, rgba(255, 90, 60, 0.18), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    animation: film-leak 4.2s ease-out 1.1s both;
+}
+
+.film-motion .home-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 鼠标移到照片上时出现取景框 */
+.film-motion .home-photo {
+    position: relative;
+}
+
+.film-motion .home-photo::before {
+    --vf: color-mix(in srgb, var(--site-ink) 70%, transparent);
+    content: "";
+    position: absolute;
+    inset: -16px;
+    background:
+        linear-gradient(var(--vf), var(--vf)) left top / 22px 1px,
+        linear-gradient(var(--vf), var(--vf)) left top / 1px 22px,
+        linear-gradient(var(--vf), var(--vf)) right top / 22px 1px,
+        linear-gradient(var(--vf), var(--vf)) right top / 1px 22px,
+        linear-gradient(var(--vf), var(--vf)) left bottom / 22px 1px,
+        linear-gradient(var(--vf), var(--vf)) left bottom / 1px 22px,
+        linear-gradient(var(--vf), var(--vf)) right bottom / 22px 1px,
+        linear-gradient(var(--vf), var(--vf)) right bottom / 1px 22px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0;
+    scale: 1.05;
+    transition: opacity 260ms ease, scale 420ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.film-motion .home-photo:hover::before {
+    opacity: 1;
+    scale: 1;
+}
+
+/* 最近更新逐帧出现 */
+.film-motion.home-reveal .home-latest li {
+    opacity: 0;
+    translate: -14px 0;
+    transition: opacity 700ms ease, translate 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.film-motion.home-reveal .home-section.is-in .home-latest li {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.film-motion .home-latest li:nth-child(2) { transition-delay: 140ms; }
+.film-motion .home-latest li:nth-child(3) { transition-delay: 280ms; }
+.film-motion .home-latest li:nth-child(4) { transition-delay: 420ms; }
+.film-motion .home-latest li:nth-child(5) { transition-delay: 560ms; }
+
+.film-motion .home-latest-code > span:first-child {
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .film-motion .home-photo img,
+    .film-motion .home-hero::before {
+        animation: none;
+    }
+
+    .film-motion .home-hero::before {
+        display: none;
+    }
+}
+
+/* 左侧文字：标题逐字从模糊里显出来，标语像光扫过一样亮起 */
+@keyframes film-char {
+    from {
+        opacity: 0;
+        filter: blur(6px);
+        translate: 0 0.18em;
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        translate: 0 0;
+    }
+}
+
+@keyframes film-reveal-fallback {
+    to { opacity: 1; }
+}
+
+@keyframes film-sweep {
+    from { mask-position: 100% 0; -webkit-mask-position: 100% 0; }
+    to { mask-position: 0 0; -webkit-mask-position: 0 0; }
+}
+
+@keyframes film-kicker {
+    from {
+        opacity: 0;
+        letter-spacing: 0.5em;
+    }
+}
+
+.film-motion .layout-archive .home-title:not(.is-split),
+.film-motion .layout-archive .home-title-cn:not(.is-split) {
+    opacity: 0;
+    animation: film-reveal-fallback 0s 1.5s forwards;
+}
+
+.film-motion .film-char {
+    display: inline-block;
+    white-space: pre;
+    animation: film-char 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(250ms + var(--i) * 55ms);
+}
+
+.film-motion .layout-archive .home-kicker {
+    animation: film-kicker 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
+}
+
+.film-motion .layout-archive .home-line {
+    -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+    mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+    -webkit-mask-size: 260% 100%;
+    mask-size: 260% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: film-sweep 1.8s cubic-bezier(0.4, 0.1, 0.2, 1) 1.2s both;
+}
+
+.film-motion .layout-archive .home-meta {
+    animation: film-kicker 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 1.9s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .film-motion .film-char,
+    .film-motion .layout-archive .home-kicker,
+    .film-motion .layout-archive .home-line,
+    .film-motion .layout-archive .home-meta {
+        animation: none;
+    }
+
+    .film-motion .layout-archive .home-line {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .film-motion .layout-archive .home-title:not(.is-split),
+    .film-motion .layout-archive .home-title-cn:not(.is-split) {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+/* 文字分成前后几层，配合鼠标倾斜形成景深 */
+.film-motion .layout-archive .home-hero-text {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.film-motion .layout-archive .home-kicker { transform: translateZ(10px); }
+.film-motion .layout-archive .home-title { transform: translateZ(46px); }
+.film-motion .layout-archive .home-title-cn { transform: translateZ(30px); }
+.film-motion .layout-archive .home-line { transform: translateZ(18px); }
+.film-motion .layout-archive .home-meta { transform: translateZ(6px); }
+
+.film-motion .film-char {
+    will-change: transform;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+    .film-motion .layout-archive .home-hero-text,
+    .film-motion .layout-archive .home-hero-text > * {
+        transform: none;
+    }
+}
