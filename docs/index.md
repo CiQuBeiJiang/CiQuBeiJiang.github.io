@@ -101,7 +101,7 @@ hide:
 
   <div class="layout-tm">
     <header class="tm-head">
-      <p class="tm-kicker">time machine · ciqubeijiang</p>
+      <p class="tm-kicker">TIME MACHINE — NO. 07</p>
       <p class="tm-title">此去北疆</p>
     </header>
 
@@ -118,16 +118,20 @@ hide:
 
       <div class="tm-clock-wrap">
         <svg class="tm-clock" viewBox="-200 -200 400 400" role="img" aria-label="一只倒着走的钟">
-          <circle class="tm-face" r="188"></circle>
-          <circle class="tm-face-inner" r="150"></circle>
+          <circle class="tm-bezel" r="196"></circle>
+          <circle class="tm-face" r="186"></circle>
+          <circle class="tm-ring" r="148"></circle>
           <g id="tm-ticks"></g>
           <g id="tm-nums"></g>
-          <line id="tm-hour" class="tm-hand tm-hand-hour" x1="0" y1="14" x2="0" y2="-92"></line>
-          <line id="tm-min" class="tm-hand tm-hand-min" x1="0" y1="18" x2="0" y2="-138"></line>
-          <line id="tm-sec" class="tm-hand tm-hand-sec" x1="0" y1="28" x2="0" y2="-160"></line>
-          <circle class="tm-pin" r="4.5"></circle>
+          <text class="tm-dial-brand" x="0" y="-74">CIQUBEIJIANG</text>
+          <text class="tm-dial-sub tm-dial-cn" x="0" y="-58">此去北疆</text>
+          <text class="tm-dial-sub" x="0" y="70">REVERSE · NANJING</text>
+          <polygon id="tm-hour" class="tm-hand" points="-4.5,16 4.5,16 2,-96 -2,-96"></polygon>
+          <polygon id="tm-min" class="tm-hand" points="-3.2,18 3.2,18 1.2,-146 -1.2,-146"></polygon>
+          <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="34" x2="0" y2="-166"></line><circle cy="24" r="5"></circle></g>
+          <circle class="tm-pin" r="3.2"></circle>
         </svg>
-        <p class="tm-readout"><span id="tm-digital">NANJING --:--</span><span>◀◀ rewinding</span></p>
+        <p class="tm-readout"><span id="tm-digital">NANJING --:--:--</span><span>COUNTER-CLOCKWISE</span></p>
       </div>
 
       <section class="tm-line tm-line-right" aria-label="研究与阅读时间线">
@@ -178,24 +182,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const nums = document.getElementById("tm-nums");
   for (let i = 0; i < 60; i++) {
     const t = document.createElementNS(svgNS, "line");
-    const major = i % 5 === 0;
+    const hourMark = i % 5 === 0;
     t.setAttribute("x1", 0);
-    t.setAttribute("y1", -176);
+    t.setAttribute("y1", -182);
     t.setAttribute("x2", 0);
-    t.setAttribute("y2", major ? -160 : -169);
-    t.setAttribute("class", major ? "tm-tick tm-tick-major" : "tm-tick");
+    t.setAttribute("y2", hourMark ? (i % 15 === 0 ? -158 : -164) : -175);
+    t.setAttribute("class", hourMark ? "tm-tick tm-tick-hour" : "tm-tick");
     t.setAttribute("transform", "rotate(" + (-i * 6) + ")");
     ticks.appendChild(t);
   }
-  for (let n = 1; n <= 12; n++) {
+  [12, 3, 6, 9].forEach(function (n) {
     const a = (-n * 30) * Math.PI / 180;
     const text = document.createElementNS(svgNS, "text");
-    text.setAttribute("x", (Math.sin(a) * 130).toFixed(2));
-    text.setAttribute("y", (-Math.cos(a) * 130).toFixed(2));
+    text.setAttribute("x", (Math.sin(a) * 134).toFixed(2));
+    text.setAttribute("y", (-Math.cos(a) * 134).toFixed(2));
     text.setAttribute("class", "tm-num");
     text.textContent = n;
     nums.appendChild(text);
-  }
+  });
 
   const hour = document.getElementById("tm-hour");
   const min = document.getElementById("tm-min");
