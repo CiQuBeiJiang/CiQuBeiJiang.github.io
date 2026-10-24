@@ -92,6 +92,7 @@ hide:
     <nav aria-label="Secondary navigation">
       <a href="about/">个人简介</a>
       <a href="site_info/">网站信息</a>
+      <a href="/Dream/">梦途 Dreamways</a>
       <a href="https://github.com/ciqubeijiang">GitHub</a>
       <a href="mailto:1724961030@qq.com">Email</a>
     </nav>
@@ -106,6 +107,7 @@ hide:
         <a href="reading/">阅读</a>
         <a href="diary/">随笔</a>
         <a href="research/">研究</a>
+        <a href="/Dream/">梦途</a>
         <a href="about/">关于</a>
       </nav>
     </header>
@@ -139,7 +141,7 @@ hide:
           <circle class="tm-pin-ring" r="7"></circle>
           <circle class="tm-pin" r="3.6"></circle>
         </svg>
-        <p class="tm-readout">In my dreams the clock runs backward, and you are still here.</p>
+        <p class="tm-readout"><a href="/Dream/">In my dreams the clock runs backward, and you are still here.<span class="tm-enter">enter the dream →</span></a></p>
       </div>
 
       <section class="tm-line tm-line-right" aria-label="最近的笔记">

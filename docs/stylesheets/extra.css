@@ -1853,6 +1853,40 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     color: color-mix(in srgb, var(--tm-accent) 80%, transparent);
 }
 
+.md-typeset .tm-readout a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: inherit;
+}
+
+.tm-enter {
+    font-family: var(--archive-mono);
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--site-fade);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 400ms ease, transform 400ms ease, color 200ms ease;
+}
+
+.md-typeset .tm-readout a:hover .tm-enter,
+.md-typeset .tm-readout a:focus-visible .tm-enter {
+    opacity: 1;
+    transform: none;
+    color: var(--tm-accent);
+}
+
+@media (hover: none) {
+    .tm-enter {
+        opacity: 0.7;
+        transform: none;
+    }
+}
+
 .tm-line {
     display: flex;
     flex-direction: column;
