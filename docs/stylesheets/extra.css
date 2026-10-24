@@ -1628,13 +1628,13 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
    ------------------------------------------------------------------------- */
 
 :root[data-site-theme="timemachine"] {
-    --site-paper: #0d0d0e;
-    --site-ink: #ece8e1;
-    --site-fade: #8a857d;
+    --site-paper: #0b0d13;
+    --site-ink: #ebe6dc;
+    --site-fade: #878a93;
     --site-page: #fdfcf8;
     --site-primary: #3a3a3d;
-    --site-accent: #d9502f;
-    --tm-accent: #d9502f;
+    --site-accent: #d8c79a;
+    --tm-accent: #d8c79a;
     --tm-hair: rgba(236, 232, 225, 0.14);
     --tm-serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Iowan Old Style", serif;
 }
@@ -1652,18 +1652,26 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 :root[data-site-theme="timemachine"]:has(.home-v2) {
-    background: #0d0d0e;
+    background: #0b0d13;
 }
 
 :root[data-site-theme="timemachine"] body:has(.home-v2) {
     background:
-        radial-gradient(ellipse 60% 55% at 50% 52%, #1a1a1c, transparent 70%),
-        #0d0d0e;
+        radial-gradient(circle at 50% 50%, rgba(216, 199, 154, 0.07), transparent 32%),
+        radial-gradient(ellipse 70% 60% at 50% 50%, #151824, transparent 72%),
+        #0b0d13;
 }
 
 :root[data-site-theme="timemachine"] .home-v2::before {
-    opacity: 0.08;
-    mix-blend-mode: screen;
+    background-image:
+        radial-gradient(circle at 9% 14%, rgba(235, 230, 220, 0.7) 0 0.8px, transparent 1.3px),
+        radial-gradient(circle at 78% 9%, rgba(235, 230, 220, 0.55) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 93% 41%, rgba(235, 230, 220, 0.45) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 21% 77%, rgba(235, 230, 220, 0.4) 0 0.7px, transparent 1.2px),
+        radial-gradient(circle at 66% 88%, rgba(235, 230, 220, 0.35) 0 0.6px, transparent 1.1px);
+    background-size: 100% 100%;
+    mix-blend-mode: normal;
+    opacity: 1;
     animation: none;
 }
 
@@ -1735,9 +1743,22 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-face {
-    fill: #121213;
+    fill: #10131b;
     stroke: rgba(236, 232, 225, 0.08);
     stroke-width: 1;
+}
+
+.tm-memory {
+    opacity: 0.2;
+    transition: opacity 900ms ease;
+}
+
+.tm-memory-veil {
+    fill: rgba(16, 19, 27, 0.35);
+}
+
+.tm-clock-wrap:hover .tm-memory {
+    opacity: 0.42;
 }
 
 .tm-ring {
@@ -1817,6 +1838,14 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .tm-readout span:first-child {
     color: var(--site-ink);
+}
+
+.tm-whisper {
+    font-family: var(--tm-serif);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: none;
+    color: var(--tm-accent);
 }
 
 .tm-line {

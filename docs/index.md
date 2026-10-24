@@ -101,7 +101,7 @@ hide:
 
   <div class="layout-tm">
     <header class="tm-head">
-      <p class="tm-kicker">TIME MACHINE — NO. 07</p>
+      <p class="tm-kicker">TIME MACHINE — NOCTURNE</p>
       <p class="tm-title">此去北疆</p>
     </header>
 
@@ -120,6 +120,12 @@ hide:
         <svg class="tm-clock" viewBox="-200 -200 400 400" role="img" aria-label="一只倒着走的钟">
           <circle class="tm-bezel" r="196"></circle>
           <circle class="tm-face" r="186"></circle>
+          <defs>
+            <clipPath id="tm-dial-clip"><circle r="147"></circle></clipPath>
+            <filter id="tm-dream"><feColorMatrix type="saturate" values="0.15"></feColorMatrix><feGaussianBlur stdDeviation="2.4"></feGaussianBlur></filter>
+          </defs>
+          <image class="tm-memory" href="assets/1-004_13.jpeg" x="-221" y="-147" width="442" height="294" preserveAspectRatio="xMidYMid slice" clip-path="url(#tm-dial-clip)" filter="url(#tm-dream)"></image>
+          <circle class="tm-memory-veil" r="147"></circle>
           <circle class="tm-ring" r="148"></circle>
           <g id="tm-ticks"></g>
           <g id="tm-nums"></g>
@@ -131,7 +137,7 @@ hide:
           <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="34" x2="0" y2="-166"></line><circle cy="24" r="5"></circle></g>
           <circle class="tm-pin" r="3.2"></circle>
         </svg>
-        <p class="tm-readout"><span id="tm-digital">NANJING --:--:--</span><span>COUNTER-CLOCKWISE</span></p>
+        <p class="tm-readout"><span id="tm-digital">NANJING --:--:--</span><span class="tm-whisper">在梦里，时间往回走</span></p>
       </div>
 
       <section class="tm-line tm-line-right" aria-label="研究与阅读时间线">
