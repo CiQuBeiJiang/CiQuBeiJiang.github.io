@@ -1,5 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
+/* -------------------------------------------------------------------------
+   站点主题：在 mkdocs.yml 的 extra.site_theme 里切换
+   film（胶片，默认） / snow（北疆初雪） / moss（苔原） / darkroom（暗房）
+   ------------------------------------------------------------------------- */
+
+:root {
+    --site-paper: #f3f0ea;
+    --site-ink: #26221d;
+    --site-fade: #6f675e;
+    --site-glow: rgba(255, 255, 255, 0.45);
+    --site-strip-top: #393431;
+    --site-strip-bottom: #2a2623;
+    --site-strip-hole: #f3f0ea;
+    --site-frame-top: #fbf9f5;
+    --site-frame-bottom: #ebe5dc;
+    --site-page: #fdfcf8;
+    --site-primary: #627d96;
+    --site-accent: #a88f85;
+}
+
+:root[data-site-theme="snow"] {
+    --site-paper: #eef1f3;
+    --site-ink: #1f2a33;
+    --site-fade: #5f6d78;
+    --site-glow: rgba(255, 255, 255, 0.6);
+    --site-strip-top: #34404a;
+    --site-strip-bottom: #232c34;
+    --site-strip-hole: #eef1f3;
+    --site-frame-top: #fbfcfd;
+    --site-frame-bottom: #e1e7ec;
+    --site-page: #f8fafb;
+    --site-primary: #4f6f8c;
+    --site-accent: #7d97ad;
+}
+
+:root[data-site-theme="moss"] {
+    --site-paper: #eceee3;
+    --site-ink: #232a20;
+    --site-fade: #626b5a;
+    --site-glow: rgba(255, 255, 245, 0.5);
+    --site-strip-top: #363d30;
+    --site-strip-bottom: #262b21;
+    --site-strip-hole: #eceee3;
+    --site-frame-top: #fafbf4;
+    --site-frame-bottom: #e0e4d3;
+    --site-page: #fafbf6;
+    --site-primary: #5f7a5a;
+    --site-accent: #9a8a5f;
+}
+
+:root[data-site-theme="darkroom"] {
+    --site-paper: #1d1a18;
+    --site-ink: #ebe4d8;
+    --site-fade: #a39a8c;
+    --site-glow: rgba(255, 190, 150, 0.05);
+    --site-strip-top: #0f0d0c;
+    --site-strip-bottom: #070606;
+    --site-strip-hole: #3a332e;
+    --site-frame-top: #2c2724;
+    --site-frame-bottom: #221e1b;
+    --site-page: #fdfcf8;
+    --site-primary: #9c5a4a;
+    --site-accent: #c07a5e;
+}
+
 :root {
     --md-text-font:  "LXGW WenKai Screen", sans-serif; 
 }
@@ -88,7 +153,7 @@
        用于：标题栏、侧边栏高亮、按钮
        原色：Blue (#2196f3) -> 替换为：#627d96 (灰蓝色)
     */
-    --md-primary-fg-color:        #627d96;
+    --md-primary-fg-color:        var(--site-primary);
     --md-primary-fg-color--light: #7a92a8; /* 浅一点的变体 */
     --md-primary-fg-color--dark:  #4f667d; /* 深一点的变体 */
 
@@ -96,13 +161,13 @@
        用于：链接悬停、滑动条、Tab下划线
        原色：Blue -> 替换为：#bfaea6 (暖灰/枯粉色) 或者 #a88f85
     */
-    --md-accent-fg-color:         #a88f85; 
+    --md-accent-fg-color:         var(--site-accent);
 
     /* 【背景色】 - 暖调米白
        用于：页面大背景
        原色：White (#ffffff) -> 替换为：#fdfcf8 (极淡的米色，护眼)
     */
-    --md-default-bg-color:        #fdfcf8;
+    --md-default-bg-color:        var(--site-page);
 }
 
 /* 【深色模式微调】 
@@ -125,7 +190,7 @@ body {
 }
 
 .md-header {
-    background: rgba(253, 252, 248, 0.94);
+    background: color-mix(in srgb, var(--md-default-bg-color) 94%, transparent);
     color: #3d3832;
     box-shadow: none;
     border-bottom: 1px solid rgba(61, 56, 50, 0.08);
@@ -256,9 +321,9 @@ body {
 body:has(.page-cover-archive),
 body:has(.page-home-archive) {
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45), transparent 35%),
+        radial-gradient(circle at 20% 20%, var(--site-glow), transparent 35%),
         linear-gradient(180deg, rgba(90, 74, 58, 0.04), rgba(90, 74, 58, 0.01)),
-        #f3f0ea;
+        var(--site-paper);
 }
 
 body:has(.page-cover-archive) .md-header,
@@ -318,10 +383,10 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .page-cover-archive,
 .page-home-archive {
-    --archive-paper: #f3f0ea;
-    --archive-ink: #26221d;
-    --archive-fade: #6f675e;
-    --archive-line: rgba(38, 34, 29, 0.16);
+    --archive-paper: var(--site-paper);
+    --archive-ink: var(--site-ink);
+    --archive-fade: var(--site-fade);
+    --archive-line: color-mix(in srgb, var(--site-ink) 16%, transparent);
     --archive-film: #2e2a27;
     --archive-sans: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", sans-serif;
     --archive-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Noto Serif CJK SC", serif;
@@ -1181,8 +1246,8 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     height: 26px;
     margin: 0 -7vw;
     background:
-        radial-gradient(circle at center, #f3f0ea 58%, transparent 62%) left center / 24px 11px repeat-x,
-        linear-gradient(180deg, #393431, #2a2623);
+        radial-gradient(circle at center, var(--site-strip-hole) 58%, transparent 62%) left center / 24px 11px repeat-x,
+        linear-gradient(180deg, var(--site-strip-top), var(--site-strip-bottom));
     background-origin: content-box, border-box;
     padding: 0 2.5%;
     opacity: 0.92;
@@ -1232,7 +1297,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     font-family: var(--archive-serif);
     font-size: clamp(1.2rem, 1.7vw, 1.6rem);
     letter-spacing: 0.2em;
-    color: rgba(38, 34, 29, 0.7);
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
 }
 
 .home-line {
@@ -1241,7 +1306,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     font-family: var(--archive-serif);
     font-size: 1.08rem;
     line-height: 1.95;
-    color: rgba(38, 34, 29, 0.84);
+    color: color-mix(in srgb, var(--archive-ink) 84%, transparent);
 }
 
 .home-meta {
@@ -1250,7 +1315,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     gap: 0.4rem 1.6rem;
     margin: 2.2rem 0 0;
     font-size: 0.68rem;
-    color: rgba(38, 34, 29, 0.58);
+    color: color-mix(in srgb, var(--archive-ink) 58%, transparent);
 }
 
 .home-photo {
@@ -1258,7 +1323,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     width: min(100%, 500px);
     margin: 0;
     padding: 0.9rem 0.9rem 1.5rem;
-    background: linear-gradient(180deg, #fbf9f5, #ebe5dc);
+    background: linear-gradient(180deg, var(--site-frame-top), var(--site-frame-bottom));
     box-shadow:
         0 0 0 1px rgba(43, 38, 32, 0.1),
         0 22px 40px rgba(60, 50, 42, 0.12);
@@ -1285,7 +1350,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     text-align: left;
     font-size: 0.68rem;
     letter-spacing: 0.12em;
-    color: rgba(38, 34, 29, 0.68);
+    color: color-mix(in srgb, var(--archive-ink) 68%, transparent);
 }
 
 .home-section {
@@ -1313,7 +1378,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .home-section-head > span {
     font-size: 0.66rem;
-    color: rgba(38, 34, 29, 0.5);
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
 }
 
 .md-typeset ol.home-latest {
@@ -1342,7 +1407,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     flex-direction: column;
     font-size: 0.66rem;
     line-height: 1.8;
-    color: rgba(38, 34, 29, 0.5);
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
 }
 
 .home-latest-body {
@@ -1365,12 +1430,12 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 .home-latest-excerpt {
     font-size: 0.92rem;
     line-height: 1.8;
-    color: rgba(38, 34, 29, 0.7);
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
 }
 
 .home-latest-cat {
     font-size: 0.66rem;
-    color: rgba(38, 34, 29, 0.56);
+    color: color-mix(in srgb, var(--archive-ink) 56%, transparent);
 }
 
 .md-typeset .home-latest a:hover,
@@ -1411,7 +1476,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .home-index-code {
     font-size: 0.66rem;
-    color: rgba(38, 34, 29, 0.5);
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
 }
 
 .home-index-title {
@@ -1423,7 +1488,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 .home-index-note {
     font-size: 0.9rem;
     line-height: 1.8;
-    color: rgba(38, 34, 29, 0.7);
+    color: color-mix(in srgb, var(--archive-ink) 70%, transparent);
 }
 
 .home-footer {
@@ -1436,7 +1501,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     padding-top: 1.2rem;
     border-top: 1px solid var(--archive-line);
     font-size: 0.68rem;
-    color: rgba(38, 34, 29, 0.5);
+    color: color-mix(in srgb, var(--archive-ink) 50%, transparent);
 }
 
 .home-footer nav {
@@ -1446,7 +1511,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .md-typeset .home-footer a {
-    color: rgba(38, 34, 29, 0.66);
+    color: color-mix(in srgb, var(--archive-ink) 66%, transparent);
 }
 
 .md-typeset .home-footer a:hover,
@@ -1544,4 +1609,15 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
     .md-typeset .home-latest a {
         transition: none !important;
     }
+}
+
+:root[data-site-theme="darkroom"] .home-v2::before {
+    mix-blend-mode: screen;
+    opacity: 0.12;
+}
+
+:root[data-site-theme="darkroom"] .home-photo {
+    box-shadow:
+        0 0 0 1px rgba(255, 240, 220, 0.08),
+        0 22px 40px rgba(0, 0, 0, 0.45);
 }

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script>
+    (function () {
+      var theme = {{ (config.extra.site_theme or "film") | tojson }};
+      try {
+        var preview = new URLSearchParams(location.search).get("theme");
+        if (preview) theme = preview;
+      } catch (e) {}
+      document.documentElement.setAttribute("data-site-theme", theme);
+    })();
+  </script>
+{% endblock %}

@@ -111,6 +111,8 @@ markdown_extensions:
       generic: true
 
 extra:
+  # 站点主题：film（胶片） / snow（北疆初雪） / moss（苔原） / darkroom（暗房）
+  site_theme: film
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ciqubeijiang
