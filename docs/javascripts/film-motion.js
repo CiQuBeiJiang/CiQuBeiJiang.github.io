@@ -74,3 +74,64 @@
         el.classList.add("is-split");
     });
 })();
+
+// 鼠标移到文字上时有景深：整块随鼠标微微倾斜，靠近的标题字母被吸起来
+(function () {
+    var root = document.documentElement;
+    if (!root.classList.contains("film-motion")) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    var hero = document.querySelector(".layout-archive .home-hero");
+    var text = hero && hero.querySelector(".home-hero-text");
+    if (!text) return;
+
+    var chars = Array.prototype.slice.call(text.querySelectorAll(".film-char"));
+    var lifts = chars.map(function () { return 0; });
+    var mx = 0, my = 0, tx = 0, ty = 0;
+    var px = -9999, py = -9999;
+    var active = false, raf = null;
+
+    hero.addEventListener("pointermove", function (e) {
+        var r = text.getBoundingClientRect();
+        mx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / r.width));
+        my = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / r.height));
+        px = e.clientX;
+        py = e.clientY;
+        active = true;
+        kick();
+    });
+
+    hero.addEventListener("pointerleave", function () {
+        mx = 0;
+        my = 0;
+        px = py = -9999;
+        active = false;
+        kick();
+    });
+
+    function frame() {
+        tx += (mx - tx) * 0.1;
+        ty += (my - ty) * 0.1;
+        text.style.transform = "perspective(1000px) rotateY(" + (tx * 7).toFixed(2) + "deg) rotateX(" + (-ty * 7).toFixed(2) + "deg)";
+
+        var moving = Math.abs(mx - tx) > 0.002 || Math.abs(my - ty) > 0.002;
+        chars.forEach(function (c, i) {
+            var b = c.getBoundingClientRect();
+            var dx = px - (b.left + b.width / 2);
+            var dy = py - (b.top + b.height / 2 + lifts[i]);
+            var f = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 150);
+            var target = f * f * 12;
+            lifts[i] += (target - lifts[i]) * 0.2;
+            if (Math.abs(target - lifts[i]) > 0.05) moving = true;
+            c.style.transform = lifts[i] > 0.05 ? "translateY(" + (-lifts[i]).toFixed(2) + "px)" : "";
+            c.style.color = f > 0.05 ? "color-mix(in srgb, var(--site-accent) " + Math.round(f * 75) + "%, var(--archive-ink))" : "";
+        });
+
+        raf = moving || active ? requestAnimationFrame(frame) : null;
+    }
+
+    function kick() {
+        if (!raf) raf = requestAnimationFrame(frame);
+    }
+})();

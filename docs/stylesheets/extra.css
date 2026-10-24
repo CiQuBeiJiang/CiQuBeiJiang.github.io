@@ -3142,3 +3142,26 @@ body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link:h
         animation: none;
     }
 }
+
+/* 文字分成前后几层，配合鼠标倾斜形成景深 */
+.film-motion .layout-archive .home-hero-text {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.film-motion .layout-archive .home-kicker { transform: translateZ(10px); }
+.film-motion .layout-archive .home-title { transform: translateZ(46px); }
+.film-motion .layout-archive .home-title-cn { transform: translateZ(30px); }
+.film-motion .layout-archive .home-line { transform: translateZ(18px); }
+.film-motion .layout-archive .home-meta { transform: translateZ(6px); }
+
+.film-motion .film-char {
+    will-change: transform;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+    .film-motion .layout-archive .home-hero-text,
+    .film-motion .layout-archive .home-hero-text > * {
+        transform: none;
+    }
+}
