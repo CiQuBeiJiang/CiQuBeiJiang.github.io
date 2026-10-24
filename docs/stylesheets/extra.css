@@ -2,7 +2,7 @@
 
 /* -------------------------------------------------------------------------
    站点主题：在 mkdocs.yml 的 extra.site_theme 里切换
-   film（胶片，默认） / snow（北疆初雪） / moss（苔原） / darkroom（暗房） / timemachine（时间机器）
+   film（胶片，默认） / snow（北疆初雪） / moss（苔原） / darkroom（暗房） / timemachine（时间机器） / editorial（编辑部） / gobi（戈壁） / newsprint（铅字）
    ------------------------------------------------------------------------- */
 
 :root {
@@ -2420,4 +2420,201 @@ body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link {
 body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta a:hover,
 body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link:hover {
     color: rgba(240, 234, 224, 0.98);
+}
+
+/* -------------------------------------------------------------------------
+   新主题：editorial（编辑部） / gobi（戈壁） / newsprint（铅字）
+   ------------------------------------------------------------------------- */
+
+:root[data-site-theme="editorial"] {
+    --site-paper: #fbfbf9;
+    --site-ink: #14171c;
+    --site-fade: #646a73;
+    --site-glow: rgba(255, 255, 255, 0);
+    --site-strip-top: #1c3354;
+    --site-strip-bottom: #1c3354;
+    --site-strip-hole: #fbfbf9;
+    --site-frame-top: #ffffff;
+    --site-frame-bottom: #ffffff;
+    --site-page: #fbfbf9;
+    --site-primary: #1c3354;
+    --site-accent: #1c3354;
+}
+
+:root[data-site-theme="gobi"] {
+    --site-paper: #efe7da;
+    --site-ink: #2d241b;
+    --site-fade: #7b6b59;
+    --site-glow: rgba(255, 244, 222, 0.5);
+    --site-strip-top: #5b4634;
+    --site-strip-bottom: #463527;
+    --site-strip-hole: #efe7da;
+    --site-frame-top: #faf5ec;
+    --site-frame-bottom: #e8dcc8;
+    --site-page: #f7f1e7;
+    --site-primary: #9a5a33;
+    --site-accent: #a8683c;
+}
+
+:root[data-site-theme="newsprint"] {
+    --site-paper: #ebe9e3;
+    --site-ink: #1b1b1a;
+    --site-fade: #5f5e5a;
+    --site-glow: rgba(255, 255, 255, 0);
+    --site-strip-top: #1b1b1a;
+    --site-strip-bottom: #1b1b1a;
+    --site-strip-hole: #ebe9e3;
+    --site-frame-top: #ebe9e3;
+    --site-frame-bottom: #ebe9e3;
+    --site-page: #ebe9e3;
+    --site-primary: #1b1b1a;
+    --site-accent: #8c2f25;
+}
+
+/* editorial：去掉胶片元素，换成细线与直角，照片摆正 */
+:root[data-site-theme="editorial"] .home-v2::before,
+:root[data-site-theme="newsprint"] .home-v2::before {
+    display: none;
+}
+
+:root[data-site-theme="editorial"] .home-strip {
+    height: 4px;
+    background: var(--site-primary);
+    opacity: 1;
+}
+
+:root[data-site-theme="editorial"] .home-title {
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+:root[data-site-theme="editorial"] .home-kicker,
+:root[data-site-theme="editorial"] .home-section-head > span {
+    color: var(--site-primary);
+}
+
+:root[data-site-theme="editorial"] .home-photo {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+:root[data-site-theme="editorial"] .home-photo:hover {
+    transform: none;
+}
+
+:root[data-site-theme="editorial"] .home-photo img {
+    filter: none;
+}
+
+:root[data-site-theme="editorial"] .md-typeset .home-photo figcaption {
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--site-ink);
+}
+
+:root[data-site-theme="editorial"] .home-section-head {
+    border-bottom-width: 2px;
+}
+
+/* gobi：赭石色的胶片边和标签，照片偏暖，像晒过的相纸 */
+:root[data-site-theme="gobi"] {
+    --site-strip-top: #9a5a33;
+    --site-strip-bottom: #82492a;
+}
+
+:root[data-site-theme="gobi"] .home-kicker,
+:root[data-site-theme="gobi"] .home-section-head > span,
+:root[data-site-theme="gobi"] .home-latest-cat {
+    color: var(--site-primary);
+}
+
+:root[data-site-theme="gobi"] .home-photo {
+    transform: rotate(-1.2deg);
+}
+
+:root[data-site-theme="gobi"] .home-photo:hover {
+    transform: rotate(-0.3deg) translateY(-3px);
+}
+
+:root[data-site-theme="gobi"] .home-photo img {
+    filter: sepia(0.22) saturate(0.85) contrast(1.03);
+}
+
+/* newsprint：黑白照片，双线报头 */
+:root[data-site-theme="newsprint"] .home-strip {
+    height: 7px;
+    background:
+        linear-gradient(var(--site-ink), var(--site-ink)) top / 100% 3px no-repeat,
+        linear-gradient(var(--site-ink), var(--site-ink)) bottom / 100% 1px no-repeat;
+    opacity: 1;
+}
+
+:root[data-site-theme="newsprint"] .home-photo {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+:root[data-site-theme="newsprint"] .home-photo:hover {
+    transform: none;
+}
+
+:root[data-site-theme="newsprint"] .home-photo img {
+    filter: grayscale(1) contrast(1.15) brightness(0.98);
+    mix-blend-mode: multiply;
+}
+
+:root[data-site-theme="newsprint"] .home-title,
+:root[data-site-theme="newsprint"] .home-title-cn,
+:root[data-site-theme="newsprint"] .md-typeset .home-section-head h2 {
+    font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Iowan Old Style", serif;
+    font-weight: 700;
+}
+
+:root[data-site-theme="newsprint"] .home-section-head {
+    border-bottom: 3px double var(--site-ink);
+}
+
+/* 内页：editorial 和 newsprint 不用胶片齿孔 */
+:root[data-site-theme="editorial"] body:not(:has(.home-v2, .page-cover-archive)) .md-header::before {
+    height: 4px;
+    background: var(--site-primary);
+}
+
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-header::before {
+    height: 6px;
+    background:
+        linear-gradient(var(--site-ink), var(--site-ink)) top / 100% 3px no-repeat,
+        linear-gradient(var(--site-ink), var(--site-ink)) bottom / 100% 1px no-repeat;
+}
+
+:root[data-site-theme="editorial"] body:not(:has(.home-v2, .page-cover-archive)) .md-header,
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-header {
+    padding-top: 6px;
+}
+
+:root[data-site-theme="editorial"] body:not(:has(.home-v2, .page-cover-archive)) .md-footer::before,
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-footer::before {
+    display: none;
+}
+
+:root[data-site-theme="editorial"] body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1::after {
+    height: 2px;
+    background: var(--site-primary);
+}
+
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1 {
+    border-bottom: 3px double var(--site-ink);
+    font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+    font-weight: 700;
+}
+
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1::after {
+    display: none;
+}
+
+:root[data-site-theme="newsprint"] body:not(:has(.home-v2, .page-cover-archive)) .md-typeset img {
+    filter: grayscale(1) contrast(1.1);
 }
