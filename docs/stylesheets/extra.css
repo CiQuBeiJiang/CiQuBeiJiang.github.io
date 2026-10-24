@@ -1163,3 +1163,385 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 .md-typeset a.cover-enter:focus-visible {
     color: var(--archive-ink);
 }
+
+/* -------------------------------------------------------------------------
+   Homepage v2: 封面与档案页合并
+   ------------------------------------------------------------------------- */
+
+.home-v2 {
+    padding: 0 7vw 3rem;
+}
+
+.home-v2::before {
+    opacity: 0.28;
+    animation: none;
+}
+
+.home-strip {
+    height: 26px;
+    margin: 0 -7vw;
+    background:
+        radial-gradient(circle at center, #f3f0ea 58%, transparent 62%) left center / 24px 11px repeat-x,
+        linear-gradient(180deg, #393431, #2a2623);
+    background-origin: content-box, border-box;
+    padding: 0 2.5%;
+    opacity: 0.92;
+}
+
+.home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 4rem;
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 6.5rem 0 5.5rem;
+    animation: archive-rise 900ms ease both;
+}
+
+.home-kicker,
+.home-meta,
+.home-section-head > span,
+.home-latest-code,
+.home-latest-cat,
+.home-index-code,
+.home-photo figcaption,
+.home-footer {
+    font-family: var(--archive-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-kicker {
+    margin: 0;
+    font-size: 0.7rem;
+    color: var(--archive-fade);
+}
+
+.home-title {
+    margin: 1.4rem 0 0;
+    font-family: var(--archive-serif);
+    font-size: clamp(2.8rem, 5.4vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--archive-ink);
+}
+
+.home-title-cn {
+    margin: 0.7rem 0 0;
+    font-family: var(--archive-serif);
+    font-size: clamp(1.2rem, 1.7vw, 1.6rem);
+    letter-spacing: 0.2em;
+    color: rgba(38, 34, 29, 0.7);
+}
+
+.home-line {
+    margin: 2rem 0 0;
+    max-width: 26rem;
+    font-family: var(--archive-serif);
+    font-size: 1.08rem;
+    line-height: 1.95;
+    color: rgba(38, 34, 29, 0.84);
+}
+
+.home-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    margin: 2.2rem 0 0;
+    font-size: 0.68rem;
+    color: rgba(38, 34, 29, 0.58);
+}
+
+.home-photo {
+    justify-self: end;
+    width: min(100%, 500px);
+    margin: 0;
+    padding: 0.9rem 0.9rem 1.5rem;
+    background: linear-gradient(180deg, #fbf9f5, #ebe5dc);
+    box-shadow:
+        0 0 0 1px rgba(43, 38, 32, 0.1),
+        0 22px 40px rgba(60, 50, 42, 0.12);
+    transform: rotate(1.6deg);
+    transition: transform 400ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.home-photo:hover {
+    transform: rotate(0.4deg) translateY(-3px);
+}
+
+.home-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    filter: saturate(0.82) contrast(1.04);
+}
+
+.md-typeset .home-photo figcaption {
+    max-width: none;
+    margin: 0.85rem 0 0;
+    font-style: normal;
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(38, 34, 29, 0.68);
+}
+
+.home-section {
+    max-width: 1120px;
+    margin: 0 auto 5rem;
+    animation: archive-rise 1100ms ease 160ms both;
+}
+
+.home-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--archive-ink);
+}
+
+.md-typeset .home-section-head h2 {
+    margin: 0;
+    font-family: var(--archive-serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--archive-ink);
+}
+
+.home-section-head > span {
+    font-size: 0.66rem;
+    color: rgba(38, 34, 29, 0.5);
+}
+
+.md-typeset ol.home-latest {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.md-typeset ol.home-latest li {
+    margin: 0;
+    border-bottom: 1px solid var(--archive-line);
+}
+
+.md-typeset .home-latest a {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 1.35rem 0;
+    color: var(--archive-ink);
+    transition: transform 220ms ease, opacity 180ms ease;
+}
+
+.home-latest-code {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.66rem;
+    line-height: 1.8;
+    color: rgba(38, 34, 29, 0.5);
+}
+
+.home-latest-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.home-latest-title {
+    font-family: var(--archive-serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 200ms ease;
+}
+
+.home-latest-excerpt {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(38, 34, 29, 0.7);
+}
+
+.home-latest-cat {
+    font-size: 0.66rem;
+    color: rgba(38, 34, 29, 0.56);
+}
+
+.md-typeset .home-latest a:hover,
+.md-typeset .home-latest a:focus-visible {
+    color: var(--archive-ink);
+    transform: translateX(4px);
+}
+
+.home-latest a:hover .home-latest-title,
+.home-latest a:focus-visible .home-latest-title {
+    text-decoration-color: currentColor;
+}
+
+.home-index {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.md-typeset .home-index a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.8rem 1.8rem 2rem 0;
+    color: var(--archive-ink);
+    transition: opacity 180ms ease;
+}
+
+.md-typeset .home-index a + a {
+    padding-left: 1.8rem;
+    border-left: 1px solid var(--archive-line);
+}
+
+.md-typeset .home-index a:hover,
+.md-typeset .home-index a:focus-visible {
+    color: var(--archive-ink);
+    opacity: 0.68;
+}
+
+.home-index-code {
+    font-size: 0.66rem;
+    color: rgba(38, 34, 29, 0.5);
+}
+
+.home-index-title {
+    font-family: var(--archive-serif);
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+}
+
+.home-index-note {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(38, 34, 29, 0.7);
+}
+
+.home-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--archive-line);
+    font-size: 0.68rem;
+    color: rgba(38, 34, 29, 0.5);
+}
+
+.home-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.8rem;
+}
+
+.md-typeset .home-footer a {
+    color: rgba(38, 34, 29, 0.66);
+}
+
+.md-typeset .home-footer a:hover,
+.md-typeset .home-footer a:focus-visible {
+    color: var(--archive-ink);
+}
+
+.home-footer p {
+    margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .home-hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 4rem 0 4rem;
+    }
+
+    .home-photo {
+        justify-self: center;
+    }
+
+    .home-index {
+        grid-template-columns: 1fr;
+    }
+
+    .md-typeset .home-index a,
+    .md-typeset .home-index a + a {
+        padding: 1.4rem 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--archive-line);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-v2 {
+        padding: 0 1.35rem 2.5rem;
+    }
+
+    .home-strip {
+        margin: 0 -1.35rem;
+        height: 20px;
+    }
+
+    .home-hero {
+        padding: 3rem 0 3.2rem;
+        gap: 2.4rem;
+    }
+
+    .home-title {
+        font-size: clamp(2.3rem, 12vw, 3rem);
+    }
+
+    .home-line {
+        font-size: 1rem;
+    }
+
+    .home-photo {
+        transform: none;
+        padding: 0.75rem 0.75rem 1.6rem;
+    }
+
+    .home-section {
+        margin-bottom: 3.5rem;
+    }
+
+    .md-typeset .home-latest a {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.5rem 1rem;
+        padding: 1.2rem 0;
+    }
+
+    .home-latest-code {
+        grid-column: 1 / -1;
+    }
+
+    .home-latest-code {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .md-typeset .home-latest a:hover,
+    .md-typeset .home-latest a:focus-visible {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-hero,
+    .home-section {
+        animation: none !important;
+    }
+
+    .home-photo,
+    .md-typeset .home-latest a {
+        transition: none !important;
+    }
+}
