@@ -10,6 +10,9 @@
         if (preview) theme = preview;
       } catch (e) {}
       document.documentElement.setAttribute("data-site-theme", theme);
+      if (["film", "snow", "moss", "darkroom", "gobi"].indexOf(theme) !== -1) {
+        document.documentElement.classList.add("film-motion");
+      }
     })();
   </script>
 {% endblock %}

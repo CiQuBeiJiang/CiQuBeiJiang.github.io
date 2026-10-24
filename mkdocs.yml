@@ -50,6 +50,7 @@ extra_javascript:
   - javascripts/site-links.js
   - javascripts/lenis.min.js
   - javascripts/smooth-scroll.js
+  - javascripts/film-motion.js
 
 nav:
   - 个人简介: about/index.md
