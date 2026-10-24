@@ -87,6 +87,7 @@ nav:
       - KDTree + DFJ 求解 TSP: optimization/TSP_KDTree_DFJ.md
       - MIP 服务器部署: optimization/mip_server_deployment.md
       - XGBoost 与 MIP 联合优化: optimization/telecom_network_maintenance.md
+      - CABNGIS 光储充调度搜索: optimization/cabngis.md
     - 技术札记:
       - 首页: tech_notes/index.md
       - Git 笔记: tech_notes/git_commands.md
