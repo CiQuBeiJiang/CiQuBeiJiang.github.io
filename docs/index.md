@@ -100,20 +100,23 @@ hide:
   </div>
 
   <div class="layout-tm">
-    <header class="tm-head">
-      <p class="tm-kicker">TIME MACHINE — NOCTURNE</p>
-      <p class="tm-title">此去北疆</p>
+    <header class="tm-bar">
+      <a class="tm-mark" href="./">此去北疆</a>
+      <nav class="tm-nav" aria-label="Sections">
+        <a href="reading/">阅读</a>
+        <a href="diary/">随笔</a>
+        <a href="research/">研究</a>
+        <a href="about/">关于</a>
+      </nav>
     </header>
 
     <div class="tm-stage">
-      <section class="tm-line tm-line-left" aria-label="随笔时间线">
-        <p class="tm-line-head">随笔 · ESSAYS</p>
-        <a href="diary/碎/"><span class="tm-date">2026.05.29</span><span class="tm-name">碎</span></a>
-        <a href="diary/第一百次告别/"><span class="tm-date">2026.05.20</span><span class="tm-name">第一百次告别</span></a>
-        <a href="diary/找/"><span class="tm-date">2026.05.10</span><span class="tm-name">找</span></a>
-        <a href="diary/伞/"><span class="tm-date">2026.05.05</span><span class="tm-name">伞</span></a>
-        <a href="diary/flower/"><span class="tm-date">2026.01.17</span><span class="tm-name">花</span></a>
-        <p class="tm-line-foot">↓ 更早</p>
+      <section class="tm-line tm-line-left" aria-label="最近的随笔">
+        <p class="tm-line-head">随笔</p>
+        <a href="diary/碎/"><span class="tm-date">05.29</span><span class="tm-name">碎</span></a>
+        <a href="diary/第一百次告别/"><span class="tm-date">05.20</span><span class="tm-name">第一百次告别</span></a>
+        <a href="diary/找/"><span class="tm-date">05.10</span><span class="tm-name">找</span></a>
+        <a class="tm-more" href="diary/">更早</a>
       </section>
 
       <div class="tm-clock-wrap">
@@ -129,37 +132,24 @@ hide:
           <circle class="tm-ring" r="148"></circle>
           <g id="tm-ticks"></g>
           <g id="tm-nums"></g>
-          <text class="tm-dial-brand" x="0" y="-74">CIQUBEIJIANG</text>
-          <text class="tm-dial-sub tm-dial-cn" x="0" y="-58">此去北疆</text>
-          <text class="tm-dial-sub" x="0" y="70">REVERSE · NANJING</text>
+          <text class="tm-dial-cn" x="0" y="-62">此去北疆</text>
           <polygon id="tm-hour" class="tm-hand" points="-4.5,16 4.5,16 2,-96 -2,-96"></polygon>
           <polygon id="tm-min" class="tm-hand" points="-3.2,18 3.2,18 1.2,-146 -1.2,-146"></polygon>
           <g id="tm-sec" class="tm-hand-sec"><line x1="0" y1="34" x2="0" y2="-166"></line><circle cy="24" r="5"></circle></g>
           <circle class="tm-pin" r="3.2"></circle>
         </svg>
-        <p class="tm-readout"><span id="tm-digital">NANJING --:--:--</span><span class="tm-whisper">在梦里，时间往回走</span></p>
+        <p class="tm-readout">在梦里　时间往回走</p>
       </div>
 
-      <section class="tm-line tm-line-right" aria-label="研究与阅读时间线">
-        <p class="tm-line-head">研究与阅读 · NOTES</p>
-        <a href="optimization/telecom_network_maintenance/"><span class="tm-date">2026.05.11</span><span class="tm-name">XGBoost 与 MIP 联合优化</span></a>
-        <a href="optimization/copt_usage/"><span class="tm-date">2026.04.12</span><span class="tm-name">COPT 笔记</span></a>
-        <a href="optimization/mip_server_deployment/"><span class="tm-date">2026.04.11</span><span class="tm-name">MIP 服务器部署</span></a>
-        <a href="optimization/TSP_KDTree_DFJ/"><span class="tm-date">2026.04.11</span><span class="tm-name">KDTree + DFJ 求解 TSP</span></a>
-        <a href="literary/amusing_ourselves_to_death/"><span class="tm-date">2026.03.08</span><span class="tm-name">《娱乐至死》读书总结</span></a>
-        <p class="tm-line-foot">↓ 更早</p>
+      <section class="tm-line tm-line-right" aria-label="最近的笔记">
+        <p class="tm-line-head">笔记</p>
+        <a href="optimization/telecom_network_maintenance/"><span class="tm-date">05.11</span><span class="tm-name">XGBoost 与 MIP 联合优化</span></a>
+        <a href="optimization/copt_usage/"><span class="tm-date">04.12</span><span class="tm-name">COPT 笔记</span></a>
+        <a href="literary/amusing_ourselves_to_death/"><span class="tm-date">03.08</span><span class="tm-name">《娱乐至死》读书总结</span></a>
+        <a class="tm-more" href="research/">更早</a>
       </section>
     </div>
-
-    <nav class="tm-nav" aria-label="Sections">
-      <a href="reading/">阅读</a>
-      <a href="diary/">随笔</a>
-      <a href="research/">研究</a>
-      <a href="about/">关于</a>
-      <a href="https://github.com/ciqubeijiang">GitHub</a>
-    </nav>
   </div>
-
 </div>
 
 <script>
@@ -225,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hour.setAttribute("transform", "rotate(" + (-h * 30) + ")");
     min.setAttribute("transform", "rotate(" + (-m * 6) + ")");
     sec.setAttribute("transform", "rotate(" + (-s * 6) + ")");
-    digital.textContent = "NANJING " + fmt.format(new Date());
+    if (digital) digital.textContent = "NANJING " + fmt.format(new Date());
     requestAnimationFrame(tick);
   }
   tick();

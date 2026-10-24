@@ -1678,51 +1678,61 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 .layout-tm {
     position: relative;
     z-index: 1;
+    flex-direction: column;
     min-height: 100vh;
-    padding: 3.2rem 0 2.4rem;
+    padding: 2.2rem 0 2.4rem;
     color: var(--site-ink);
 }
 
-.tm-head {
-    text-align: center;
+:root[data-site-theme="timemachine"] .layout-tm {
+    display: flex;
+}
+
+.tm-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
     animation: archive-rise 900ms ease both;
 }
 
-.tm-kicker,
-.tm-line-head,
-.tm-line-foot,
-.tm-date,
-.tm-readout,
-.tm-nav {
-    font-family: var(--archive-mono);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-}
-
-.tm-kicker {
-    margin: 0;
-    font-size: 0.62rem;
-    color: var(--site-fade);
-}
-
-.tm-title {
-    margin: 0.9rem 0 0;
-    margin-right: -0.6em;
+.md-typeset a.tm-mark {
     font-family: var(--tm-serif);
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 400;
-    letter-spacing: 0.6em;
-    line-height: 1.2;
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
+    color: var(--site-ink);
+}
+
+.tm-nav {
+    display: flex;
+    gap: 2.2rem;
+    font-family: var(--tm-serif);
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+}
+
+.md-typeset .tm-nav a {
+    color: var(--site-fade);
+    transition: color 180ms ease;
+}
+
+.md-typeset .tm-nav a:hover,
+.md-typeset .tm-nav a:focus-visible,
+.md-typeset a.tm-mark:hover {
     color: var(--site-ink);
 }
 
 .tm-stage {
+    flex: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: 4.5rem;
+    gap: 4rem;
     align-items: center;
     max-width: 1240px;
-    margin: 2.6rem auto 0;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .tm-clock-wrap {
@@ -1731,21 +1741,20 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 
 .tm-clock {
     display: block;
-    width: min(42vw, 62vh, 540px);
+    width: min(42vw, 66vh, 560px);
     height: auto;
     overflow: visible;
 }
 
 .tm-bezel {
     fill: none;
-    stroke: rgba(236, 232, 225, 0.22);
+    stroke: rgba(236, 232, 225, 0.18);
     stroke-width: 0.8;
 }
 
 .tm-face {
     fill: #10131b;
-    stroke: rgba(236, 232, 225, 0.08);
-    stroke-width: 1;
+    stroke: none;
 }
 
 .tm-memory {
@@ -1768,7 +1777,7 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-tick {
-    stroke: rgba(236, 232, 225, 0.38);
+    stroke: rgba(236, 232, 225, 0.3);
     stroke-width: 0.7;
 }
 
@@ -1780,32 +1789,19 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 .tm-num {
     fill: var(--site-ink);
     font-family: var(--archive-mono);
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     text-anchor: middle;
     dominant-baseline: central;
 }
 
-.tm-dial-brand,
-.tm-dial-sub {
-    text-anchor: middle;
-    fill: var(--site-fade);
-}
-
-.tm-dial-brand {
-    font-family: var(--archive-mono);
-    font-size: 8.5px;
-    letter-spacing: 0.32em;
-}
-
-.tm-dial-sub {
-    font-family: var(--archive-mono);
-    font-size: 6.5px;
-    letter-spacing: 0.3em;
-}
-
 .tm-dial-cn {
+    fill: var(--site-ink);
     font-family: var(--tm-serif);
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    text-anchor: middle;
+    opacity: 0.85;
 }
 
 .tm-hand {
@@ -1828,29 +1824,18 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-readout {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1.6rem 0 0;
-    font-size: 0.62rem;
-    color: var(--site-fade);
-}
-
-.tm-readout span:first-child {
-    color: var(--site-ink);
-}
-
-.tm-whisper {
+    margin: 1.8rem 0 0;
+    text-align: center;
     font-family: var(--tm-serif);
     font-size: 0.8rem;
-    letter-spacing: 0.3em;
-    text-transform: none;
-    color: var(--tm-accent);
+    letter-spacing: 0.4em;
+    color: color-mix(in srgb, var(--tm-accent) 80%, transparent);
 }
 
 .tm-line {
     display: flex;
     flex-direction: column;
+    gap: 1.6rem;
     animation: archive-rise 1100ms ease 240ms both;
 }
 
@@ -1860,153 +1845,98 @@ body:has(.page-home-archive) .md-content__inner > div[style*="margin-top: -30px"
 }
 
 .tm-line-head {
-    margin: 0 0 0.6rem;
-    padding-bottom: 0.7rem;
-    font-size: 0.6rem;
+    margin: 0;
+    font-family: var(--tm-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.4em;
     color: var(--site-fade);
 }
 
-.tm-line-foot {
-    margin: 0.9rem 0 0;
-    font-size: 0.58rem;
-    color: color-mix(in srgb, var(--site-fade) 70%, transparent);
-}
-
 .md-typeset .tm-line a {
-    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    min-width: 15rem;
-    padding: 0.9rem 0;
+    gap: 0.35rem;
     color: var(--site-ink);
-    border-top: 1px solid var(--tm-hair);
-    transition: color 200ms ease;
-}
-
-.tm-line-left a {
-    padding-right: 1.4rem !important;
-}
-
-.tm-line-right a {
-    padding-left: 1.4rem !important;
-}
-
-.tm-line a::before {
-    content: "";
-    position: absolute;
-    top: 1.32rem;
-    width: 0.7rem;
-    height: 1px;
-    background: rgba(236, 232, 225, 0.5);
-    transition: background 200ms ease, width 200ms ease;
-}
-
-.tm-line-left a::before {
-    right: 0;
-}
-
-.tm-line-right a::before {
-    left: 0;
+    transition: color 200ms ease, opacity 200ms ease;
 }
 
 .tm-date {
+    font-family: var(--archive-mono);
     font-size: 0.6rem;
+    letter-spacing: 0.2em;
     color: var(--site-fade);
 }
 
 .tm-name {
     font-family: var(--tm-serif);
-    font-size: 1.02rem;
+    font-size: 1rem;
     letter-spacing: 0.06em;
+    white-space: nowrap;
 }
 
-.md-typeset .tm-line a:hover,
-.md-typeset .tm-line a:focus-visible {
-    color: var(--site-ink);
+.md-typeset .tm-line a:hover .tm-name,
+.md-typeset .tm-line a:focus-visible .tm-name {
+    color: var(--tm-accent);
 }
 
-.tm-line a:hover::before,
-.tm-line a:focus-visible::before {
-    width: 1.1rem;
-    background: var(--tm-accent);
-}
-
-.tm-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem 2.6rem;
-    margin-top: 3.2rem;
-    font-size: 0.62rem;
-}
-
-.md-typeset .tm-nav a {
+.md-typeset .tm-line a.tm-more {
+    font-family: var(--tm-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
     color: var(--site-fade);
-    transition: color 180ms ease;
 }
 
-.md-typeset .tm-nav a:hover,
-.md-typeset .tm-nav a:focus-visible {
+.md-typeset .tm-line a.tm-more:hover,
+.md-typeset .tm-line a.tm-more:focus-visible {
     color: var(--site-ink);
 }
 
 @media screen and (max-width: 1000px) {
     .tm-stage {
-        grid-template-columns: 1fr;
-        gap: 2.8rem;
-        max-width: 30rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.6rem 2rem;
+        max-width: 34rem;
+        padding-top: 2.6rem;
     }
 
     .tm-clock-wrap {
+        grid-column: 1 / -1;
         order: -1;
         justify-self: center;
     }
 
     .tm-clock {
-        width: min(86vw, 420px);
+        width: min(84vw, 420px);
     }
 
     .tm-line-left {
-        align-items: stretch;
+        align-items: flex-start;
         text-align: left;
-    }
-
-    .tm-line-left a {
-        padding-right: 0 !important;
-        padding-left: 1.4rem !important;
-    }
-
-    .tm-line-left a::before {
-        right: auto;
-        left: 0;
     }
 }
 
 @media screen and (max-width: 768px) {
     .layout-tm {
-        padding-top: 2.6rem;
+        padding-top: 1.6rem;
     }
 
-    .tm-title {
-        letter-spacing: 0.45em;
-        margin-right: -0.45em;
+    .tm-nav {
+        gap: 1.1rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
     }
 
-    .md-typeset .tm-line a {
-        min-width: 0;
+    .tm-stage {
+        grid-template-columns: 1fr;
     }
 
-    .tm-readout {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-        white-space: nowrap;
+    .tm-line {
+        gap: 1.2rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .tm-head,
+    .tm-bar,
     .tm-clock-wrap,
     .tm-line {
         animation: none !important;
