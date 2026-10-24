@@ -13,3 +13,22 @@
     })();
   </script>
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    // 暗房、时间机器是深色主题：内页固定用深色模式
+    (function () {
+      var theme = document.documentElement.getAttribute("data-site-theme");
+      if (theme !== "darkroom" && theme !== "timemachine") return;
+      var body = document.body;
+      function force() {
+        if (body.getAttribute("data-md-color-scheme") !== "slate") {
+          body.setAttribute("data-md-color-scheme", "slate");
+        }
+      }
+      force();
+      new MutationObserver(force).observe(body, { attributes: true, attributeFilter: ["data-md-color-scheme"] });
+    })();
+  </script>
+{% endblock %}

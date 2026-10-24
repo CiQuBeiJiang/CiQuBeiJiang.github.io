@@ -2053,3 +2053,371 @@ html.lenis body {
     opacity: 1;
     translate: 0 0;
 }
+
+/* -------------------------------------------------------------------------
+   内页：沿用封面的胶片档案风格，颜色跟着 site_theme 和明暗模式走
+   ------------------------------------------------------------------------- */
+
+body {
+    --in-paper: var(--site-paper);
+    --in-ink: var(--site-ink);
+    --in-fade: var(--site-fade);
+    --in-accent: var(--site-accent);
+    --in-line: color-mix(in srgb, var(--site-ink) 13%, transparent);
+    --in-well: color-mix(in srgb, var(--site-ink) 4.5%, var(--site-paper));
+    --in-strip: var(--site-strip-bottom);
+    --in-hole: var(--site-paper);
+    --in-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Songti SC", "Noto Serif CJK SC", serif;
+    --in-mono: "SFMono-Regular", "Cascadia Mono", "Fira Code", monospace;
+}
+
+/* 深色模式统一用暗房色，时间机器用自己的夜蓝 */
+body[data-md-color-scheme="slate"] {
+    --in-paper: #1d1a18;
+    --in-ink: #ebe4d8;
+    --in-fade: #a39a8c;
+    --in-accent: #c9a27e;
+    --in-line: rgba(235, 228, 216, 0.12);
+    --in-well: #26221f;
+    --in-strip: #0c0b0a;
+    --in-hole: #2a2522;
+}
+
+:root[data-site-theme="timemachine"] body[data-md-color-scheme="slate"] {
+    --in-paper: #0b0d13;
+    --in-ink: #ebe6dc;
+    --in-fade: #878a93;
+    --in-accent: #d8c79a;
+    --in-line: rgba(236, 232, 225, 0.11);
+    --in-well: #12151d;
+    --in-strip: #05060a;
+    --in-hole: #1a1e28;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) {
+    --md-default-bg-color: var(--in-paper);
+    --md-default-fg-color: var(--in-ink);
+    --md-default-fg-color--light: var(--in-fade);
+    --md-default-fg-color--lighter: color-mix(in srgb, var(--in-fade) 60%, transparent);
+    --md-default-fg-color--lightest: var(--in-line);
+    --md-typeset-color: color-mix(in srgb, var(--in-ink) 86%, var(--in-paper));
+    --md-typeset-a-color: var(--in-ink);
+    --md-accent-fg-color: var(--in-accent);
+    --md-code-bg-color: var(--in-well);
+    --md-footer-bg-color: var(--in-strip);
+    --md-footer-bg-color--dark: var(--in-strip);
+    background: var(--in-paper);
+}
+
+/* 顶栏：纸色 + 一条胶片齿孔 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-header {
+    padding-top: 12px;
+    background: color-mix(in srgb, var(--in-paper) 92%, transparent);
+    color: var(--in-ink);
+    border-bottom: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 12px;
+    background:
+        radial-gradient(circle at center, var(--in-hole) 52%, transparent 58%) left center / 18px 7px repeat-x,
+        var(--in-strip);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__button,
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input,
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input::placeholder,
+body:not(:has(.home-v2, .page-cover-archive)) .md-source {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-header__title {
+    font-family: var(--in-serif);
+    letter-spacing: 0.12em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__form {
+    background: var(--in-well);
+    border: 1px solid var(--in-line);
+    border-radius: 2px;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-search__input {
+    font-family: var(--in-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-sidebar--primary {
+    border-right: 1px solid var(--in-line);
+}
+
+/* 侧栏 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item--active > .md-nav__link,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link:focus-visible {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title {
+    font-family: var(--in-serif);
+    letter-spacing: 0.12em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item .md-nav__link {
+    color: color-mix(in srgb, var(--in-ink) 62%, transparent);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__list .md-nav__list {
+    border-left-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__link--active,
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav__item--active > .md-nav__link {
+    position: relative;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-nav--secondary .md-nav__link--active::before {
+    content: "";
+    position: absolute;
+    left: -0.6rem;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--in-accent);
+    translate: 0 -50%;
+}
+
+/* 正文 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h2,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h3,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h4 {
+    font-family: var(--in-serif);
+    color: var(--in-ink);
+    font-weight: 400;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1 {
+    margin-bottom: 2.2rem;
+    padding-bottom: 1.1rem;
+    font-size: 2.1em;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    border-bottom: 1px solid var(--in-line);
+    position: relative;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 3rem;
+    height: 1px;
+    background: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h2 {
+    margin-top: 2.6em;
+    padding-bottom: 0.45em;
+    font-size: 1.45em;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h3 {
+    font-size: 1.15em;
+    letter-spacing: 0.03em;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset h4 {
+    font-size: 1em;
+    letter-spacing: 0.04em;
+    color: var(--in-fade);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset p,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset li {
+    line-height: 1.95;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a {
+    color: var(--in-ink);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--in-accent) 70%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.28em;
+    transition: text-decoration-color 180ms ease, color 180ms ease;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a:focus-visible {
+    color: var(--in-accent);
+    text-decoration-color: currentColor;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .headerlink,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset a.md-content__button {
+    text-decoration: none;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .headerlink {
+    color: var(--in-fade);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset hr {
+    border-bottom-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset strong {
+    color: var(--in-ink);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset blockquote {
+    margin-left: 0;
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    border-left: 2px solid var(--in-accent);
+    color: var(--in-fade);
+    font-family: var(--in-serif);
+}
+
+/* 代码 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset code {
+    border-radius: 2px;
+    background: var(--in-well);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset pre > code {
+    border: 1px solid var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .highlight .filename {
+    font-family: var(--in-mono);
+    letter-spacing: 0.08em;
+    background: var(--in-well);
+    border: 1px solid var(--in-line);
+    border-bottom: 0;
+}
+
+/* 表格 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) {
+    border: 1px solid var(--in-line);
+    border-radius: 2px;
+    box-shadow: none;
+    background: transparent;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) th {
+    font-family: var(--in-mono);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--in-fade);
+    background: var(--in-well);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) td {
+    border-top-color: var(--in-line);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset table:not([class]) tbody tr:hover {
+    background: var(--in-well);
+    box-shadow: none;
+}
+
+/* 提示框 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .admonition,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset details {
+    border: 1px solid var(--in-line);
+    border-left: 2px solid var(--in-accent);
+    border-radius: 2px;
+    background: var(--in-well);
+    box-shadow: none;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset .admonition-title,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset summary {
+    background: transparent !important;
+    font-family: var(--in-serif);
+    letter-spacing: 0.04em;
+}
+
+/* 文中的照片：像一张冲洗出来的相纸 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset p > img:only-child,
+body:not(:has(.home-v2, .page-cover-archive)) .md-typeset figure img {
+    padding: 0.55rem 0.55rem 1.6rem;
+    background: linear-gradient(180deg, var(--site-frame-top), var(--site-frame-bottom));
+    box-shadow: 0 18px 40px rgba(40, 30, 20, 0.12);
+}
+
+/* 页脚：胶片底边 */
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer {
+    position: relative;
+    padding-top: 12px;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 12px;
+    background: radial-gradient(circle at center, var(--in-hole) 52%, transparent 58%) left center / 18px 7px repeat-x;
+    opacity: 0.6;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta {
+    background: var(--in-strip);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-copyright {
+    font-family: var(--in-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-top {
+    background: var(--in-paper);
+    color: var(--in-ink);
+    border: 1px solid var(--in-line);
+    box-shadow: none;
+    font-family: var(--in-mono);
+    letter-spacing: 0.08em;
+}
+
+/* 深色主题（暗房、时间机器）强制深色，并隐藏明暗切换 */
+:root[data-site-theme="darkroom"] .md-header__option,
+:root[data-site-theme="timemachine"] .md-header__option {
+    display: none;
+}
+
+@media screen and (max-width: 76.2344em) {
+    body:not(:has(.home-v2, .page-cover-archive)) .md-nav--primary .md-nav__title {
+        background: var(--in-paper);
+        color: var(--in-ink);
+    }
+
+    body:not(:has(.home-v2, .page-cover-archive)) .md-sidebar--primary {
+        background: var(--in-paper);
+    }
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta a,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link {
+    color: rgba(240, 234, 224, 0.72);
+}
+
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta a:hover,
+body:not(:has(.home-v2, .page-cover-archive)) .md-footer-meta .md-social__link:hover {
+    color: rgba(240, 234, 224, 0.98);
+}
