@@ -10,6 +10,7 @@ hide:
 ---
 
 <div class="page-home-archive home-v2">
+  <div class="layout-archive">
   <div class="home-strip" aria-hidden="true"></div>
 
   <header class="home-hero">
@@ -96,6 +97,59 @@ hide:
     </nav>
     <p>© 2026 CiQuBeiJiang · 南京</p>
   </footer>
+  </div>
+
+  <div class="layout-tm">
+    <header class="tm-head">
+      <p class="tm-kicker">time machine · ciqubeijiang</p>
+      <p class="tm-title">此去北疆</p>
+    </header>
+
+    <div class="tm-stage">
+      <section class="tm-line tm-line-left" aria-label="随笔时间线">
+        <p class="tm-line-head">随笔 · ESSAYS</p>
+        <a href="diary/碎/"><span class="tm-date">2026.05.29</span><span class="tm-name">碎</span></a>
+        <a href="diary/第一百次告别/"><span class="tm-date">2026.05.20</span><span class="tm-name">第一百次告别</span></a>
+        <a href="diary/找/"><span class="tm-date">2026.05.10</span><span class="tm-name">找</span></a>
+        <a href="diary/伞/"><span class="tm-date">2026.05.05</span><span class="tm-name">伞</span></a>
+        <a href="diary/flower/"><span class="tm-date">2026.01.17</span><span class="tm-name">花</span></a>
+        <p class="tm-line-foot">↓ 更早</p>
+      </section>
+
+      <div class="tm-clock-wrap">
+        <svg class="tm-clock" viewBox="-200 -200 400 400" role="img" aria-label="一只倒着走的钟">
+          <circle class="tm-face" r="188"></circle>
+          <circle class="tm-face-inner" r="150"></circle>
+          <g id="tm-ticks"></g>
+          <g id="tm-nums"></g>
+          <line id="tm-hour" class="tm-hand tm-hand-hour" x1="0" y1="14" x2="0" y2="-92"></line>
+          <line id="tm-min" class="tm-hand tm-hand-min" x1="0" y1="18" x2="0" y2="-138"></line>
+          <line id="tm-sec" class="tm-hand tm-hand-sec" x1="0" y1="28" x2="0" y2="-160"></line>
+          <circle class="tm-pin" r="4.5"></circle>
+        </svg>
+        <p class="tm-readout"><span id="tm-digital">NANJING --:--</span><span>◀◀ rewinding</span></p>
+      </div>
+
+      <section class="tm-line tm-line-right" aria-label="研究与阅读时间线">
+        <p class="tm-line-head">研究与阅读 · NOTES</p>
+        <a href="optimization/telecom_network_maintenance/"><span class="tm-date">2026.05.11</span><span class="tm-name">XGBoost 与 MIP 联合优化</span></a>
+        <a href="optimization/copt_usage/"><span class="tm-date">2026.04.12</span><span class="tm-name">COPT 笔记</span></a>
+        <a href="optimization/mip_server_deployment/"><span class="tm-date">2026.04.11</span><span class="tm-name">MIP 服务器部署</span></a>
+        <a href="optimization/TSP_KDTree_DFJ/"><span class="tm-date">2026.04.11</span><span class="tm-name">KDTree + DFJ 求解 TSP</span></a>
+        <a href="literary/amusing_ourselves_to_death/"><span class="tm-date">2026.03.08</span><span class="tm-name">《娱乐至死》读书总结</span></a>
+        <p class="tm-line-foot">↓ 更早</p>
+      </section>
+    </div>
+
+    <nav class="tm-nav" aria-label="Sections">
+      <a href="reading/">阅读</a>
+      <a href="diary/">随笔</a>
+      <a href="research/">研究</a>
+      <a href="about/">关于</a>
+      <a href="https://github.com/ciqubeijiang">GitHub</a>
+    </nav>
+  </div>
+
 </div>
 
 <script>
@@ -114,5 +168,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateHomeTime();
   setInterval(updateHomeTime, 30000);
+
+  // Time Machine 主题：倒着走的钟（表盘镜像，指针逆时针转）
+  const clock = document.querySelector(".tm-clock");
+  if (!clock || document.documentElement.dataset.siteTheme !== "timemachine") return;
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const ticks = document.getElementById("tm-ticks");
+  const nums = document.getElementById("tm-nums");
+  for (let i = 0; i < 60; i++) {
+    const t = document.createElementNS(svgNS, "line");
+    const major = i % 5 === 0;
+    t.setAttribute("x1", 0);
+    t.setAttribute("y1", -176);
+    t.setAttribute("x2", 0);
+    t.setAttribute("y2", major ? -160 : -169);
+    t.setAttribute("class", major ? "tm-tick tm-tick-major" : "tm-tick");
+    t.setAttribute("transform", "rotate(" + (-i * 6) + ")");
+    ticks.appendChild(t);
+  }
+  for (let n = 1; n <= 12; n++) {
+    const a = (-n * 30) * Math.PI / 180;
+    const text = document.createElementNS(svgNS, "text");
+    text.setAttribute("x", (Math.sin(a) * 130).toFixed(2));
+    text.setAttribute("y", (-Math.cos(a) * 130).toFixed(2));
+    text.setAttribute("class", "tm-num");
+    text.textContent = n;
+    nums.appendChild(text);
+  }
+
+  const hour = document.getElementById("tm-hour");
+  const min = document.getElementById("tm-min");
+  const sec = document.getElementById("tm-sec");
+  const digital = document.getElementById("tm-digital");
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "Asia/Shanghai"
+  });
+
+  function tick() {
+    const parts = fmt.formatToParts(new Date());
+    const get = (type) => Number(parts.find((p) => p.type === type).value);
+    const ms = new Date().getMilliseconds();
+    const s = get("second") + ms / 1000;
+    const m = get("minute") + s / 60;
+    const h = (get("hour") % 12) + m / 60;
+    hour.setAttribute("transform", "rotate(" + (-h * 30) + ")");
+    min.setAttribute("transform", "rotate(" + (-m * 6) + ")");
+    sec.setAttribute("transform", "rotate(" + (-s * 6) + ")");
+    digital.textContent = "NANJING " + fmt.format(new Date());
+    requestAnimationFrame(tick);
+  }
+  tick();
 });
 </script>

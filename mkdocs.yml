@@ -111,7 +111,7 @@ markdown_extensions:
       generic: true
 
 extra:
-  # 站点主题：film（胶片） / snow（北疆初雪） / moss（苔原） / darkroom（暗房）
+  # 站点主题：film（胶片） / snow（北疆初雪） / moss（苔原） / darkroom（暗房） / timemachine（时间机器）
   site_theme: film
   social:
     - icon: fontawesome/brands/github
